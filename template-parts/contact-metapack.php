@@ -99,6 +99,39 @@ $form_textarea_value = $args['form_message'] ?? 'Me interesa cotizar: ' . get_th
             <div class="mp-contact-v2__right mp-reveal-right">
                 <div class="mp-quote-form-card">
                     <h2 class="mp-quote-form-card__title">Solicitud de Cotización</h2>
+                    <?php if (!empty($args['form_intro'])) : ?>
+                        <p class="mp-quote-form-card__intro" style="font-family: var(--mp-font-body); font-size: 15px; color: var(--mp-gray); margin-bottom: 20px; line-height: 1.6; border-left: 3px solid var(--mp-primary); padding-left: 12px; margin-top: 10px;">
+                            <?php echo esc_html($args['form_intro']); ?>
+                        </p>
+                    <?php else : ?>
+                        <p class="mp-quote-form-card__intro" style="font-family: var(--mp-font-body); font-size: 15px; color: var(--mp-gray); margin-bottom: 20px; line-height: 1.6; border-left: 3px solid var(--mp-primary); padding-left: 12px; margin-top: 10px;">
+                            Optimice su cadena de suministro con soluciones de empaque y bobinas de aluminio a la medida. Solicite calibres y anchos industriales con atención directa.
+                        </p>
+                    <?php endif; ?>
+
+                    <!-- Beneficios B2B clave para conversión -->
+                    <div class="mp-form-b2b-benefits" style="margin: 15px 0 25px 0; padding: 16px; background-color: var(--mp-light-gray); border-left: 4px solid var(--mp-primary); border-radius: 4px;">
+                        <ul style="list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 10px;">
+                            <li style="display: flex; align-items: flex-start; gap: 10px; font-family: var(--mp-font-body); font-size: 14px; color: var(--mp-dark-gray); line-height: 1.4;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--mp-primary)" stroke-width="3" style="margin-top: 2px; flex-shrink: 0;">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span><strong>Respuesta rápida:</strong> Propuesta comercial y técnica formal en menos de 24 horas hábiles.</span>
+                            </li>
+                            <li style="display: flex; align-items: flex-start; gap: 10px; font-family: var(--mp-font-body); font-size: 14px; color: var(--mp-dark-gray); line-height: 1.4;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--mp-primary)" stroke-width="3" style="margin-top: 2px; flex-shrink: 0;">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span><strong>Capacidad Industrial B2B:</strong> Suministro continuo para altos volúmenes y contratos comerciales.</span>
+                            </li>
+                            <li style="display: flex; align-items: flex-start; gap: 10px; font-family: var(--mp-font-body); font-size: 14px; color: var(--mp-dark-gray); line-height: 1.4;">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--mp-primary)" stroke-width="3" style="margin-top: 2px; flex-shrink: 0;">
+                                    <polyline points="20 6 9 17 4 12"></polyline>
+                                </svg>
+                                <span><strong>Certificación e Inocuidad:</strong> Aluminio 100% aprobado por la FDA para contacto directo con alimentos.</span>
+                            </li>
+                        </ul>
+                    </div>
                     <?php 
                     if (shortcode_exists('contact-form-7')) {
                         echo do_shortcode('[contact-form-7 id="4cb8e5f" title="Formulario de contacto 1"]');
