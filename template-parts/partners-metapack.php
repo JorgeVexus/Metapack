@@ -19,44 +19,80 @@
             <div class="mp-marcas__track">
                 <!-- Original Set -->
                 <div class="mp-marcas__logo">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo" width="150" height="60" loading="lazy">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/cir.webp" alt="cir" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Mango-Logo-1.png" alt="Mango" width="150" height="60" loading="lazy">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/grupo-ibarra.webp" alt="grupo ibarra" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/SpaceX-Logo-1.webp" alt="SpaceX" width="150" height="60" loading="lazy">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/cagsa.webp" alt="cagsa" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo" width="150" height="60" loading="lazy">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/decasa.webp" alt="decasa" width="150" height="60" loading="lazy">
+                </div>
+                <div class="mp-marcas__logo">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/ept.webp" alt="ept" width="150" height="60" loading="lazy">
+                </div>
+                <div class="mp-marcas__logo">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/grupo-bafar.webp" alt="grupo bafar" width="150" height="60" loading="lazy">
+                </div>
+                <div class="mp-marcas__logo">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/arero.webp" alt="arero" width="150" height="60" loading="lazy">
+                </div>
+                <div class="mp-marcas__logo">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/codeba.webp" alt="codeba" width="150" height="60" loading="lazy">
                 </div>
                 
                 <!-- Duplicate Set for Infinite Loop -->
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo" width="150" height="60" loading="lazy">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/cir.webp" alt="cir" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Mango-Logo-1.png" alt="Mango" width="150" height="60" loading="lazy">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/grupo-ibarra.webp" alt="grupo ibarra" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/SpaceX-Logo-1.webp" alt="SpaceX" width="150" height="60" loading="lazy">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/cagsa.webp" alt="cagsa" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo" width="150" height="60" loading="lazy">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/decasa.webp" alt="decasa" width="150" height="60" loading="lazy">
+                </div>
+                <div class="mp-marcas__logo" aria-hidden="true">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/ept.webp" alt="ept" width="150" height="60" loading="lazy">
+                </div>
+                <div class="mp-marcas__logo" aria-hidden="true">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/grupo-bafar.webp" alt="grupo bafar" width="150" height="60" loading="lazy">
+                </div>
+                <div class="mp-marcas__logo" aria-hidden="true">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/arero.webp" alt="arero" width="150" height="60" loading="lazy">
+                </div>
+                <div class="mp-marcas__logo" aria-hidden="true">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/codeba.webp" alt="codeba" width="150" height="60" loading="lazy">
                 </div>
                 
                 <!-- Triplicate Set for ultra-wide screens -->
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo" width="150" height="60" loading="lazy">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/cir.webp" alt="cir" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Mango-Logo-1.png" alt="Mango" width="150" height="60" loading="lazy">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/grupo-ibarra.webp" alt="grupo ibarra" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/SpaceX-Logo-1.webp" alt="SpaceX" width="150" height="60" loading="lazy">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/cagsa.webp" alt="cagsa" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo" width="150" height="60" loading="lazy">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/decasa.webp" alt="decasa" width="150" height="60" loading="lazy">
+                </div>
+                <div class="mp-marcas__logo" aria-hidden="true">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/ept.webp" alt="ept" width="150" height="60" loading="lazy">
+                </div>
+                <div class="mp-marcas__logo" aria-hidden="true">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/grupo-bafar.webp" alt="grupo bafar" width="150" height="60" loading="lazy">
+                </div>
+                <div class="mp-marcas__logo" aria-hidden="true">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/arero.webp" alt="arero" width="150" height="60" loading="lazy">
+                </div>
+                <div class="mp-marcas__logo" aria-hidden="true">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/05/codeba.webp" alt="codeba" width="150" height="60" loading="lazy">
                 </div>
             </div>
         </div>
