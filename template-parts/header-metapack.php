@@ -57,7 +57,7 @@ if ($custom_logo_id) {
                 </ul>
             <?php endif; ?>
         </nav>
-        <a href="<?php echo home_url('/'); ?>#mp-contacto" class="mp-btn mp-btn--primary mp-btn--nav">Cotizar ahora</a>
+        <a href="<?php echo home_url('/cotizar/'); ?>" class="mp-btn mp-btn--primary mp-btn--nav">Cotizar ahora</a>
         <button class="mp-nav__toggle" id="mp-navToggle" aria-label="Abrir menú">
             <span></span>
             <span></span>
