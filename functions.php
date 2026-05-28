@@ -1060,3 +1060,34 @@ function metapack_disable_emojis_dns_prefetch($urls, $relation_type) {
     }
     return $urls;
 }
+
+// =================================================
+// ESTRUCTURA: EXCLUIR USUARIOS DEL XML SITEMAP
+// =================================================
+add_filter('wp_sitemaps_add_provider', 'metapack_exclude_users_sitemap', 10, 2);
+function metapack_exclude_users_sitemap($provider, $name) {
+    if ($name === 'users') {
+        return false;
+    }
+    return $provider;
+}
+
+// =================================================
+// ESTRUCTURA: POBLAR SELECT DE ESTADOS EN CF7
+// =================================================
+add_filter('wpcf7_form_tag', 'metapack_populate_states_dropdown', 10, 2);
+function metapack_populate_states_dropdown($tag, $replace) {
+    if ($tag['name'] === 'estado') {
+        $estados = array(
+            "Aguascalientes", "Baja California", "Baja California Sur", "Campeche", "Chiapas", "Chihuahua",
+            "Coahuila", "Colima", "Ciudad de México", "Durango", "Guanajuato", "Guerrero", "Hidalgo",
+            "Jalisco", "Michoacán", "Morelos", "Nayarit", "Nuevo León", "Oaxaca", "Puebla", "Querétaro",
+            "Quintana Roo", "San Luis Potosí", "Sinaloa", "Sonora", "Tabasco", "Tamaulipas", "Tlaxcala",
+            "Veracruz", "Yucatán", "Zacatecas"
+        );
+        $tag['raw_values'] = $estados;
+        $tag['values'] = $estados;
+        $tag['labels'] = $estados;
+    }
+    return $tag;
+}
