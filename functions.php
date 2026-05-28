@@ -844,6 +844,11 @@ function metapack_fix_cf7_mail($components, $contact_form, $mail_template) {
     if (isset($_SERVER['SERVER_NAME'])) {
         $domain = str_replace('www.', '', $_SERVER['SERVER_NAME']);
     }
+    // Eliminar puerto si está incluido en el dominio (por ejemplo, en entornos de desarrollo local)
+    if (strpos($domain, ':') !== false) {
+        $domain_parts = explode(':', $domain);
+        $domain = $domain_parts[0];
+    }
     // "WordPress" <no-reply@domino.com>
     $components['sender'] = 'Web Metapack <no-reply@' . $domain . '>';
 
