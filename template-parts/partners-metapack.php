@@ -19,44 +19,44 @@
             <div class="mp-marcas__track">
                 <!-- Original Set -->
                 <div class="mp-marcas__logo">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Mango-Logo-1.png" alt="Mango">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Mango-Logo-1.png" alt="Mango" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/SpaceX-Logo-1.webp" alt="SpaceX">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/SpaceX-Logo-1.webp" alt="SpaceX" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo" width="150" height="60" loading="lazy">
                 </div>
                 
                 <!-- Duplicate Set for Infinite Loop -->
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Mango-Logo-1.png" alt="Mango">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Mango-Logo-1.png" alt="Mango" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/SpaceX-Logo-1.webp" alt="SpaceX">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/SpaceX-Logo-1.webp" alt="SpaceX" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo" width="150" height="60" loading="lazy">
                 </div>
                 
                 <!-- Triplicate Set for ultra-wide screens -->
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Mango-Logo-1.png" alt="Mango">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Mango-Logo-1.png" alt="Mango" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/SpaceX-Logo-1.webp" alt="SpaceX">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/SpaceX-Logo-1.webp" alt="SpaceX" width="150" height="60" loading="lazy">
                 </div>
                 <div class="mp-marcas__logo" aria-hidden="true">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo" width="150" height="60" loading="lazy">
                 </div>
             </div>
         </div>

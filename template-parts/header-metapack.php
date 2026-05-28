@@ -19,11 +19,6 @@ if ($custom_logo_id) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php wp_title('|', true, 'right'); ?><?php bloginfo('name'); ?></title>
     
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -36,7 +31,7 @@ if ($custom_logo_id) {
 <header class="mp-header" id="mp-header">
     <div class="mp-header__container">
         <a href="<?php echo home_url('/'); ?>" class="mp-logo">
-            <img src="<?php echo esc_url($logo_url); ?>" alt="Metapack Logo" class="mp-logo__img">
+            <img src="<?php echo esc_url($logo_url); ?>" alt="Metapack Logo" class="mp-logo__img" loading="eager" width="180" height="45">
         </a>
         <nav class="mp-nav" id="mp-nav">
             <?php if (has_nav_menu('primary')) : ?>

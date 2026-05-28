@@ -103,7 +103,7 @@ if (have_posts()) :
                     <?php
                     $args = array(
                         'post_type' => 'post',
-                        'posts_per_page' => 2,
+                        'posts_per_page' => 3,
                         'post__not_in' => array($post_id),
                         'category__in' => wp_get_post_categories($post_id),
                         'orderby' => 'rand'
