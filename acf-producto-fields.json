@@ -1,0 +1,96 @@
+[
+    {
+        "key": "group_producto_info",
+        "title": "Información del Producto",
+        "fields": [
+            {
+                "key": "field_modelo",
+                "label": "Modelo",
+                "name": "modelo",
+                "type": "text",
+                "instructions": "Código o nombre del modelo del producto",
+                "required": 0,
+                "placeholder": "Ej: BOB-101A"
+            },
+            {
+                "key": "field_calibre",
+                "label": "Calibre",
+                "name": "calibre",
+                "type": "text",
+                "instructions": "Rango de calibre o espesor del producto",
+                "required": 0,
+                "placeholder": "Ej: 0.05mm - 0.15mm"
+            },
+            {
+                "key": "field_imagen_2",
+                "label": "Imagen 2",
+                "name": "imagen_2",
+                "type": "image",
+                "instructions": "Segunda imagen del producto (opcional)",
+                "required": 0,
+                "return_format": "array",
+                "preview_size": "medium",
+                "library": "all"
+            },
+            {
+                "key": "field_imagen_3",
+                "label": "Imagen 3",
+                "name": "imagen_3",
+                "type": "image",
+                "instructions": "Tercera imagen del producto (opcional)",
+                "required": 0,
+                "return_format": "array",
+                "preview_size": "medium",
+                "library": "all"
+            },
+            {
+                "key": "field_imagen_4",
+                "label": "Imagen 4",
+                "name": "imagen_4",
+                "type": "image",
+                "instructions": "Cuarta imagen del producto (opcional)",
+                "required": 0,
+                "return_format": "array",
+                "preview_size": "medium",
+                "library": "all"
+            },
+            {
+                "key": "field_especificaciones",
+                "label": "Especificaciones Técnicas",
+                "name": "especificaciones_texto",
+                "type": "textarea",
+                "instructions": "Escribe cada especificación en una línea con el formato: Nombre: Valor\n\nEjemplo:\nMaterial: Aluminio 8011\nEspesor: 0.05 - 0.15 mm\nAncho: 50 - 1250 mm\nTemple: Suave, Semi-duro",
+                "required": 0,
+                "rows": 8,
+                "placeholder": "Material: Aluminio 8011\nEspesor: 0.05 - 0.15 mm\nAncho: 50 - 1250 mm"
+            },
+            {
+                "key": "field_ficha_tecnica",
+                "label": "Ficha Técnica (PDF)",
+                "name": "ficha_tecnica",
+                "type": "file",
+                "instructions": "Sube el PDF con la ficha técnica del producto para que los clientes puedan descargarlo",
+                "required": 0,
+                "return_format": "array",
+                "library": "all",
+                "mime_types": "pdf"
+            }
+        ],
+        "location": [
+            [
+                {
+                    "param": "post_type",
+                    "operator": "==",
+                    "value": "producto"
+                }
+            ]
+        ],
+        "menu_order": 0,
+        "position": "normal",
+        "style": "default",
+        "label_placement": "top",
+        "instruction_placement": "label",
+        "active": true,
+        "description": "Campos personalizados para los productos de Metapack (ACF Free)"
+    }
+]

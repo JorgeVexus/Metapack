@@ -1,0 +1,24 @@
+/*
+Theme Name: Metapack Theme
+Theme URI: https://metapack.com.mx
+Author: Jorge Cerna
+Author URI: https://metapack.com.mx
+Description: Tema personalizado para Metapack - Soluciones de empaque en aluminio. Diseño moderno y profesional con secciones editables.
+Version: 1.0.0
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: metapack
+Tags: custom-logo, custom-menu, full-width-template, one-page
+
+Este tema requiere WordPress 5.0 o superior.
+*/
+
+/* 
+ * Los estilos principales están en:
+ * assets/css/metapack-styles.css
+ * 
+ * Este archivo solo contiene los metadatos del tema requeridos por WordPress
+ */

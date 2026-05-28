@@ -1,0 +1,4 @@
+/* 
+ * Placeholder file
+ * Coloca tu logo aquí como logo.png
+ */
