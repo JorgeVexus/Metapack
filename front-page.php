@@ -115,7 +115,7 @@ get_template_part('template-parts/header', 'metapack');
             <!-- Card 1 -->
             <div class="mp-catalogo-card mp-reveal-up" style="transition-delay: 0.1s;">
                 <div class="mp-catalogo-card__image mp-catalogo-card__image--contain">
-                    <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/lproduct-2.png" alt="Rollos de Aluminio">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/lproduct-2.png" alt="Rollos de Aluminio">
                 </div>
                 <div class="mp-catalogo-card__content">
                     <h3 class="mp-catalogo-card__title">ROLLOS DE ALUMINIO</h3>
@@ -137,7 +137,7 @@ get_template_part('template-parts/header', 'metapack');
             <!-- Card 2 -->
             <div class="mp-catalogo-card mp-reveal-up" style="transition-delay: 0.2s;">
                 <div class="mp-catalogo-card__image mp-catalogo-card__image--cover">
-                    <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/Image-Container.png" alt="Maquila">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Image-Container.png" alt="Maquila">
                 </div>
                 <div class="mp-catalogo-card__content">
                     <h3 class="mp-catalogo-card__title">MAQUILA Y PERSONALIZACIÓN</h3>
@@ -159,7 +159,7 @@ get_template_part('template-parts/header', 'metapack');
             <!-- Card 3 -->
             <div class="mp-catalogo-card mp-reveal-up" style="transition-delay: 0.3s;">
                 <div class="mp-catalogo-card__image mp-catalogo-card__image--cover">
-                    <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/complementos-de-empaque.png" alt="Complementos">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/complementos-de-empaque.png" alt="Complementos">
                 </div>
                 <div class="mp-catalogo-card__content">
                     <h3 class="mp-catalogo-card__title">COMPLEMENTOS DE EMPAQUE</h3>
@@ -251,7 +251,7 @@ get_template_part('template-parts/header', 'metapack');
                         $stars = get_post_meta(get_the_ID(), '_testimonial_stars', true);
                         if (!$stars) $stars = 5;
                         $image = get_the_post_thumbnail_url(get_the_ID(), 'medium');
-                        if (!$image) $image = 'http://www.metapack.com.mx/wp-content/uploads/2026/01/lproduct-2.png';
+                        if (!$image) $image = 'https://www.metapack.com.mx/wp-content/uploads/2026/01/lproduct-2.png';
                 ?>
                     <div class="mp-testimonial-card">
                         <div class="mp-testimonial-card__image-container">
@@ -285,7 +285,7 @@ get_template_part('template-parts/header', 'metapack');
                 ?>
                     <div class="mp-testimonial-card">
                         <div class="mp-testimonial-card__image-container">
-                            <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/lproduct-2.png" alt="César Amaya">
+                            <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/lproduct-2.png" alt="César Amaya">
                         </div>
                         <div class="mp-testimonial-card__content">
                             <div class="mp-testimonial-card__name-row">
@@ -377,7 +377,7 @@ get_template_part('template-parts/header', 'metapack');
                     <div class="mp-maquila-slide">
                         <div class="mp-maquila-card">
                             <div class="mp-maquila-card__image">
-                                <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image.png"
+                                <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image.png"
                                     alt="Empaque industrial">
                             </div>
                             <div class="mp-maquila-card__content">
@@ -413,7 +413,7 @@ get_template_part('template-parts/header', 'metapack');
                     <div class="mp-maquila-slide">
                         <div class="mp-maquila-card">
                             <div class="mp-maquila-card__image">
-                                <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-1.png"
+                                <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-1.png"
                                     alt="Cadena de restaurantes">
                             </div>
                             <div class="mp-maquila-card__content">
@@ -448,7 +448,7 @@ get_template_part('template-parts/header', 'metapack');
                     <div class="mp-maquila-slide">
                         <div class="mp-maquila-card">
                             <div class="mp-maquila-card__image">
-                                <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-2.png"
+                                <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-2.png"
                                     alt="Punto de venta">
                             </div>
                             <div class="mp-maquila-card__content">
@@ -539,7 +539,7 @@ get_template_part('template-parts/header', 'metapack');
                                     <?php if (has_post_thumbnail()) : ?>
                                         <?php the_post_thumbnail('medium_large'); ?>
                                     <?php else : ?>
-                                        <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/rollo-de-aluminio-azul.jpg" alt="<?php the_title(); ?>">
+                                        <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/rollo-de-aluminio-azul.jpg" alt="<?php the_title(); ?>">
                                     <?php endif; ?>
                                 </div>
                                 <div class="mp-product-card-v2__content">
@@ -565,7 +565,7 @@ get_template_part('template-parts/header', 'metapack');
                                 </div>
                                 <div class="mp-product-card-v2__footer">
                                     <a href="<?php the_permalink(); ?>" class="mp-product-btn mp-product-btn--dark">VER DETALLES</a>
-                                    <a href="https://wa.me/<?php echo esc_attr(get_theme_mod('contact_whatsapp', '521812345678')); ?>?text=<?php echo urlencode('Hola, me interesa cotizar el producto: ' . get_the_title()); ?>" class="mp-product-btn mp-product-btn--primary" target="_blank">COTIZAR</a>
+                                    <a href="https://wa.me/<?php echo esc_attr(get_theme_mod('contact_whatsapp', '523313011647')); ?>?text=<?php echo urlencode('Hola, me interesa cotizar el producto: ' . get_the_title()); ?>" class="mp-product-btn mp-product-btn--primary" target="_blank">COTIZAR</a>
                                 </div>
                             </div>
                         </div>

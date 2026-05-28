@@ -144,7 +144,7 @@ get_template_part('template-parts/header', 'metapack');
     </div>
     
     <!-- Imagen en posición absoluta -->
-    <img class="mp-historia-v3__abs-img" src="http://www.metapack.com.mx/wp-content/uploads/2026/01/nuestra-historia-metapack-1.png" alt="Nuestra Historia Metapack">
+    <img class="mp-historia-v3__abs-img" src="https://www.metapack.com.mx/wp-content/uploads/2026/01/nuestra-historia-metapack-1.png" alt="Nuestra Historia Metapack">
 </section>
 
 
@@ -217,10 +217,10 @@ get_template_part('template-parts/header', 'metapack');
 <section class="mp-equipo-new">
     <div class="mp-equipo-new__canvas">
         <div class="mp-equipo-new__img-top mp-reveal-left">
-            <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/nuestroequipo1-min.webp" alt="Equipo Metapack 1">
+            <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/nuestroequipo1-min.webp" alt="Equipo Metapack 1">
         </div>
         <div class="mp-equipo-new__img-bottom mp-reveal-right">
-            <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/nuestroequipo2-min.webp" alt="Equipo Metapack 2">
+            <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/nuestroequipo2-min.webp" alt="Equipo Metapack 2">
         </div>
         
         <div class="mp-equipo-new__card mp-reveal-scale">
@@ -305,16 +305,16 @@ get_template_part('template-parts/header', 'metapack');
         </div>
         <div class="mp-marcas__grid">
             <div class="mp-marcas__logo">
-                <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo">
+                <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo">
             </div>
             <div class="mp-marcas__logo">
-                <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/Mango-Logo-1.png" alt="Mango">
+                <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Mango-Logo-1.png" alt="Mango">
             </div>
             <div class="mp-marcas__logo">
-                <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/SpaceX-Logo-1.webp" alt="SpaceX">
+                <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/SpaceX-Logo-1.webp" alt="SpaceX">
             </div>
             <div class="mp-marcas__logo">
-                <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo">
+                <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/example_logo-1.webp" alt="Corporativo">
             </div>          
         </div>
     </div>

@@ -248,7 +248,7 @@ sort($calibres_unicos);
                         <!-- Footer con botones -->
                         <div class="mp-product-card-v2__footer">
                             <a href="<?php the_permalink(); ?>" class="mp-product-btn mp-product-btn--dark">VER DETALLES</a>
-                            <a href="https://wa.me/<?php echo esc_attr(get_theme_mod('contact_whatsapp', '521812345678')); ?>?text=<?php echo urlencode('Hola, me interesa cotizar: ' . get_the_title()); ?>" class="mp-product-btn mp-product-btn--primary" target="_blank">COTIZAR</a>
+                            <a href="https://wa.me/<?php echo esc_attr(get_theme_mod('contact_whatsapp', '523313011647')); ?>?text=<?php echo urlencode('Hola, me interesa cotizar: ' . get_the_title()); ?>" class="mp-product-btn mp-product-btn--primary" target="_blank">COTIZAR</a>
                         </div>
                     </article>
                     
@@ -292,7 +292,7 @@ sort($calibres_unicos);
                 <div class="mp-catalog-sidebar__card mp-catalog-sidebar__card--contact">
                     <h3 class="mp-catalog-sidebar__title">¿Tienes dudas?</h3>
                     <p class="mp-catalog-sidebar__text">Nuestro equipo de ventas está listo para asesorarte.</p>
-                    <a href="https://wa.me/<?php echo esc_attr(get_theme_mod('contact_whatsapp', '521812345678')); ?>" class="mp-btn mp-btn--whatsapp mp-btn--sidebar" target="_blank">
+                    <a href="https://wa.me/<?php echo esc_attr(get_theme_mod('contact_whatsapp', '523313011647')); ?>" class="mp-btn mp-btn--whatsapp mp-btn--sidebar" target="_blank">
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
                         </svg>

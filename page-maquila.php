@@ -54,10 +54,10 @@ get_template_part('template-parts/header', 'metapack');
 <?php
 // Obtener imágenes del carrusel desde el Customizer
 $carousel_images = array(
-    get_theme_mod('maquila_carousel_img_1', 'http://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image.png'),
-    get_theme_mod('maquila_carousel_img_2', 'http://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-1.png'),
-    get_theme_mod('maquila_carousel_img_3', 'http://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-2.png'),
-    get_theme_mod('maquila_carousel_img_4', 'http://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image.png'),
+    get_theme_mod('maquila_carousel_img_1', 'https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image.png'),
+    get_theme_mod('maquila_carousel_img_2', 'https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-1.png'),
+    get_theme_mod('maquila_carousel_img_3', 'https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-2.png'),
+    get_theme_mod('maquila_carousel_img_4', 'https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image.png'),
 );
 ?>
 
@@ -99,7 +99,7 @@ $carousel_images = array(
             <!-- Card 1: Grabado (Embossing) -->
             <div class="mp-capacidad-v2 mp-reveal-up mp-delay-1">
                 <div class="mp-capacidad-v2__icon">
-                    <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/pluma.webp" alt="Grabado" width="48" height="48">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/pluma.webp" alt="Grabado" width="48" height="48">
                 </div>
                 <h3 class="mp-capacidad-v2__title">Grabado (Embossing)</h3>
                 <div class="mp-capacidad-v2__content">
@@ -115,7 +115,7 @@ $carousel_images = array(
             <!-- Card 2: Corte y rebobinado -->
             <div class="mp-capacidad-v2 mp-reveal-up mp-delay-2">
                 <div class="mp-capacidad-v2__icon">
-                    <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/tijeras.png" alt="Corte" width="48" height="48">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/tijeras.png" alt="Corte" width="48" height="48">
                 </div>
                 <h3 class="mp-capacidad-v2__title">Corte y rebobinado</h3>
                 <div class="mp-capacidad-v2__content">
@@ -131,7 +131,7 @@ $carousel_images = array(
             <!-- Card 3: Private label -->
             <div class="mp-capacidad-v2 mp-reveal-up mp-delay-3">
                 <div class="mp-capacidad-v2__icon">
-                    <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/caja.png" alt="Private Label" width="48" height="48">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/caja.png" alt="Private Label" width="48" height="48">
                 </div>
                 <h3 class="mp-capacidad-v2__title">Private label</h3>
                 <div class="mp-capacidad-v2__content">
@@ -186,7 +186,7 @@ $carousel_images = array(
                     <div class="mp-maquila-slide">
                         <div class="mp-maquila-card">
                             <div class="mp-maquila-card__image">
-                                <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image.png"
+                                <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image.png"
                                     alt="Empaque industrial">
                             </div>
                             <div class="mp-maquila-card__content">
@@ -222,7 +222,7 @@ $carousel_images = array(
                     <div class="mp-maquila-slide">
                         <div class="mp-maquila-card">
                             <div class="mp-maquila-card__image">
-                                <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-1.png"
+                                <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-1.png"
                                     alt="Cadena de restaurantes">
                             </div>
                             <div class="mp-maquila-card__content">
@@ -257,7 +257,7 @@ $carousel_images = array(
                     <div class="mp-maquila-slide">
                         <div class="mp-maquila-card">
                             <div class="mp-maquila-card__image">
-                                <img src="http://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-2.png"
+                                <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-2.png"
                                     alt="Punto de venta">
                             </div>
                             <div class="mp-maquila-card__content">

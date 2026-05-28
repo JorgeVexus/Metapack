@@ -72,7 +72,7 @@ $industrias = get_the_terms(get_the_ID(), 'industria');
 $categorias = get_the_terms(get_the_ID(), 'categoria_producto');
 
 // WhatsApp
-$whatsapp = get_theme_mod('contact_whatsapp', '521812345678');
+$whatsapp = get_theme_mod('contact_whatsapp', '523313011647');
 $mensaje_whatsapp = urlencode("Hola, me interesa cotizar:\n\n📦 Producto: " . get_the_title() . "\n" . ($modelo ? "📏 Modelo: " . $modelo . "\n" : "") . ($calibre_raw ? "⚙️ Calibre: " . $calibre_raw . "\n" : "") . "\n¿Me pueden dar más información?");
 
 // Incluir header compartido

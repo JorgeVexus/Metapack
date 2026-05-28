@@ -9,7 +9,7 @@ $custom_logo_id = get_theme_mod('custom_logo');
 if ($custom_logo_id) {
     $logo_url = wp_get_attachment_image_url($custom_logo_id, 'full');
 } else {
-    $logo_url = 'http://www.metapack.com.mx/wp-content/uploads/2026/01/logo_viejo-1.png';
+    $logo_url = 'https://www.metapack.com.mx/wp-content/uploads/2026/01/logo_viejo-1.png';
 }
 ?>
 <!DOCTYPE html>
@@ -23,9 +23,6 @@ if ($custom_logo_id) {
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Metapack Styles -->
-    <link rel="stylesheet" href="<?php echo get_stylesheet_directory_uri(); ?>/assets/css/metapack-styles.css">
     
     <?php wp_head(); ?>
 </head>

@@ -409,7 +409,7 @@ function metapack_customizer_settings($wp_customize) {
     
     // WhatsApp
     $wp_customize->add_setting('contact_whatsapp', array(
-        'default'           => '521812345678',
+        'default'           => '523313011647',
         'sanitize_callback' => 'sanitize_text_field',
     ));
     $wp_customize->add_control('contact_whatsapp', array(
@@ -897,3 +897,21 @@ function metapack_add_menu_link_class($atts, $item, $args) {
     return $atts;
 }
 add_filter('nav_menu_link_attributes', 'metapack_add_menu_link_class', 10, 3);
+
+// =================================================
+// OPTIMIZACIÓN DE CONTACT FORM 7
+// =================================================
+add_filter('wpcf7_load_js', '__return_false');
+add_filter('wpcf7_load_css', '__return_false');
+
+function metapack_enqueue_cf7_selectively() {
+    if (is_page('contacto') || is_page('cotizar') || is_front_page() || is_singular('producto') || is_page_template('page-industria.php')) {
+        if (function_exists('wpcf7_enqueue_scripts')) {
+            wpcf7_enqueue_scripts();
+        }
+        if (function_exists('wpcf7_enqueue_styles')) {
+            wpcf7_enqueue_styles();
+        }
+    }
+}
+add_action('wp_enqueue_scripts', 'metapack_enqueue_cf7_selectively', 20);
