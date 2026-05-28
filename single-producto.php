@@ -75,6 +75,93 @@ $categorias = get_the_terms(get_the_ID(), 'categoria_producto');
 $whatsapp = get_theme_mod('contact_whatsapp', '523313011647');
 $mensaje_whatsapp = urlencode("Hola, me interesa cotizar:\n\n📦 Producto: " . get_the_title() . "\n" . ($modelo ? "📏 Modelo: " . $modelo . "\n" : "") . ($calibre_raw ? "⚙️ Calibre: " . $calibre_raw . "\n" : "") . "\n¿Me pueden dar más información?");
 
+// FASE 2: Marcado JSON-LD Schema.org para productos B2B
+$prod_description = get_field('descripcion_larga') ?: (get_the_excerpt() ?: wp_strip_all_tags(get_the_content()));
+$prod_calibre = get_field('calibre_micras') ?: $calibre_raw;
+$prod_ancho = get_field('ancho_cm') ?: '';
+$prod_largo = get_field('largo_m') ?: '';
+$prod_gramaje = get_field('gramaje') ?: '';
+$prod_disponibilidad = get_field('disponibilidad') ?: 'InStock';
+
+// Intentar extraer valores si no están definidos
+if (empty($prod_ancho) || empty($prod_gramaje)) {
+    if (!empty($especificaciones)) {
+        foreach ($especificaciones as $spec) {
+            $titulo_clean = strtolower(str_replace(
+                array('á','é','í','ó','ú','Á','É','Í','Ó','Ú','ñ','Ñ'),
+                array('a','e','i','o','u','A','E','I','O','U','n','N'),
+                $spec['titulo']
+            ));
+            if (empty($prod_ancho) && (strpos($titulo_clean, 'ancho') !== false || strpos($titulo_clean, 'dimension') !== false)) {
+                $prod_ancho = $spec['valor'];
+            }
+            if (empty($prod_gramaje) && strpos($titulo_clean, 'gramaje') !== false) {
+                $prod_gramaje = $spec['valor'];
+            }
+        }
+    }
+}
+
+$product_schema = array(
+    '@context' => 'https://schema.org/',
+    '@type' => 'Product',
+    'name' => get_the_title(),
+    'image' => array_column($galeria_imagenes, 'full'),
+    'description' => esc_attr(wp_strip_all_tags($prod_description)),
+    'sku' => $modelo ?: get_the_ID(),
+    'brand' => array(
+        '@type' => 'Brand',
+        'name' => 'MetaPack'
+    ),
+    'offers' => array(
+        '@type' => 'Offer',
+        'url' => get_permalink(),
+        'priceCurrency' => 'MXN',
+        'price' => '0.00',
+        'priceValidUntil' => '2027-12-31',
+        'availability' => 'https://schema.org/' . ($prod_disponibilidad === 'InStock' ? 'InStock' : 'OutOfStock'),
+        'itemCondition' => 'https://schema.org/NewCondition'
+    )
+);
+
+$additional_property = array();
+if (!empty($prod_calibre)) {
+    $additional_property[] = array(
+        '@type' => 'PropertyValue',
+        'name' => 'Calibre',
+        'value' => $prod_calibre
+    );
+}
+if (!empty($prod_ancho)) {
+    $additional_property[] = array(
+        '@type' => 'PropertyValue',
+        'name' => 'Ancho',
+        'value' => $prod_ancho
+    );
+}
+if (!empty($prod_largo)) {
+    $additional_property[] = array(
+        '@type' => 'PropertyValue',
+        'name' => 'Largo',
+        'value' => $prod_largo
+    );
+}
+if (!empty($prod_gramaje)) {
+    $additional_property[] = array(
+        '@type' => 'PropertyValue',
+        'name' => 'Gramaje',
+        'value' => $prod_gramaje
+    );
+}
+if (!empty($additional_property)) {
+    $product_schema['additionalProperty'] = $additional_property;
+}
+
+// Agregar el script al head
+add_action('wp_head', function() use ($product_schema) {
+    echo '<script type="application/ld+json">' . json_encode($product_schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
+}, 15);
+
 // Incluir header compartido
 get_template_part('template-parts/header', 'metapack');
 ?>
@@ -86,13 +173,7 @@ get_template_part('template-parts/header', 'metapack');
 
 <div class="mp-breadcrumb">
     <div class="mp-container">
-        <nav class="mp-breadcrumb__nav">
-            <a href="<?php echo home_url('/'); ?>">Inicio</a>
-            <span class="mp-breadcrumb__separator">/</span>
-            <a href="<?php echo home_url('/productos/'); ?>">Productos</a>
-            <span class="mp-breadcrumb__separator">/</span>
-            <span class="mp-breadcrumb__current"><?php the_title(); ?></span>
-        </nav>
+        <?php if (function_exists('metapack_breadcrumbs')) { metapack_breadcrumbs('mp-breadcrumb'); } ?>
     </div>
 </div>
 

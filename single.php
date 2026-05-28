@@ -52,9 +52,7 @@ if (have_posts()) :
             <!-- Main Content -->
             <main class="mp-single-main">
                 <!-- Breadcrumbs -->
-                <nav class="mp-breadcrumbs">
-                    <a href="<?php echo get_permalink(get_option('page_for_posts')); ?>">Blog</a> / <span><?php the_title(); ?></span>
-                </nav>
+                <?php if (function_exists('metapack_breadcrumbs')) { metapack_breadcrumbs('mp-breadcrumbs'); } ?>
 
                 <!-- Post Body -->
                 <article class="mp-single-content">

@@ -915,3 +915,111 @@ function metapack_enqueue_cf7_selectively() {
     }
 }
 add_action('wp_enqueue_scripts', 'metapack_enqueue_cf7_selectively', 20);
+
+// =================================================
+// BREADCRUMBS DINÁMICOS Y MARCADO JSON-LD (BREADCRUBLIST)
+// =================================================
+function metapack_breadcrumbs($class_prefix = 'mp-breadcrumb') {
+    $home_title = 'Inicio';
+    $home_url = home_url('/');
+    
+    $crumbs = array();
+    $crumbs[] = array('name' => $home_title, 'url' => $home_url);
+    
+    if (is_singular('producto')) {
+        $crumbs[] = array('name' => 'Productos', 'url' => home_url('/productos/'));
+        $crumbs[] = array('name' => get_the_title(), 'url' => get_permalink());
+    } elseif (is_single()) {
+        $blog_page_id = get_option('page_for_posts');
+        $blog_title = $blog_page_id ? get_the_title($blog_page_id) : 'Blog';
+        $blog_url = $blog_page_id ? get_permalink($blog_page_id) : home_url('/blog/');
+        $crumbs[] = array('name' => $blog_title, 'url' => $blog_url);
+        $crumbs[] = array('name' => get_the_title(), 'url' => get_permalink());
+    } elseif (is_page()) {
+        $crumbs[] = array('name' => get_the_title(), 'url' => get_permalink());
+    } elseif (is_tax()) {
+        $term = get_queried_object();
+        if ($term->taxonomy === 'industria' || $term->taxonomy === 'categoria_producto') {
+            $crumbs[] = array('name' => 'Productos', 'url' => home_url('/productos/'));
+        }
+        $crumbs[] = array('name' => $term->name, 'url' => get_term_link($term));
+    }
+    
+    if (empty($crumbs)) {
+        return;
+    }
+    
+    // Output HTML
+    if ($class_prefix === 'mp-breadcrumbs') {
+        echo '<nav class="mp-breadcrumbs">';
+        foreach ($crumbs as $i => $crumb) {
+            if ($i > 0) {
+                echo ' / ';
+            }
+            if ($i === count($crumbs) - 1) {
+                echo '<span>' . esc_html($crumb['name']) . '</span>';
+            } else {
+                echo '<a href="' . esc_url($crumb['url']) . '">' . esc_html($crumb['name']) . '</a>';
+            }
+        }
+        echo '</nav>';
+    } else {
+        echo '<nav class="mp-breadcrumb__nav">';
+        foreach ($crumbs as $i => $crumb) {
+            if ($i > 0) {
+                echo '<span class="mp-breadcrumb__separator">/</span>';
+            }
+            if ($i === count($crumbs) - 1) {
+                echo '<span class="mp-breadcrumb__current">' . esc_html($crumb['name']) . '</span>';
+            } else {
+                echo '<a href="' . esc_url($crumb['url']) . '">' . esc_html($crumb['name']) . '</a>';
+            }
+        }
+        echo '</nav>';
+    }
+    
+    // Output JSON-LD
+    $json_ld = array(
+        '@context' => 'https://schema.org',
+        '@type' => 'BreadcrumbList',
+        'itemListElement' => array()
+    );
+    foreach ($crumbs as $i => $crumb) {
+        $json_ld['itemListElement'][] = array(
+            '@type' => 'ListItem',
+            'position' => $i + 1,
+            'name' => $crumb['name'],
+            'item' => $crumb['url']
+        );
+    }
+    
+    echo '<script type="application/ld+json">' . json_encode($json_ld, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
+}
+
+// =================================================
+// CANONICAL LINK DINÁMICO EN EL HEADER (wp_head)
+// =================================================
+function metapack_dynamic_canonical() {
+    global $wp;
+    
+    if (is_front_page()) {
+        $canonical_url = home_url('/');
+    } elseif (is_home()) {
+        $canonical_url = get_permalink(get_option('page_for_posts'));
+    } elseif (is_singular()) {
+        $canonical_url = get_permalink();
+    } elseif (is_tax() || is_category() || is_tag()) {
+        $canonical_url = get_term_link(get_queried_object());
+    } elseif (is_post_type_archive()) {
+        $canonical_url = get_post_type_archive_link(get_query_var('post_type'));
+    } else {
+        $canonical_url = home_url(add_query_arg(array(), $wp->request ?? ''));
+    }
+    
+    if (!empty($canonical_url) && !is_wp_error($canonical_url)) {
+        // Remover canonical de WordPress core si existe
+        remove_action('wp_head', 'rel_canonical');
+        echo '<link rel="canonical" href="' . esc_url($canonical_url) . '" />' . "\n";
+    }
+}
+add_action('wp_head', 'metapack_dynamic_canonical', 5);
