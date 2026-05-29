@@ -12,80 +12,20 @@ get_template_part('template-parts/header', 'metapack');
 <style>
 /* Estilos premium específicos para el Aviso de Privacidad con alta especificidad */
 body .mp-privacy {
-    padding: 120px 0 !important;
+    padding: 100px 0 !important;
     background-color: var(--mp-light-gray) !important;
     font-family: var(--mp-font-body) !important;
 }
 
-body .mp-privacy__grid {
-    display: grid !important;
-    grid-template-columns: 320px 1fr !important;
-    gap: 60px !important;
-    align-items: start !important;
+body .mp-privacy-container {
+    max-width: 960px !important;
+    margin: 0 auto !important;
 }
 
-/* Sidebar Index */
-body .mp-privacy-sidebar {
-    position: -webkit-sticky !important;
-    position: sticky !important;
-    top: 140px !important;
-    background: var(--mp-white) !important;
-    padding: 40px 30px !important;
-    border-radius: 12px !important;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
-    border-top: 4px solid var(--mp-primary) !important;
-    transition: all 0.3s ease !important;
-}
-
-body .mp-privacy-sidebar__title {
-    font-family: var(--mp-font-title) !important;
-    font-size: 16px !important;
-    font-weight: 700 !important;
-    color: var(--mp-dark) !important;
-    margin-bottom: 25px !important;
-    text-transform: uppercase !important;
-    letter-spacing: 1px !important;
-    border-bottom: 1px solid var(--mp-border) !important;
-    padding-bottom: 12px !important;
-}
-
-body .mp-privacy-nav {
-    list-style: none !important;
-    padding: 0 !important;
-    margin: 0 !important;
-    display: flex !important;
-    flex-direction: column !important;
-    gap: 14px !important;
-}
-
-body .mp-privacy-nav__item {
-    margin: 0 !important;
-}
-
-body .mp-privacy-nav__link {
-    color: var(--mp-gray) !important;
-    text-decoration: none !important;
-    font-size: 13.5px !important;
-    font-weight: 500 !important;
-    transition: all 0.25s ease !important;
-    display: inline-block !important;
-    line-height: 1.4 !important;
-    border-left: 2px solid transparent !important;
-    padding-left: 12px !important;
-}
-
-body .mp-privacy-nav__link:hover,
-body .mp-privacy-nav__link.active {
-    color: var(--mp-primary) !important;
-    border-left-color: var(--mp-primary) !important;
-    font-weight: 600 !important;
-    transform: translateX(4px) !important;
-}
-
-/* Main Content Card - Aumento drástico de padding para mayor legibilidad */
+/* Main Content Card - Padding generoso para máxima legibilidad */
 body .mp-privacy-content {
     background: var(--mp-white) !important;
-    padding: 80px 70px !important; /* Incremento drástico de espacio interno */
+    padding: 80px 70px !important; 
     border-radius: 12px !important;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
     box-sizing: border-box !important;
@@ -93,7 +33,6 @@ body .mp-privacy-content {
 
 body .mp-privacy-section {
     margin-bottom: 60px !important;
-    scroll-margin-top: 160px !important;
 }
 
 body .mp-privacy-section:last-child {
@@ -102,7 +41,7 @@ body .mp-privacy-section:last-child {
 
 body .mp-privacy-section__title {
     font-family: var(--mp-font-title) !important;
-    font-size: 20px !important;
+    font-size: 22px !important;
     font-weight: 700 !important;
     color: var(--mp-dark) !important;
     margin: 0 0 24px 0 !important;
@@ -289,18 +228,9 @@ body .mp-privacy-date {
 }
 
 /* Responsive Styles */
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
     body .mp-privacy {
         padding: 60px 0 !important;
-    }
-    
-    body .mp-privacy__grid {
-        grid-template-columns: 1fr !important;
-        gap: 40px !important;
-    }
-    
-    body .mp-privacy-sidebar {
-        display: none !important;
     }
     
     body .mp-privacy-content {
@@ -337,382 +267,251 @@ body .mp-privacy-date {
 <!-- CONTENIDO DEL AVISO                          -->
 <!-- ============================================ -->
 <section class="mp-privacy">
-    <div class="mp-container">
-        <div class="mp-privacy__grid">
+    <div class="mp-container mp-privacy-container">
+        
+        <!-- Documento en columna única centrada -->
+        <article class="mp-privacy-content mp-reveal-up">
             
-            <!-- Columna Izquierda: Índice / Navegación Sticky -->
-            <aside class="mp-privacy-sidebar">
-                <h3 class="mp-privacy-sidebar__title">Contenido</h3>
-                <nav>
-                    <ul class="mp-privacy-nav">
-                        <li class="mp-privacy-nav__item">
-                            <a href="#seccion-1" class="mp-privacy-nav__link active">I. Identidad y Domicilio</a>
-                        </li>
-                        <li class="mp-privacy-nav__item">
-                            <a href="#seccion-2" class="mp-privacy-nav__link">II. Datos Recabados</a>
-                        </li>
-                        <li class="mp-privacy-nav__item">
-                            <a href="#seccion-3" class="mp-privacy-nav__link">III. Finalidades del Uso</a>
-                        </li>
-                        <li class="mp-privacy-nav__item">
-                            <a href="#seccion-4" class="mp-privacy-nav__link">IV. Transferencia de Datos</a>
-                        </li>
-                        <li class="mp-privacy-nav__item">
-                            <a href="#seccion-5" class="mp-privacy-nav__link">V. Cookies y Rastreo</a>
-                        </li>
-                        <li class="mp-privacy-nav__item">
-                            <a href="#seccion-6" class="mp-privacy-nav__link">VI. Derechos ARCO</a>
-                        </li>
-                        <li class="mp-privacy-nav__item">
-                            <a href="#seccion-7" class="mp-privacy-nav__link">VII. Revocación</a>
-                        </li>
-                        <li class="mp-privacy-nav__item">
-                            <a href="#seccion-8" class="mp-privacy-nav__link">VIII. Medidas de Seguridad</a>
-                        </li>
-                        <li class="mp-privacy-nav__item">
-                            <a href="#seccion-9" class="mp-privacy-nav__link">IX. Cambios al Aviso</a>
-                        </li>
-                        <li class="mp-privacy-nav__item">
-                            <a href="#seccion-10" class="mp-privacy-nav__link">X. Autoridad Competente</a>
-                        </li>
-                    </ul>
-                </nav>
-            </aside>
+            <!-- Sección I -->
+            <section id="seccion-1" class="mp-privacy-section">
+                <h2 class="mp-privacy-section__title">
+                    <span>I.</span> Identidad y Domicilio del Responsable
+                </h2>
+                <p class="mp-privacy-section__text">
+                    <strong>Formulaciones Plásticas de Aluminio de Occidente, S.A. de C.V.</strong>, también conocida comercialmente como <strong>MetaPack</strong>, es responsable del tratamiento de sus datos personales en términos de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (en adelante, "la Ley") y su Reglamento.
+                </p>
+                <p class="mp-privacy-section__text">
+                    Para efectos del presente aviso, señalamos las siguientes direcciones físicas y canales de comunicación:
+                </p>
+                
+                <div class="mp-privacy-address-grid">
+                    <div class="mp-privacy-address-card">
+                        <h4 class="mp-privacy-address-card__title">Oficinas Corporativas</h4>
+                        <p class="mp-privacy-address-card__text">
+                            Francisco Sarabia 1399, Col. Talpita,<br>
+                            C.P. 44710, Guadalajara, Jalisco, México.
+                        </p>
+                    </div>
+                    <div class="mp-privacy-address-card">
+                        <h4 class="mp-privacy-address-card__title">CEDIS</h4>
+                        <p class="mp-privacy-address-card__text">
+                            Camino a Colimilla No. 90, Col. La Noria,<br>
+                            C.P. 45413, Tonalá, Jalisco, México.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="mp-privacy-contacts">
+                    <h4 class="mp-privacy-contacts__title">Contacto Directo Legal</h4>
+                    <div class="mp-privacy-contacts__grid">
+                        <div class="mp-privacy-contacts__item">
+                            <span class="mp-privacy-contacts__label">Correos Electrónicos</span>
+                            <a href="mailto:info@metapack.com.mx" class="mp-privacy-contacts__value">info@metapack.com.mx</a>
+                            <a href="mailto:ventas@metapack.com.mx" class="mp-privacy-contacts__value">ventas@metapack.com.mx</a>
+                        </div>
+                        <div class="mp-privacy-contacts__item">
+                            <span class="mp-privacy-contacts__label">Teléfonos de Atención</span>
+                            <a href="tel:3336490281" class="mp-privacy-contacts__value">(33) 3649-0281 (Oficina)</a>
+                            <a href="tel:3313011647" class="mp-privacy-contacts__value">(33) 1301-1647 (Atención)</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
             
-            <!-- Columna Derecha: Documento -->
-            <article class="mp-privacy-content mp-reveal-up">
+            <!-- Sección II -->
+            <section id="seccion-2" class="mp-privacy-section">
+                <h2 class="mp-privacy-section__title">
+                    <span>II.</span> Datos Personales que se Recaban
+                </h2>
+                <p class="mp-privacy-section__text">
+                    MetaPack podrá recabar las siguientes categorías de datos personales en función de su navegación, registro de solicitudes en formularios o contacto directo comercial:
+                </p>
                 
-                <!-- Sección I -->
-                <section id="seccion-1" class="mp-privacy-section">
-                    <h2 class="mp-privacy-section__title">
-                        <span>I.</span> Identidad y Domicilio del Responsable
-                    </h2>
-                    <p class="mp-privacy-section__text">
-                        <strong>Formulaciones Plásticas de Aluminio de Occidente, S.A. de C.V.</strong>, también conocida comercialmente como <strong>MetaPack</strong>, es responsable del tratamiento de sus datos personales en términos de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (en adelante, "la Ley") y su Reglamento.
-                    </p>
-                    <p class="mp-privacy-section__text">
-                        Para efectos del presente aviso, señalamos las siguientes direcciones físicas y canales de comunicación:
-                    </p>
-                    
-                    <div class="mp-privacy-address-grid">
-                        <div class="mp-privacy-address-card">
-                            <h4 class="mp-privacy-address-card__title">Oficinas Corporativas</h4>
-                            <p class="mp-privacy-address-card__text">
-                                Francisco Sarabia 1399, Col. Talpita,<br>
-                                C.P. 44710, Guadalajara, Jalisco, México.
-                            </p>
+                <div class="mp-privacy-categories">
+                    <div class="mp-privacy-category-card">
+                        <div class="mp-privacy-category-card__header">
+                            <h4 class="mp-privacy-category-card__title">Datos de Identificación y Contacto</h4>
+                            <span class="mp-privacy-category-card__badge">Contacto</span>
                         </div>
-                        <div class="mp-privacy-address-card">
-                            <h4 class="mp-privacy-address-card__title">CEDIS</h4>
-                            <p class="mp-privacy-address-card__text">
-                                Camino a Colimilla No. 90, Col. La Noria,<br>
-                                C.P. 45413, Tonalá, Jalisco, México.
-                            </p>
-                        </div>
+                        <ul class="mp-privacy-category-card__list">
+                            <li class="mp-privacy-category-card__item">Nombre completo del solicitante.</li>
+                            <li class="mp-privacy-category-card__item">Nombre de la empresa, negocio o razón social.</li>
+                            <li class="mp-privacy-category-card__item">Dirección de correo electrónico.</li>
+                            <li class="mp-privacy-category-card__item">Número de teléfono celular / WhatsApp de contacto comercial.</li>
+                            <li class="mp-privacy-category-card__item">Ciudad, municipio y estado de residencia o para el envío de producto.</li>
+                        </ul>
                     </div>
                     
-                    <div class="mp-privacy-contacts">
-                        <h4 class="mp-privacy-contacts__title">Contacto Directo Legal</h4>
-                        <div class="mp-privacy-contacts__grid">
-                            <div class="mp-privacy-contacts__item">
-                                <span class="mp-privacy-contacts__label">Correos Electrónicos</span>
-                                <a href="mailto:info@metapack.com.mx" class="mp-privacy-contacts__value">info@metapack.com.mx</a>
-                                <a href="mailto:ventas@metapack.com.mx" class="mp-privacy-contacts__value">ventas@metapack.com.mx</a>
-                            </div>
-                            <div class="mp-privacy-contacts__item">
-                                <span class="mp-privacy-contacts__label">Teléfonos de Atención</span>
-                                <a href="tel:3336490281" class="mp-privacy-contacts__value">(33) 3649-0281 (Oficina)</a>
-                                <a href="tel:3313011647" class="mp-privacy-contacts__value">(33) 1301-1647 (Atención)</a>
-                            </div>
+                    <div class="mp-privacy-category-card">
+                        <div class="mp-privacy-category-card__header">
+                            <h4 class="mp-privacy-category-card__title">Datos de Tipo Comercial y Operativo</h4>
+                            <span class="mp-privacy-category-card__badge">Comercial</span>
                         </div>
-                    </div>
-                </section>
-                
-                <!-- Sección II -->
-                <section id="seccion-2" class="mp-privacy-section">
-                    <h2 class="mp-privacy-section__title">
-                        <span>II.</span> Datos Personales que se Recaban
-                    </h2>
-                    <p class="mp-privacy-section__text">
-                        MetaPack podrá recabar las siguientes categorías de datos personales en función de su navegación, registro de solicitudes en formularios o contacto directo comercial:
-                    </p>
-                    
-                    <div class="mp-privacy-categories">
-                        <div class="mp-privacy-category-card">
-                            <div class="mp-privacy-category-card__header">
-                                <h4 class="mp-privacy-category-card__title">Datos de Identificación y Contacto</h4>
-                                <span class="mp-privacy-category-card__badge">Contacto</span>
-                            </div>
-                            <ul class="mp-privacy-category-card__list">
-                                <li class="mp-privacy-category-card__item">Nombre completo del solicitante.</li>
-                                <li class="mp-privacy-category-card__item">Nombre de la empresa, negocio o razón social.</li>
-                                <li class="mp-privacy-category-card__item">Dirección de correo electrónico.</li>
-                                <li class="mp-privacy-category-card__item">Número de teléfono celular / WhatsApp de contacto comercial.</li>
-                                <li class="mp-privacy-category-card__item">Ciudad, municipio y estado de residencia o para el envío de producto.</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="mp-privacy-category-card">
-                            <div class="mp-privacy-category-card__header">
-                                <h4 class="mp-privacy-category-card__title">Datos de Tipo Comercial y Operativo</h4>
-                                <span class="mp-privacy-category-card__badge">Comercial</span>
-                            </div>
-                            <ul class="mp-privacy-category-card__list">
-                                <li class="mp-privacy-category-card__item">Información específica de requerimiento de producto (calibre, presentación, cantidad, uso final).</li>
-                                <li class="mp-privacy-category-card__item">Dirección exacta y destino final de entrega de la mercancía.</li>
-                                <li class="mp-privacy-category-card__item">Especificaciones técnicas de empaque requeridas y notas del proyecto.</li>
-                                <li class="mp-privacy-category-card__item">Archivos adjuntos cargados voluntariamente por el usuario (logotipos corporativos, referencias visuales en formatos JPG, PNG o PDF).</li>
-                            </ul>
-                        </div>
-                        
-                        <div class="mp-privacy-category-card">
-                            <div class="mp-privacy-category-card__header">
-                                <h4 class="mp-privacy-category-card__title">Datos de Navegación Tecnológica</h4>
-                                <span class="mp-privacy-category-card__badge">Navegación</span>
-                            </div>
-                            <ul class="mp-privacy-category-card__list">
-                                <li class="mp-privacy-category-card__item">Dirección IP de conexión de red del usuario.</li>
-                                <li class="mp-privacy-category-card__item">Tipo de navegador y sistema operativo utilizados para el acceso.</li>
-                                <li class="mp-privacy-category-card__item">Historial de páginas y secciones visitadas dentro del sitio web.</li>
-                                <li class="mp-privacy-category-card__item">Tiempos de permanencia en el sitio y cookies del navegador.</li>
-                            </ul>
-                        </div>
+                        <ul class="mp-privacy-category-card__list">
+                            <li class="mp-privacy-category-card__item">Información específica de requerimiento de producto (calibre, presentación, cantidad, uso final).</li>
+                            <li class="mp-privacy-category-card__item">Dirección exacta y destino final de entrega de la mercancía.</li>
+                            <li class="mp-privacy-category-card__item">Especificaciones técnicas de empaque requeridas y notas del proyecto.</li>
+                            <li class="mp-privacy-category-card__item">Archivos adjuntos cargados voluntariamente por el usuario (logotipos corporativos, referencias visuales en formatos JPG, PNG o PDF).</li>
+                        </ul>
                     </div>
                     
-                    <p class="mp-privacy-section__text">
-                        <strong>Nota importante:</strong> MetaPack declara explícitamente que <strong>no recaba datos personales sensibles</strong> (definidos por ley como aquellos que revelan origen racial o étnico, estado de salud presente o futuro, información genética, creencias religiosas, filosóficas y morales, afiliación sindical, opiniones políticas o preferencia sexual).
-                    </p>
-                </section>
-                
-                <!-- Sección III -->
-                <section id="seccion-3" class="mp-privacy-section">
-                    <h2 class="mp-privacy-section__title">
-                        <span>III.</span> Finalidades del Tratamiento de los Datos
-                    </h2>
-                    <p class="mp-privacy-section__text">
-                        Los datos personales recabados se utilizarán bajo los principios de licitud y consentimiento para las siguientes finalidades esenciales e indispensables de nuestra relación mercantil:
-                    </p>
-                    <ul class="mp-privacy-section__list">
-                        <li class="mp-privacy-section__list-item">Atender, procesar y dar seguimiento puntual a solicitudes formales de cotización de productos y servicios de empaque y maquila de aluminio.</li>
-                        <li class="mp-privacy-section__list-item">Contactar al titular mediante canales electrónicos o telefónicos para ofrecer asesoría comercial y técnica personalizada.</li>
-                        <li class="mp-privacy-section__list-item">Gestionar de manera interna la formalización de pedidos, contratos comerciales y la logística e instrumentación de envíos y fletes a nivel nacional.</li>
-                        <li class="mp-privacy-section__list-item">Emitir y administrar la facturación fiscal correspondiente y dar cabal cumplimiento a las normativas de contabilidad e impuestos vigentes.</li>
-                        <li class="mp-privacy-section__list-item">Proporcionar servicio postventa y dar trámite a sugerencias, quejas, devoluciones o reclamaciones de producto.</li>
-                    </ul>
-                    
-                    <p class="mp-privacy-section__text">
-                        Adicionalmente, podremos utilizar su información para las siguientes <strong>finalidades secundarias</strong>, las cuales no son indispensables para la relación comercial primaria pero nos permiten ofrecerle una mejor experiencia:
-                    </p>
-                    <ul class="mp-privacy-section__list">
-                        <li class="mp-privacy-section__list-item">Envío periódico de correos promocionales, catálogos digitales actualizados de producto, noticias del sector e información comercial relevante.</li>
-                        <li class="mp-privacy-section__list-item">Realización de encuestas internas de satisfacción sobre la calidad de nuestros productos de aluminio y el servicio de atención comercial.</li>
-                        <li class="mp-privacy-section__list-item">Análisis métrico y estadístico del comportamiento de los usuarios en nuestro sitio web para la mejora continua del portal.</li>
-                    </ul>
-                    <p class="mp-privacy-section__text">
-                        Si usted desea manifestar su oposición al uso de sus datos personales para las finalidades secundarias, puede hacerlo en cualquier momento enviando un correo a <a href="mailto:info@metapack.com.mx">info@metapack.com.mx</a> expresando su negativa.
-                    </p>
-                </section>
-                
-                <!-- Sección IV -->
-                <section id="seccion-4" class="mp-privacy-section">
-                    <h2 class="mp-privacy-section__title">
-                        <span>IV.</span> Transferencia de Datos Personales
-                    </h2>
-                    <p class="mp-privacy-section__text">
-                        MetaPack podrá transferir sus datos personales a terceros nacionales o extranjeros en los supuestos previstos por la Ley que no requieren el consentimiento del titular:
-                    </p>
-                    <ul class="mp-privacy-section__list">
-                        <li class="mp-privacy-section__list-item"><strong>Autoridades Competentes:</strong> Organismos gubernamentales y de recaudación fiscal (SAT), de seguridad social (IMSS) o autoridades judiciales en cumplimiento de mandatos jurídicos expresos.</li>
-                        <li class="mp-privacy-section__list-item"><strong>Empresas de Logística y Transportación:</strong> Compañías transportistas o de paquetería externas con el único fin de llevar a cabo la entrega de la mercancía y muestras a su domicilio.</li>
-                        <li class="mp-privacy-section__list-item"><strong>Proveedores de Tecnología:</strong> Terceros encargados del soporte técnico del sitio web, servidores de base de datos (hosting), herramientas de correo electrónico y software CRM corporativo bajo contratos de estricta confidencialidad.</li>
-                    </ul>
-                    <p class="mp-privacy-section__text">
-                        En ningún caso MetaPack venderá, rentará, cederá o transferirá sus datos personales a terceros comerciales con fines publicitarios ajenos sin obtener su consentimiento previo y expreso.
-                    </p>
-                </section>
-                
-                <!-- Sección V -->
-                <section id="seccion-5" class="mp-privacy-section">
-                    <h2 class="mp-privacy-section__title">
-                        <span>V.</span> Uso de Cookies y Tecnologías de Rastreo
-                    </h2>
-                    <p class="mp-privacy-section__text">
-                        El portal web <strong>www.metapack.com.mx</strong> hace uso de tecnologías electrónicas conocidas como cookies, web beacons u otros rastreadores para identificar la sesión de usuario, agilizar el rendimiento de carga del sitio, recordar preferencias de selección y realizar el análisis agregado del tráfico mediante herramientas como Google Analytics.
-                    </p>
-                    <p class="mp-privacy-section__text">
-                        Usted cuenta con la plena facultad de deshabilitar, restringir o eliminar el uso de cookies directamente desde la configuración de su navegador de internet. Le sugerimos revisar la sección de "Ayuda" o "Configuración de Privacidad" de su navegador para este propósito. Es importante advertir que el bloqueo de cookies puede limitar ciertas funciones dinámicas o la correcta visualización de partes de nuestro sitio.
-                    </p>
-                </section>
-                
-                <!-- Sección VI -->
-                <section id="seccion-6" class="mp-privacy-section">
-                    <h2 class="mp-privacy-section__title">
-                        <span>VI.</span> Ejercicio de Derechos ARCO
-                    </h2>
-                    <p class="mp-privacy-section__text">
-                        De conformidad con lo establecido en la Ley, usted tiene en todo momento el derecho de <strong>Acceder</strong> a los datos que poseemos, <strong>Rectificar</strong> en caso de ser inexactos, solicitar su <strong>Cancelación</strong> si considera que no se requieren para las finalidades señaladas o manifestar su <strong>Oposición</strong> al tratamiento de los mismos para fines específicos.
-                    </p>
-                    <p class="mp-privacy-section__text">
-                        Para ejercer cualquiera de sus Derechos ARCO, deberá ingresar una solicitud formal a través de las siguientes alternativas habilitadas:
-                    </p>
-                    <ul class="mp-privacy-section__list">
-                        <li class="mp-privacy-section__list-item"><strong>Correo Electrónico:</strong> Enviando un mensaje formal a <a href="mailto:info@metapack.com.mx">info@metapack.com.mx</a>.</li>
-                        <li class="mp-privacy-section__list-item"><strong>Vía Escrita / Correo Postal:</strong> Dirigido a nuestras oficinas corporativas ubicadas en: <em>Francisco Sarabia 1399, Col. Talpita, C.P. 44710, Guadalajara, Jalisco, México</em>.</li>
-                    </ul>
-                    <p class="mp-privacy-section__text">
-                        La solicitud deberá contener con precisión los siguientes elementos informativos:
-                    </p>
-                    <ol class="mp-privacy-section__list" style="list-style-type: decimal;">
-                        <li class="mp-privacy-section__list-item">Nombre completo del titular de los datos.</li>
-                        <li class="mp-privacy-section__list-item">Descripción detallada de los datos personales respecto de los cuales busca ejercer alguno de los derechos ARCO.</li>
-                        <li class="mp-privacy-section__list-item">Indicación clara del derecho que desea ejercer (Acceso, Rectificación, Cancelación u Oposición).</li>
-                        <li class="mp-privacy-section__list-item">Identificación oficial vigente que acredite su personalidad (INE, Pasaporte, Cédula Profesional) digitalizada en el caso de correos electrónicos. Si actúa mediante representante legal, documento probatorio del mandato.</li>
-                        <li class="mp-privacy-section__list-item">Información de contacto (correo y/o teléfono) para notificaciones oficiales.</li>
-                    </ol>
-                    <p class="mp-privacy-section__text">
-                        MetaPack responderá al titular en un lapso no mayor a <strong>20 (veinte) días hábiles</strong> posteriores a la fecha de la recepción formal de su solicitud. Si la solicitud resulta procedente, se ejecutará dentro de los <strong>15 (quince) días hábiles</strong> siguientes a la fecha en que se notifique dicha resolución.
-                    </p>
-                </section>
-                
-                <!-- Sección VII -->
-                <section id="seccion-7" class="mp-privacy-section">
-                    <h2 class="mp-privacy-section__title">
-                        <span>VII.</span> Revocación del Consentimiento
-                    </h2>
-                    <p class="mp-privacy-section__text">
-                        Usted puede revocar el consentimiento previamente otorgado para el uso de sus datos en cualquier momento. Deberá considerar que la revocación podría impedir que continuemos brindándole los servicios comerciales o de cotización correspondientes. Para tramitar su revocación, deberá canalizar su petición por escrito o correo electrónico mediante el procedimiento indicado en el apartado anterior.
-                    </p>
-                </section>
-                
-                <!-- Sección VIII -->
-                <section id="seccion-8" class="mp-privacy-section">
-                    <h2 class="mp-privacy-section__title">
-                        <span>VIII.</span> Medidas de Seguridad Aplicadas
-                    </h2>
-                    <p class="mp-privacy-section__text">
-                        MetaPack ha implementado y mantiene estrictas medidas de seguridad administrativas, técnicas y organizativas para resguardar la confidencialidad, integridad y disponibilidad de sus datos personales contra pérdidas accidentales, destrucción no autorizada, robo de información, alteraciones o accesos ilícitos. El portal cuenta con certificados de seguridad SSL para encriptar la información de los formularios web y salvaguardar su transmisión en red.
-                    </p>
-                </section>
-                
-                <!-- Sección IX -->
-                <section id="seccion-9" class="mp-privacy-section">
-                    <h2 class="mp-privacy-section__title">
-                        <span>IX.</span> Modificaciones al Aviso de Privacidad
-                    </h2>
-                    <p class="mp-privacy-section__text">
-                        El presente Aviso de Privacidad puede experimentar modificaciones, actualizaciones o adecuaciones derivadas de reformas normativas, políticas corporativas o cambios en el modelo de atención de MetaPack. Toda actualización estará disponible para consulta permanente de los usuarios en la sección legal de nuestro sitio web: <a href="https://www.metapack.com.mx/aviso-de-privacidad" target="_blank" rel="noopener">www.metapack.com.mx/aviso-de-privacidad</a>.
-                    </p>
-                </section>
-                
-                <!-- Sección X -->
-                <section id="seccion-10" class="mp-privacy-section">
-                    <h2 class="mp-privacy-section__title">
-                        <span>X.</span> Autoridad Competente en la Materia
-                    </h2>
-                    <p class="mp-privacy-section__text">
-                        Si considera que su derecho a la protección de datos personales ha sido lesionado o vulnerado por alguna omisión o acción por parte de MetaPack, le informamos que puede acudir ante el Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI) para interponer la queja correspondiente. Para mayor información, puede consultar el portal oficial del instituto: <a href="https://www.inai.org.mx" target="_blank" rel="nofollow noopener">www.inai.org.mx</a>.
-                    </p>
-                    
-                    <div style="text-align: right;">
-                        <span class="mp-privacy-date">Última actualización: Mayo de 2026</span>
+                    <div class="mp-privacy-category-card">
+                        <div class="mp-privacy-category-card__header">
+                            <h4 class="mp-privacy-category-card__title">Datos de Navegación Tecnológica</h4>
+                            <span class="mp-privacy-category-card__badge">Navegación</span>
+                        </div>
+                        <ul class="mp-privacy-category-card__list">
+                            <li class="mp-privacy-category-card__item">Dirección IP de conexión de red del usuario.</li>
+                            <li class="mp-privacy-category-card__item">Tipo de navegador y sistema operativo utilizados para el acceso.</li>
+                            <li class="mp-privacy-category-card__item">Historial de páginas y secciones visitadas dentro del sitio web.</li>
+                            <li class="mp-privacy-category-card__item">Tiempos de permanencia en el sitio y cookies del navegador.</li>
+                        </ul>
                     </div>
-                </section>
+                </div>
                 
-            </article>
+                <p class="mp-privacy-section__text">
+                    <strong>Nota importante:</strong> MetaPack declara explícitamente que <strong>no recaba datos personales sensibles</strong> (definidos por ley como aquellos que revelan origen racial o étnico, estado de salud presente o futuro, información genética, creencias religiosas, filosóficas y morales, afiliación sindical, opiniones políticas o preferencia sexual).
+                </p>
+            </section>
             
-        </div>
+            <!-- Sección III -->
+            <section id="seccion-3" class="mp-privacy-section">
+                <h2 class="mp-privacy-section__title">
+                    <span>III.</span> Finalidades del Tratamiento de los Datos
+                </h2>
+                <p class="mp-privacy-section__text">
+                    Los datos personales recabados se utilizarán bajo los principios de licitud y consentimiento para las siguientes finalidades esenciales e indispensables de nuestra relación mercantil:
+                </p>
+                <ul class="mp-privacy-section__list">
+                    <li class="mp-privacy-section__list-item">Atender, procesar y dar seguimiento puntual a solicitudes formales de cotización de productos y servicios de empaque y maquila de aluminio.</li>
+                    <li class="mp-privacy-section__list-item">Contactar al titular mediante canales electrónicos o telefónicos para ofrecer asesoría comercial y técnica personalizada.</li>
+                    <li class="mp-privacy-section__list-item">Gestionar de manera interna la formalización de pedidos, contratos comerciales y la logística e instrumentación de envíos y fletes a nivel nacional.</li>
+                    <li class="mp-privacy-section__list-item">Emitir y administrar la facturación fiscal correspondiente y dar cabal cumplimiento a las normativas de contabilidad e impuestos vigentes.</li>
+                    <li class="mp-privacy-section__list-item">Proporcionar servicio postventa y dar trámite a sugerencias, quejas, devoluciones o reclamaciones de producto.</li>
+                </ul>
+                
+                <p class="mp-privacy-section__text">
+                    Adicionalmente, podremos utilizar su información para las siguientes <strong>finalidades secundarias</strong>, las cuales no son indispensables para la relación comercial primaria pero nos permiten ofrecerle una mejor experiencia:
+                </p>
+                <ul class="mp-privacy-section__list">
+                    <li class="mp-privacy-section__list-item">Envío periódico de correos promocionales, catálogos digitales actualizados de producto, noticias del sector e información comercial relevante.</li>
+                    <li class="mp-privacy-section__list-item">Realización de encuestas internas de satisfacción sobre la calidad de nuestros productos de aluminio y el servicio de atención comercial.</li>
+                    <li class="mp-privacy-section__list-item">Análisis métrico y estadístico del comportamiento de los usuarios en nuestro sitio web para la mejora continua del portal.</li>
+                </ul>
+                <p class="mp-privacy-section__text">
+                    Si usted desea manifestar su oposición al uso de sus datos personales para las finalidades secundarias, puede hacerlo en cualquier momento enviando un correo a <a href="mailto:info@metapack.com.mx">info@metapack.com.mx</a> expresando su negativa.
+                </p>
+            </section>
+            
+            <!-- Section IV -->
+            <section id="seccion-4" class="mp-privacy-section">
+                <h2 class="mp-privacy-section__title">
+                    <span>IV.</span> Transferencia de Datos Personales
+                </h2>
+                <p class="mp-privacy-section__text">
+                    MetaPack podrá transferir sus datos personales a terceros nacionales o extranjeros en los supuestos previstos por la Ley que no requieren el consentimiento del titular:
+                </p>
+                <ul class="mp-privacy-section__list">
+                    <li class="mp-privacy-section__list-item"><strong>Autoridades Competentes:</strong> Organismos gubernamentales y de recaudación fiscal (SAT), de seguridad social (IMSS) o autoridades judiciales en cumplimiento de mandatos jurídicos expresos.</li>
+                    <li class="mp-privacy-section__list-item"><strong>Empresas de Logística y Transportación:</strong> Compañías transportistas o de paquetería externas con el único fin de llevar a cabo la entrega de la mercancía y muestras a su domicilio.</li>
+                    <li class="mp-privacy-section__list-item"><strong>Proveedores de Tecnología:</strong> Terceros encargados del soporte técnico del sitio web, servidores de base de datos (hosting), herramientas de correo electrónico y software CRM corporativo bajo contratos de estricta confidencialidad.</li>
+                </ul>
+                <p class="mp-privacy-section__text">
+                    En ningún caso MetaPack venderá, rentará, cederá o transferirá sus datos personales a terceros comerciales con fines publicitarios ajenos sin obtener su consentimiento previo y expreso.
+                </p>
+            </section>
+            
+            <!-- Sección V -->
+            <section id="seccion-5" class="mp-privacy-section">
+                <h2 class="mp-privacy-section__title">
+                    <span>V.</span> Uso de Cookies y Tecnologías de Rastreo
+                </h2>
+                <p class="mp-privacy-section__text">
+                    El portal web <strong>www.metapack.com.mx</strong> hace uso de tecnologías electrónicas conocidas como cookies, web beacons u otros rastreadores para identificar la sesión de usuario, agilizar el rendimiento de carga del sitio, recordar preferencias de selección y realizar el análisis agregado del tráfico mediante herramientas como Google Analytics.
+                </p>
+                <p class="mp-privacy-section__text">
+                    Usted cuenta con la plena facultad de deshabilitar, restringir o eliminar el uso de cookies directamente desde la configuración de su navegador de internet. Le sugerimos revisar la sección de "Ayuda" o "Configuración de Privacidad" de su navegador para este propósito. Es importante advertir que el bloqueo de cookies puede limitar ciertas funciones dinámicas o la correcta visualización de partes de nuestro sitio.
+                </p>
+            </section>
+            
+            <!-- Sección VI -->
+            <section id="seccion-6" class="mp-privacy-section">
+                <h2 class="mp-privacy-section__title">
+                    <span>VI.</span> Ejercicio de Derechos ARCO
+                </h2>
+                <p class="mp-privacy-section__text">
+                    De conformidad con lo establecido en la Ley, usted tiene en todo momento el derecho de <strong>Acceder</strong> a los datos que poseemos, <strong>Rectificar</strong> en caso de ser inexactos, solicitar su <strong>Cancelación</strong> si considera que no se requieren para las finalidades señaladas o manifestar su <strong>Oposición</strong> al tratamiento de los mismos para fines específicos.
+                </p>
+                <p class="mp-privacy-section__text">
+                    Para ejercer cualquiera de sus Derechos ARCO, deberá ingresar una solicitud formal a través de las siguientes alternativas habilitadas:
+                </p>
+                <ul class="mp-privacy-section__list">
+                    <li class="mp-privacy-section__list-item"><strong>Correo Electrónico:</strong> Enviando un mensaje formal a <a href="mailto:info@metapack.com.mx">info@metapack.com.mx</a>.</li>
+                    <li class="mp-privacy-section__list-item"><strong>Vía Escrita / Correo Postal:</strong> Dirigido a nuestras oficinas corporativas ubicadas en: <em>Francisco Sarabia 1399, Col. Talpita, C.P. 44710, Guadalajara, Jalisco, México</em>.</li>
+                </ul>
+                <p class="mp-privacy-section__text">
+                    La solicitud deberá contener con precisión los siguientes elementos informativos:
+                </p>
+                <ol class="mp-privacy-section__list" style="list-style-type: decimal;">
+                    <li class="mp-privacy-section__list-item">Nombre completo del titular de los datos.</li>
+                    <li class="mp-privacy-section__list-item">Descripción detallada de los datos personales respecto de los cuales busca ejercer alguno de los derechos ARCO.</li>
+                    <li class="mp-privacy-section__list-item">Indicación clara del derecho que desea ejercer (Acceso, Rectificación, Cancelación u Oposición).</li>
+                    <li class="mp-privacy-section__list-item">Identificación oficial vigente que acredite su personalidad (INE, Pasaporte, Cédula Profesional) digitalizada en el caso de correos electrónicos. Si actúa mediante representante legal, documento probatorio del mandato.</li>
+                    <li class="mp-privacy-section__list-item">Información de contacto (correo y/o teléfono) para notificaciones oficiales.</li>
+                </ol>
+                <p class="mp-privacy-section__text">
+                    MetaPack responderá al titular en un lapso no mayor a <strong>20 (veinte) días hábiles</strong> posteriores a la fecha de la recepción formal de su solicitud. Si la solicitud resulta procedente, se ejecutará dentro de los <strong>15 (quince) días hábiles</strong> siguientes a la fecha en que se notifique dicha resolución.
+                </p>
+            </section>
+            
+            <!-- Sección VII -->
+            <section id="seccion-7" class="mp-privacy-section">
+                <h2 class="mp-privacy-section__title">
+                    <span>VII.</span> Revocación del Consentimiento
+                </h2>
+                <p class="mp-privacy-section__text">
+                    Usted puede revocar el consentimiento previamente otorgado para el uso de sus datos en cualquier momento. Deberá considerar que la revocación podría impedir que continuemos brindándole los servicios comerciales o de cotización correspondientes. Para tramitar su revocación, deberá canalizar su petición por escrito o correo electrónico mediante el procedimiento indicado en el apartado anterior.
+                </p>
+            </section>
+            
+            <!-- Sección VIII -->
+            <section id="seccion-8" class="mp-privacy-section">
+                <h2 class="mp-privacy-section__title">
+                    <span>VIII.</span> Medidas de Seguridad Aplicadas
+                </h2>
+                <p class="mp-privacy-section__text">
+                    MetaPack ha implementado y mantiene estrictas medidas de seguridad administrativas, técnicas y organizativas para resguardar la confidencialidad, integridad y disponibilidad de sus datos personales contra pérdidas accidentales, destrucción no autorizada, robo de información, alteraciones o accesos ilícitos. El portal cuenta con certificados de seguridad SSL para encriptar la información de los formularios web y salvaguardar su transmisión en red.
+                </p>
+            </section>
+            
+            <!-- Sección IX -->
+            <section id="seccion-9" class="mp-privacy-section">
+                <h2 class="mp-privacy-section__title">
+                    <span>IX.</span> Modificaciones al Aviso de Privacidad
+                </h2>
+                <p class="mp-privacy-section__text">
+                    El presente Aviso de Privacidad puede experimentar modificaciones, actualizaciones o adecuaciones derivadas de reformas normativas, políticas corporativas o cambios en el modelo de atención de MetaPack. Toda actualización estará disponible para consulta permanente de los usuarios en la sección legal de nuestro sitio web: <a href="https://www.metapack.com.mx/aviso-de-privacidad" target="_blank" rel="noopener">www.metapack.com.mx/aviso-de-privacidad</a>.
+                </p>
+            </section>
+            
+            <!-- Sección X -->
+            <section id="seccion-10" class="mp-privacy-section">
+                <h2 class="mp-privacy-section__title">
+                    <span>X.</span> Autoridad Competente en la Materia
+                </h2>
+                <p class="mp-privacy-section__text">
+                    Si considera que su derecho a la protección de datos personales ha sido lesionado o vulnerado por alguna omisión o acción por parte de MetaPack, le informamos que puede acudir ante el Instituto Nacional de Transparencia, Acceso a la Información y Protección de Datos Personales (INAI) para interponer la queja correspondiente. Para mayor información, puede consultar el portal oficial del instituto: <a href="https://www.inai.org.mx" target="_blank" rel="nofollow noopener">www.inai.org.mx</a>.
+                </p>
+                
+                <div style="text-align: right;">
+                    <span class="mp-privacy-date">Última actualización: Mayo de 2026</span>
+                </div>
+            </section>
+            
+        </article>
+        
     </div>
 </section>
-
-<!-- Script interactivo premium para scroll spy en el sidebar -->
-<script>
-(function() {
-    "use strict";
-
-    function initPrivacyNotice() {
-        const sections = document.querySelectorAll('.mp-privacy-section');
-        const navLinks = document.querySelectorAll('.mp-privacy-nav__link');
-        
-        if (sections.length === 0 || navLinks.length === 0) {
-            // Reintentar en breve si aún no está renderizado todo
-            setTimeout(initPrivacyNotice, 100);
-            return;
-        }
-
-        // Función de Scroll Spy basada en coordenadas de la ventana (Viewport)
-        function scrollSpy() {
-            let currentSectionId = sections[0].getAttribute('id');
-            const scrollHeight = document.documentElement.scrollHeight;
-            const clientHeight = document.documentElement.clientHeight;
-            const scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
-
-            // Si llegamos al final de la página, activar la última sección
-            if (scrollPosition + clientHeight >= scrollHeight - 50) {
-                currentSectionId = sections[sections.length - 1].getAttribute('id');
-            } else {
-                sections.forEach(section => {
-                    const rect = section.getBoundingClientRect();
-                    // Si la parte superior de la sección está por encima de 220px del viewport (para compensar el header)
-                    if (rect.top <= 220) {
-                        currentSectionId = section.getAttribute('id');
-                    }
-                });
-            }
-            
-            if (currentSectionId) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    // Usar .hash para obtener solo la parte del ancla (#seccion-x)
-                    const hash = link.hash;
-                    if (hash === '#' + currentSectionId) {
-                        link.classList.add('active');
-                    }
-                });
-            }
-        }
-        
-        // Registrar el evento de scroll y ejecutar inicialmente
-        window.addEventListener('scroll', scrollSpy);
-        window.addEventListener('resize', scrollSpy);
-        scrollSpy();
-        
-        // Suavizar el click en el índice de navegación
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                const hash = link.hash;
-                if (hash && hash.startsWith('#')) {
-                    const targetSection = document.querySelector(hash);
-                    
-                    if (targetSection) {
-                        e.preventDefault();
-                        e.stopPropagation(); // Evitar interferencias de Elementor / SmoothScroll globales
-                        
-                        const rect = targetSection.getBoundingClientRect();
-                        const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
-                        const absoluteTop = rect.top + scrollTop; // Posición absoluta en el documento
-                        const offsetTop = absoluteTop - 140; // Margen para el header fijo
-                        
-                        window.scrollTo({
-                            top: offsetTop,
-                            behavior: 'smooth'
-                        });
-                        
-                        // Actualizar hash en la URL sin saltar
-                        history.pushState(null, null, hash);
-                    }
-                }
-            });
-        });
-    }
-
-    // Inicializar de forma segura según el estado de carga del DOM
-    if (document.readyState !== 'loading') {
-        initPrivacyNotice();
-    } else {
-        document.addEventListener('DOMContentLoaded', initPrivacyNotice);
-    }
-})();
-</script>
 
 <?php
 // Usar el footer compartido
