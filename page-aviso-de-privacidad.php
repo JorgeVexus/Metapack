@@ -10,305 +10,306 @@ get_template_part('template-parts/header', 'metapack');
 ?>
 
 <style>
-/* Estilos premium específicos para el Aviso de Privacidad */
-.mp-privacy {
-    padding: 100px 0;
-    background-color: var(--mp-light-gray);
-    font-family: var(--mp-font-body);
+/* Estilos premium específicos para el Aviso de Privacidad con alta especificidad */
+body .mp-privacy {
+    padding: 120px 0 !important;
+    background-color: var(--mp-light-gray) !important;
+    font-family: var(--mp-font-body) !important;
 }
 
-.mp-privacy__grid {
-    display: grid;
-    grid-template-columns: 320px 1fr;
-    gap: 60px;
-    align-items: start;
+body .mp-privacy__grid {
+    display: grid !important;
+    grid-template-columns: 320px 1fr !important;
+    gap: 60px !important;
+    align-items: start !important;
 }
 
 /* Sidebar Index */
-.mp-privacy-sidebar {
-    position: -webkit-sticky;
-    position: sticky;
-    top: 140px;
-    background: var(--mp-white);
-    padding: 35px 30px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
-    border-top: 4px solid var(--mp-primary);
-    transition: all 0.3s ease;
+body .mp-privacy-sidebar {
+    position: -webkit-sticky !important;
+    position: sticky !important;
+    top: 140px !important;
+    background: var(--mp-white) !important;
+    padding: 40px 30px !important;
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+    border-top: 4px solid var(--mp-primary) !important;
+    transition: all 0.3s ease !important;
 }
 
-.mp-privacy-sidebar__title {
-    font-family: var(--mp-font-title);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--mp-dark);
-    margin-bottom: 25px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    border-bottom: 1px solid var(--mp-border);
-    padding-bottom: 12px;
+body .mp-privacy-sidebar__title {
+    font-family: var(--mp-font-title) !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: var(--mp-dark) !important;
+    margin-bottom: 25px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+    border-bottom: 1px solid var(--mp-border) !important;
+    padding-bottom: 12px !important;
 }
 
-.mp-privacy-nav {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
+body .mp-privacy-nav {
+    list-style: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
 }
 
-.mp-privacy-nav__item {
-    margin: 0;
+body .mp-privacy-nav__item {
+    margin: 0 !important;
 }
 
-.mp-privacy-nav__link {
-    color: var(--mp-gray);
+body .mp-privacy-nav__link {
+    color: var(--mp-gray) !important;
     text-decoration: none !important;
-    font-size: 13.5px;
-    font-weight: 500;
-    transition: all 0.25s ease;
-    display: inline-block;
-    line-height: 1.4;
-    border-left: 2px solid transparent;
-    padding-left: 12px;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    transition: all 0.25s ease !important;
+    display: inline-block !important;
+    line-height: 1.4 !important;
+    border-left: 2px solid transparent !important;
+    padding-left: 12px !important;
 }
 
-.mp-privacy-nav__link:hover,
-.mp-privacy-nav__link.active {
-    color: var(--mp-primary);
-    border-left-color: var(--mp-primary);
-    font-weight: 600;
-    transform: translateX(4px);
+body .mp-privacy-nav__link:hover,
+body .mp-privacy-nav__link.active {
+    color: var(--mp-primary) !important;
+    border-left-color: var(--mp-primary) !important;
+    font-weight: 600 !important;
+    transform: translateX(4px) !important;
 }
 
-/* Main Content Card */
-.mp-privacy-content {
-    background: var(--mp-white);
-    padding: 60px 50px;
-    border-radius: 12px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+/* Main Content Card - Aumento drástico de padding para mayor legibilidad */
+body .mp-privacy-content {
+    background: var(--mp-white) !important;
+    padding: 80px 70px !important; /* Incremento drástico de espacio interno */
+    border-radius: 12px !important;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04) !important;
+    box-sizing: border-box !important;
 }
 
-.mp-privacy-section {
-    margin-bottom: 60px;
-    scroll-margin-top: 160px; /* Desplazamiento para compensar el header fijo */
+body .mp-privacy-section {
+    margin-bottom: 60px !important;
+    scroll-margin-top: 160px !important;
 }
 
-.mp-privacy-section:last-child {
-    margin-bottom: 0;
+body .mp-privacy-section:last-child {
+    margin-bottom: 0 !important;
 }
 
-.mp-privacy-section__title {
-    font-family: var(--mp-font-title);
-    font-size: 20px;
-    font-weight: 700;
-    color: var(--mp-dark);
-    margin-bottom: 24px !important;
-    padding-bottom: 12px;
-    border-bottom: 2px solid var(--mp-light-gray);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    display: flex;
-    align-items: flex-start;
-    gap: 8px;
+body .mp-privacy-section__title {
+    font-family: var(--mp-font-title) !important;
+    font-size: 20px !important;
+    font-weight: 700 !important;
+    color: var(--mp-dark) !important;
+    margin: 0 0 24px 0 !important;
+    padding-bottom: 12px !important;
+    border-bottom: 2px solid var(--mp-light-gray) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    gap: 8px !important;
 }
 
-.mp-privacy-section__title span {
-    color: var(--mp-primary);
-    font-weight: 800;
-    white-space: nowrap;
+body .mp-privacy-section__title span {
+    color: var(--mp-primary) !important;
+    font-weight: 800 !important;
+    white-space: nowrap !important;
 }
 
-.mp-privacy-section__text {
-    font-family: var(--mp-font-body);
-    font-size: 15px;
-    line-height: 1.8;
-    color: var(--mp-dark-gray);
+body .mp-privacy-section__text {
+    font-family: var(--mp-font-body) !important;
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+    color: var(--mp-dark-gray) !important;
     margin-bottom: 20px !important;
-    text-align: justify;
+    text-align: justify !important;
 }
 
-.mp-privacy-section__list {
+body .mp-privacy-section__list {
     margin: 20px 0 25px 20px !important;
-    list-style-type: disc;
+    list-style-type: disc !important;
 }
 
-.mp-privacy-section__list-item {
-    font-family: var(--mp-font-body);
-    font-size: 15px;
-    line-height: 1.8;
-    color: var(--mp-dark-gray);
+body .mp-privacy-section__list-item {
+    font-family: var(--mp-font-body) !important;
+    font-size: 15px !important;
+    line-height: 1.8 !important;
+    color: var(--mp-dark-gray) !important;
     margin-bottom: 10px !important;
 }
 
 /* Address & Contact Info Cards */
-.mp-privacy-address-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 24px;
-    margin: 25px 0;
+body .mp-privacy-address-grid {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)) !important;
+    gap: 24px !important;
+    margin: 25px 0 !important;
 }
 
-.mp-privacy-address-card {
-    background: var(--mp-light-gray);
-    padding: 24px;
-    border-radius: 8px;
-    border-left: 4px solid var(--mp-primary);
+body .mp-privacy-address-card {
+    background: var(--mp-light-gray) !important;
+    padding: 24px !important;
+    border-radius: 8px !important;
+    border-left: 4px solid var(--mp-primary) !important;
 }
 
-.mp-privacy-address-card__title {
-    font-family: var(--mp-font-title);
-    font-size: 15px;
-    font-weight: 700;
-    color: var(--mp-dark);
+body .mp-privacy-address-card__title {
+    font-family: var(--mp-font-title) !important;
+    font-size: 15px !important;
+    font-weight: 700 !important;
+    color: var(--mp-dark) !important;
     margin-bottom: 10px !important;
-    text-transform: uppercase;
+    text-transform: uppercase !important;
 }
 
-.mp-privacy-address-card__text {
-    font-family: var(--mp-font-body);
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--mp-dark-gray);
+body .mp-privacy-address-card__text {
+    font-family: var(--mp-font-body) !important;
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: var(--mp-dark-gray) !important;
     margin: 0 !important;
 }
 
-.mp-privacy-contacts {
-    background: linear-gradient(135deg, rgba(122, 32, 86, 0.05) 0%, rgba(90, 23, 64, 0.05) 100%);
-    padding: 25px;
-    border-radius: 8px;
-    border: 1px dashed rgba(122, 32, 86, 0.2);
-    margin-top: 25px;
+body .mp-privacy-contacts {
+    background: linear-gradient(135deg, rgba(122, 32, 86, 0.05) 0%, rgba(90, 23, 64, 0.05) 100%) !important;
+    padding: 25px !important;
+    border-radius: 8px !important;
+    border: 1px dashed rgba(122, 32, 86, 0.2) !important;
+    margin-top: 25px !important;
 }
 
-.mp-privacy-contacts__title {
-    font-family: var(--mp-font-title);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--mp-primary);
+body .mp-privacy-contacts__title {
+    font-family: var(--mp-font-title) !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: var(--mp-primary) !important;
     margin-bottom: 15px !important;
 }
 
-.mp-privacy-contacts__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+body .mp-privacy-contacts__grid {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 20px !important;
 }
 
-.mp-privacy-contacts__item {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
+body .mp-privacy-contacts__item {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 4px !important;
 }
 
-.mp-privacy-contacts__label {
-    font-size: 12px;
-    font-weight: 600;
-    color: var(--mp-gray);
-    text-transform: uppercase;
+body .mp-privacy-contacts__label {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    color: var(--mp-gray) !important;
+    text-transform: uppercase !important;
 }
 
-.mp-privacy-contacts__value {
-    font-size: 14.5px;
-    font-weight: 600;
-    color: var(--mp-dark);
+body .mp-privacy-contacts__value {
+    font-size: 14.5px !important;
+    font-weight: 600 !important;
+    color: var(--mp-dark) !important;
     text-decoration: none !important;
 }
 
 /* Category Grid for Data Collected */
-.mp-privacy-categories {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 20px;
-    margin: 25px 0;
+body .mp-privacy-categories {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+    margin: 25px 0 !important;
 }
 
-.mp-privacy-category-card {
-    background: var(--mp-light-gray);
-    padding: 24px;
-    border-radius: 8px;
-    border-top: 3px solid var(--mp-border);
-    transition: all 0.3s ease;
+body .mp-privacy-category-card {
+    background: var(--mp-light-gray) !important;
+    padding: 24px !important;
+    border-radius: 8px !important;
+    border-top: 3px solid var(--mp-border) !important;
+    transition: all 0.3s ease !important;
 }
 
-.mp-privacy-category-card:hover {
-    border-top-color: var(--mp-primary);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+body .mp-privacy-category-card:hover {
+    border-top-color: var(--mp-primary) !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05) !important;
 }
 
-.mp-privacy-category-card__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+body .mp-privacy-category-card__header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
     margin-bottom: 12px !important;
 }
 
-.mp-privacy-category-card__title {
-    font-family: var(--mp-font-title);
-    font-size: 16px;
-    font-weight: 700;
-    color: var(--mp-dark);
+body .mp-privacy-category-card__title {
+    font-family: var(--mp-font-title) !important;
+    font-size: 16px !important;
+    font-weight: 700 !important;
+    color: var(--mp-dark) !important;
     margin: 0 !important;
 }
 
-.mp-privacy-category-card__badge {
-    background: var(--mp-primary);
-    color: var(--mp-white);
-    font-size: 11px;
-    font-weight: 600;
-    padding: 4px 8px;
-    border-radius: 4px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+body .mp-privacy-category-card__badge {
+    background: var(--mp-primary) !important;
+    color: var(--mp-white) !important;
+    font-size: 11px !important;
+    font-weight: 600 !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
 }
 
-.mp-privacy-category-card__list {
+body .mp-privacy-category-card__list {
     margin: 10px 0 0 15px !important;
-    list-style-type: circle;
+    list-style-type: circle !important;
 }
 
-.mp-privacy-category-card__item {
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--mp-dark-gray);
+body .mp-privacy-category-card__item {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+    color: var(--mp-dark-gray) !important;
     margin-bottom: 6px !important;
 }
 
 /* Date Tag */
-.mp-privacy-date {
-    display: inline-block;
-    background: var(--mp-light-gray);
-    color: var(--mp-gray);
-    padding: 6px 14px;
-    border-radius: 4px;
-    font-size: 13px;
-    font-weight: 600;
-    margin-top: 40px;
+body .mp-privacy-date {
+    display: inline-block !important;
+    background: var(--mp-light-gray) !important;
+    color: var(--mp-gray) !important;
+    padding: 6px 14px !important;
+    border-radius: 4px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    margin-top: 40px !important;
 }
 
 /* Responsive Styles */
 @media (max-width: 1024px) {
-    .mp-privacy {
-        padding: 60px 0;
+    body .mp-privacy {
+        padding: 60px 0 !important;
     }
     
-    .mp-privacy__grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
+    body .mp-privacy__grid {
+        grid-template-columns: 1fr !important;
+        gap: 40px !important;
     }
     
-    .mp-privacy-sidebar {
-        display: none; /* Ocultar sidebar en móviles */
+    body .mp-privacy-sidebar {
+        display: none !important;
     }
     
-    .mp-privacy-content {
-        padding: 40px 25px;
+    body .mp-privacy-content {
+        padding: 45px 30px !important;
     }
     
-    .mp-privacy-contacts__grid {
-        grid-template-columns: 1fr;
-        gap: 15px;
+    body .mp-privacy-contacts__grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
     }
 }
 </style>
@@ -625,56 +626,75 @@ get_template_part('template-parts/header', 'metapack');
 
 <!-- Script interactivo premium para scroll spy en el sidebar -->
 <script>
-document.addEventListener('DOMContentLoaded', () => {
-    const sections = document.querySelectorAll('.mp-privacy-section');
-    const navLinks = document.querySelectorAll('.mp-privacy-nav__link');
-    
-    if (sections.length === 0 || navLinks.length === 0) return;
-    
-    // Función de Scroll Spy
-    function scrollSpy() {
-        let currentSectionId = '';
-        const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+(function() {
+    "use strict";
+
+    function initPrivacyNotice() {
+        const sections = document.querySelectorAll('.mp-privacy-section');
+        const navLinks = document.querySelectorAll('.mp-privacy-nav__link');
         
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            // Ajustamos un margen de 200px para que cambie el link activo un poco antes
-            if (scrollPosition >= sectionTop - 200) {
-                currentSectionId = section.getAttribute('id');
-            }
-        });
-        
-        if (currentSectionId) {
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${currentSectionId}`) {
-                    link.classList.add('active');
+        if (sections.length === 0 || navLinks.length === 0) {
+            // Reintentar en breve si aún no está renderizado todo
+            setTimeout(initPrivacyNotice, 100);
+            return;
+        }
+
+        // Función de Scroll Spy basada en coordenadas de la ventana (Viewport)
+        function scrollSpy() {
+            let currentSectionId = sections[0].getAttribute('id');
+            
+            sections.forEach(section => {
+                const rect = section.getBoundingClientRect();
+                // Si la parte superior de la sección está por encima de 200px del viewport
+                if (rect.top <= 200) {
+                    currentSectionId = section.getAttribute('id');
                 }
             });
-        }
-    }
-    
-    // Ejecutar al cargar y al hacer scroll
-    window.addEventListener('scroll', scrollSpy);
-    scrollSpy();
-    
-    // Suavizar el click en el índice
-    navLinks.forEach(link => {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            const targetId = link.getAttribute('href');
-            const targetSection = document.querySelector(targetId);
             
-            if (targetSection) {
-                const offsetTop = targetSection.offsetTop - 150;
-                window.scrollTo({
-                    top: offsetTop,
-                    behavior: 'smooth'
+            if (currentSectionId) {
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + currentSectionId) {
+                        link.classList.add('active');
+                    }
                 });
             }
+        }
+        
+        // Registrar el evento de scroll y ejecutar inicialmente
+        window.addEventListener('scroll', scrollSpy);
+        scrollSpy();
+        
+        // Suavizar el click en el índice de navegación
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation(); // Evitar interferencias de Elementor / SmoothScroll globales
+                
+                const targetId = link.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                
+                if (targetSection) {
+                    const rect = targetSection.getBoundingClientRect();
+                    const absoluteTop = rect.top + window.scrollY; // Posición absoluta en el documento
+                    const offsetTop = absoluteTop - 140; // Margen para el header fijo
+                    
+                    window.scrollTo({
+                        top: offsetTop,
+                        behavior: 'smooth'
+                    });
+                }
+            });
         });
-    });
-});
+    }
+
+    // Inicializar de forma segura según el estado de carga del DOM
+    if (document.readyState !== 'loading') {
+        initPrivacyNotice();
+    } else {
+        document.addEventListener('DOMContentLoaded', initPrivacyNotice);
+    }
+})();
 </script>
 
 <?php
