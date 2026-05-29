@@ -642,19 +642,29 @@ body .mp-privacy-date {
         // Función de Scroll Spy basada en coordenadas de la ventana (Viewport)
         function scrollSpy() {
             let currentSectionId = sections[0].getAttribute('id');
-            
-            sections.forEach(section => {
-                const rect = section.getBoundingClientRect();
-                // Si la parte superior de la sección está por encima de 200px del viewport
-                if (rect.top <= 200) {
-                    currentSectionId = section.getAttribute('id');
-                }
-            });
+            const scrollHeight = document.documentElement.scrollHeight;
+            const clientHeight = document.documentElement.clientHeight;
+            const scrollPosition = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+
+            // Si llegamos al final de la página, activar la última sección
+            if (scrollPosition + clientHeight >= scrollHeight - 50) {
+                currentSectionId = sections[sections.length - 1].getAttribute('id');
+            } else {
+                sections.forEach(section => {
+                    const rect = section.getBoundingClientRect();
+                    // Si la parte superior de la sección está por encima de 220px del viewport (para compensar el header)
+                    if (rect.top <= 220) {
+                        currentSectionId = section.getAttribute('id');
+                    }
+                });
+            }
             
             if (currentSectionId) {
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (link.getAttribute('href') === '#' + currentSectionId) {
+                    // Usar .hash para obtener solo la parte del ancla (#seccion-x)
+                    const hash = link.hash;
+                    if (hash === '#' + currentSectionId) {
                         link.classList.add('active');
                     }
                 });
@@ -663,26 +673,33 @@ body .mp-privacy-date {
         
         // Registrar el evento de scroll y ejecutar inicialmente
         window.addEventListener('scroll', scrollSpy);
+        window.addEventListener('resize', scrollSpy);
         scrollSpy();
         
         // Suavizar el click en el índice de navegación
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation(); // Evitar interferencias de Elementor / SmoothScroll globales
-                
-                const targetId = link.getAttribute('href');
-                const targetSection = document.querySelector(targetId);
-                
-                if (targetSection) {
-                    const rect = targetSection.getBoundingClientRect();
-                    const absoluteTop = rect.top + window.scrollY; // Posición absoluta en el documento
-                    const offsetTop = absoluteTop - 140; // Margen para el header fijo
+                const hash = link.hash;
+                if (hash && hash.startsWith('#')) {
+                    const targetSection = document.querySelector(hash);
                     
-                    window.scrollTo({
-                        top: offsetTop,
-                        behavior: 'smooth'
-                    });
+                    if (targetSection) {
+                        e.preventDefault();
+                        e.stopPropagation(); // Evitar interferencias de Elementor / SmoothScroll globales
+                        
+                        const rect = targetSection.getBoundingClientRect();
+                        const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+                        const absoluteTop = rect.top + scrollTop; // Posición absoluta en el documento
+                        const offsetTop = absoluteTop - 140; // Margen para el header fijo
+                        
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Actualizar hash en la URL sin saltar
+                        history.pushState(null, null, hash);
+                    }
                 }
             });
         });
