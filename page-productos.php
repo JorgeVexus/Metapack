@@ -139,7 +139,7 @@ get_header(); ?>
                      data-industria="<?php echo esc_attr($industrias_slugs); ?>"
                      data-titulo="<?php echo esc_attr(strtolower(get_the_title())); ?>">
                 
-                <a href="<?php the_permalink(); ?>" class="mp-producto-card__link">
+                <a href="<?php the_permalink(); ?>" class="mp-producto-card__link" aria-label="<?php echo esc_attr(get_the_title()); ?>">
                     <div class="mp-producto-card__image">
                         <?php if (has_post_thumbnail()) : ?>
                             <?php the_post_thumbnail('medium_large', array('class' => 'mp-producto-card__img')); ?>

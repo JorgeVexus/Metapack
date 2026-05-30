@@ -96,7 +96,7 @@ get_header(); ?>
                          data-title="<?php echo esc_attr(strtolower(get_the_title())); ?>"
                          data-excerpt="<?php echo esc_attr(strtolower(wp_strip_all_tags(get_the_excerpt()))); ?>">
                     <div class="mp-blog-card__image-container">
-                        <a href="<?php the_permalink(); ?>">
+                        <a href="<?php the_permalink(); ?>" aria-label="<?php echo esc_attr(sprintf('Leer más sobre %s', get_the_title())); ?>">
                             <?php if (has_post_thumbnail()) : ?>
                                 <?php the_post_thumbnail('large', ['class' => 'mp-blog-card__image']); ?>
                             <?php else : ?>

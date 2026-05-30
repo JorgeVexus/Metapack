@@ -177,7 +177,7 @@ $carousel_images = array(
 
         <!-- Carousel -->
         <div class="mp-maquila__carousel-container">
-            <button class="mp-carousel-arrow mp-carousel-arrow--prev" id="mp-maquilaPrev">
+            <button class="mp-carousel-arrow mp-carousel-arrow--prev" id="mp-maquilaPrev" aria-label="Diapositiva anterior">
                 <svg width="41" height="41" viewBox="0 0 41 41" fill="none">
                     <circle cx="20.5" cy="20.5" r="20" stroke="white" />
                     <path d="M23 13L16 20.5L23 28" stroke="white" stroke-width="2" />
@@ -293,7 +293,7 @@ $carousel_images = array(
                 </div>
             </div>
 
-            <button class="mp-carousel-arrow mp-carousel-arrow--next" id="mp-maquilaNext">
+            <button class="mp-carousel-arrow mp-carousel-arrow--next" id="mp-maquilaNext" aria-label="Diapositiva siguiente">
                 <svg width="41" height="41" viewBox="0 0 41 41" fill="none">
                     <circle cx="20.5" cy="20.5" r="20" stroke="white" />
                     <path d="M18 13L25 20.5L18 28" stroke="white" stroke-width="2" />

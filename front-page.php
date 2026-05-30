@@ -55,7 +55,7 @@ get_template_part('template-parts/header', 'metapack');
                 <path d="M4.848 51.693C3.504 51.693 2.36 51.221 1.416 50.277C0.472 49.333 0 48.19 0 46.848V23.862C0 22.894 0.258 21.996 0.774 21.168C1.29 20.34 2.007 19.734 2.925 19.35L11.607 15.705C12.415 15.381 13.183 15.437 13.911 15.873C14.637 16.307 15 16.977 15 17.883V20.133L26.682 15.441C27.49 15.117 28.245 15.197 28.947 15.681C29.649 16.165 30 16.836 30 17.694V21.693H54V46.848C54 48.188 53.528 49.331 52.584 50.277C51.64 51.221 50.497 51.693 49.155 51.693H4.848ZM4.848 48.693H49.155C49.693 48.693 50.135 48.52 50.481 48.174C50.827 47.828 51 47.386 51 46.848V24.693H27V18.543L12 24.543V18.693L4.098 22.206C3.75 22.36 3.48 22.581 3.288 22.869C3.096 23.157 3 23.495 3 23.883V46.851C3 47.389 3.173 47.831 3.519 48.177C3.865 48.523 4.307 48.696 4.845 48.696M24.693 41.313H29.307V32.073H24.693V41.313ZM12.693 41.313H17.307V32.073H12.693V41.313ZM36.693 41.313H41.307V32.073H36.693V41.313ZM54 21.693H44.652L47.469 1.473C47.529 1.029 47.719 0.673 48.039 0.405C48.359 0.135 48.74 0 49.182 0H50.049C50.413 0 50.726 0.125 50.988 0.375C51.25 0.625 51.412 0.933 51.474 1.299L54 21.693ZM4.848 48.693H3H51H4.848Z" fill="currentColor"/>
             </svg>
         </div>
-        <h3 class="mp-kpi-card__title"><?php echo esc_html(get_theme_mod('kpi_1_title', 'INFRAESTRUCTURA')); ?></h3>
+        <h2 class="mp-kpi-card__title"><?php echo esc_html(get_theme_mod('kpi_1_title', 'INFRAESTRUCTURA')); ?></h2>
         <p class="mp-kpi-card__text"><?php echo esc_html(get_theme_mod('kpi_1_text', 'Maquinaria de origen italiano para rebobinado y corte de precisión. Capacidad instalada para altos volúmenes.')); ?></p>
     </div>
     <!-- Icon 2: Servicio y Ventas -->
@@ -65,7 +65,7 @@ get_template_part('template-parts/header', 'metapack');
                 <path d="M8.49414 35.0267L3.40664 14L18.5 0L33.5431 14L28.4556 35.0267H8.49414ZM10.5714 32.36H26.3757L30.6122 14.928L19.8214 4.86133V15.1093C20.3711 15.3813 20.8222 15.7742 21.1746 16.288C21.527 16.8018 21.7031 17.3893 21.7031 18.0507C21.7031 18.9289 21.3869 19.6871 20.7544 20.3253C20.1218 20.9636 19.3704 21.2827 18.5 21.2827C17.5961 21.2827 16.828 20.9636 16.1954 20.3253C15.5629 19.6871 15.2466 18.9289 15.2466 18.0507C15.2466 17.3876 15.4228 16.7911 15.7752 16.2613C16.1276 15.7316 16.5954 15.3467 17.1786 15.1067V4.86133L6.38779 14.928L10.5714 32.36ZM0 48L2.18564 41.8453H34.8144L37 48H0Z" fill="currentColor"/>
             </svg>
         </div>
-        <h3 class="mp-kpi-card__title"><?php echo esc_html(get_theme_mod('kpi_2_title', 'SERVICIO Y VENTAS')); ?></h3>
+        <h2 class="mp-kpi-card__title"><?php echo esc_html(get_theme_mod('kpi_2_title', 'SERVICIO Y VENTAS')); ?></h2>
         <p class="mp-kpi-card__text"><?php echo esc_html(get_theme_mod('kpi_2_text', 'Asesoría especializada. Atención personalizada y entregas puntuales en todo México.')); ?></p>
     </div>
     <!-- Icon 3: Calidad Certificada -->
@@ -75,7 +75,7 @@ get_template_part('template-parts/header', 'metapack');
                 <path d="M12.213 28.386L18 24.894L23.787 28.386L22.218 21.798L27.351 17.373L20.631 16.812L18 10.617L15.369 16.812L8.649 17.373L13.782 21.798L12.213 28.386ZM0 46.5V4.848C0 3.466 0.462999 2.313 1.389 1.389C2.315 0.464999 3.468 0.002 4.848 0H31.155C32.535 0 33.688 0.462999 34.614 1.389C35.54 2.315 36.002 3.468 36 4.848V46.5L18 38.769L0 46.5ZM3 41.85L18 35.4L33 41.85V4.848C33 4.386 32.808 3.962 32.424 3.576C32.04 3.19 31.616 2.998 31.152 3H4.848C4.386 3 3.962 3.192 3.576 3.576C3.19 3.96 2.998 4.384 3 4.848V41.85Z" fill="currentColor"/>
             </svg>
         </div>
-        <h3 class="mp-kpi-card__title"><?php echo esc_html(get_theme_mod('kpi_3_title', 'CALIDAD CERTIFICADA')); ?></h3>
+        <h2 class="mp-kpi-card__title"><?php echo esc_html(get_theme_mod('kpi_3_title', 'CALIDAD CERTIFICADA')); ?></h2>
         <p class="mp-kpi-card__text"><?php echo esc_html(get_theme_mod('kpi_3_text', 'Productos avalados por FDA y normativas mexicanas. Trazabilidad completa.')); ?></p>
     </div>
     <!-- Icon 4: Distribución Nacional -->
@@ -85,7 +85,7 @@ get_template_part('template-parts/header', 'metapack');
                 <path d="M17.082 42C15.002 42 13.231 41.27 11.769 39.81C10.307 38.356 9.576 36.586 9.576 34.5H4.713C4.287 34.5 3.931 34.356 3.645 34.068C3.359 33.78 3.215 33.423 3.213 32.997C3.211 32.571 3.355 32.215 3.645 31.929C3.935 31.643 4.291 31.5 4.713 31.5H10.344C10.886 30.166 11.761 29.082 12.969 28.248C14.177 27.416 15.546 27 17.076 27C18.606 27 19.976 27.416 21.186 28.248C22.392 29.082 23.266 30.166 23.808 31.5H37.662L44.25 3H13.212C12.786 3 12.429 2.856 12.141 2.568C11.853 2.28 11.71 1.923 11.712 1.497C11.714 1.071 11.857 0.715 12.141 0.429C12.425 0.143 12.782 0 13.212 0H44.943C45.711 0 46.337 0.308 46.821 0.924C47.307 1.54 47.463 2.226 47.289 2.982L45.57 10.5H49.383C50.151 10.5 50.878 10.672 51.564 11.016C52.252 11.358 52.818 11.832 53.262 12.438L58.653 19.632C59.089 20.216 59.372 20.825 59.502 21.459C59.634 22.091 59.644 22.755 59.532 23.451L57.738 32.562C57.626 33.146 57.342 33.615 56.886 33.969C56.43 34.323 55.912 34.5 55.332 34.5H53.883C53.883 36.578 53.155 38.348 51.699 39.81C50.243 41.272 48.473 42.002 46.389 42C44.305 41.998 42.534 41.268 41.076 39.81C39.616 38.354 38.886 36.584 38.886 34.5H24.576C24.576 36.578 23.848 38.348 22.392 39.81C20.936 41.272 19.166 42.002 17.082 42ZM42.237 24.75H56.19L56.721 22.08L50.307 13.5H44.853L42.237 24.75ZM38.388 28.494L38.778 26.754C39.038 25.594 39.368 24.174 39.768 22.494C39.994 21.574 40.192 20.724 40.362 19.944C40.53 19.164 40.664 18.518 40.764 18.006L41.154 16.266C41.414 15.106 41.744 13.686 42.144 12.006C42.544 10.326 42.874 8.906 43.134 7.746L43.524 6.006L44.25 3L37.659 31.5L38.388 28.494ZM1.443 23.994C1.033 23.994 0.69 23.85 0.414 23.562C0.138 23.274 0 22.918 0 22.494C0 22.07 0.143 21.713 0.429 21.423C0.715 21.133 1.072 20.99 1.5 20.994H11.94C12.366 20.994 12.723 21.138 13.011 21.426C13.299 21.714 13.442 22.071 13.440 22.497C13.438 22.923 13.295 23.279 13.011 23.565C12.727 23.851 12.37 23.994 11.94 23.994H1.443ZM7.443 13.506C7.017 13.506 6.66 13.362 6.372 13.074C6.084 12.786 5.94 12.429 5.94 12.003C5.94 11.577 6.084 11.221 6.372 10.935C6.66 10.649 7.016 10.506 7.44 10.506H20.94C21.366 10.506 21.723 10.65 22.011 10.938C22.297 11.226 22.44 11.583 22.44 12.009C22.44 12.435 22.297 12.791 22.011 13.077C21.725 13.363 21.368 13.506 20.94 13.506H7.443ZM17.076 39C18.31 39 19.369 38.559 20.253 37.677C21.135 36.793 21.576 35.734 21.5760 34.5C21.576 33.266 21.135 32.207 20.253 31.323C19.371 30.439 18.312 29.998 17.076 30C15.84 30.002 14.781 30.443 13.899 31.323C13.017 32.207 12.576 33.266 12.576 34.5C12.576 35.734 13.017 36.793 13.899 37.677C14.783 38.559 15.842 39 17.076 39ZM46.386 39C47.62 39 48.678 38.559 49.56 37.677C50.442 36.793 50.883 35.734 50.883 34.5C50.883 33.266 50.442 32.207 49.56 31.323C48.678 30.439 47.619 29.998 46.383 30C45.147 30.002 44.089 30.443 43.209 31.323C42.325 32.207 41.883 33.266 41.883 34.5C41.883 35.734 42.324 36.793 43.206 37.677C44.09 38.559 45.15 39 46.386 39Z" fill="currentColor"/>
             </svg>
         </div>
-        <h3 class="mp-kpi-card__title"><?php echo esc_html(get_theme_mod('kpi_4_title', 'DISTRIBUCIÓN NACIONAL')); ?></h3>
+        <h2 class="mp-kpi-card__title"><?php echo esc_html(get_theme_mod('kpi_4_title', 'DISTRIBUCIÓN NACIONAL')); ?></h2>
         <p class="mp-kpi-card__text"><?php echo esc_html(get_theme_mod('kpi_4_text', 'Logística eficiente para entregas puntuales a todo México.')); ?></p>
     </div>
 </section>
@@ -320,11 +320,11 @@ get_template_part('template-parts/header', 'metapack');
 
                     for ($i = 0; $i < $dots_needed; $i++) {
                         $active_class = ($i === 0) ? 'mp-pagination-dot--active' : '';
-                        echo '<button class="mp-pagination-dot ' . $active_class . '" data-index="' . ($i * 3) . '"></button>';
+                        echo '<button class="mp-pagination-dot ' . $active_class . '" data-index="' . ($i * 3) . '" aria-label="' . sprintf(esc_attr__('Ir a la diapositiva %d', 'metapack'), $i + 1) . '"></button>';
                     }
                 } else {
                     // Fallback para demo
-                    echo '<button class="mp-pagination-dot mp-pagination-dot--active" data-index="0"></button>';
+                    echo '<button class="mp-pagination-dot mp-pagination-dot--active" data-index="0" aria-label="' . esc_attr__('Ir a la diapositiva 1', 'metapack') . '"></button>';
                 }
                 ?>
             </div>
@@ -364,7 +364,7 @@ get_template_part('template-parts/header', 'metapack');
 
         <!-- Carousel -->
         <div class="mp-maquila__carousel-container">
-            <button class="mp-carousel-arrow mp-carousel-arrow--prev" id="mp-maquilaPrev">
+            <button class="mp-carousel-arrow mp-carousel-arrow--prev" id="mp-maquilaPrev" aria-label="Diapositiva anterior">
                 <svg width="41" height="41" viewBox="0 0 41 41" fill="none">
                     <circle cx="20.5" cy="20.5" r="20" stroke="white" />
                     <path d="M23 13L16 20.5L23 28" stroke="white" stroke-width="2" />
@@ -378,7 +378,7 @@ get_template_part('template-parts/header', 'metapack');
                         <div class="mp-maquila-card">
                             <div class="mp-maquila-card__image">
                                 <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image.png"
-                                    alt="Empaque industrial">
+                                    alt="Empaque industrial" width="541" height="354" loading="lazy">
                             </div>
                             <div class="mp-maquila-card__content">
                                 <h4 class="mp-maquila-card__card-title">Empaque industrial para alimentos preparados
@@ -414,7 +414,7 @@ get_template_part('template-parts/header', 'metapack');
                         <div class="mp-maquila-card">
                             <div class="mp-maquila-card__image">
                                 <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-1.png"
-                                    alt="Cadena de restaurantes">
+                                    alt="Cadena de restaurantes" width="541" height="354" loading="lazy">
                             </div>
                             <div class="mp-maquila-card__content">
                                 <h4 class="mp-maquila-card__card-title">Solución de empaque para cadena de restaurantes
@@ -449,7 +449,7 @@ get_template_part('template-parts/header', 'metapack');
                         <div class="mp-maquila-card">
                             <div class="mp-maquila-card__image">
                                 <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-2.png"
-                                    alt="Punto de venta">
+                                    alt="Punto de venta" width="541" height="354" loading="lazy">
                             </div>
                             <div class="mp-maquila-card__content">
                                 <h4 class="mp-maquila-card__card-title">Soluciones para punto de venta</h4>
@@ -480,7 +480,7 @@ get_template_part('template-parts/header', 'metapack');
                 </div>
             </div>
 
-            <button class="mp-carousel-arrow mp-carousel-arrow--next" id="mp-maquilaNext">
+            <button class="mp-carousel-arrow mp-carousel-arrow--next" id="mp-maquilaNext" aria-label="Diapositiva siguiente">
                 <svg width="41" height="41" viewBox="0 0 41 41" fill="none">
                     <circle cx="20.5" cy="20.5" r="20" stroke="white" />
                     <path d="M18 13L25 20.5L18 28" stroke="white" stroke-width="2" />
@@ -589,7 +589,7 @@ get_template_part('template-parts/header', 'metapack');
                     if ($dots_prods > 1) {
                         for ($j = 0; $j < $dots_prods; $j++) {
                             $act = ($j === 0) ? 'mp-pagination-dot--active' : '';
-                            echo '<button class="mp-pagination-dot ' . $act . '" data-index="' . $j . '"></button>';
+                            echo '<button class="mp-pagination-dot ' . $act . '" data-index="' . $j . '" aria-label="' . sprintf(esc_attr__('Ir a los productos de la diapositiva %d', 'metapack'), $j + 1) . '"></button>';
                         }
                     }
                 }
@@ -640,7 +640,7 @@ get_template_part('template-parts/header', 'metapack');
                         <div class="mp-blog-slide">
                             <article class="mp-blog-card-v2">
                                 <div class="mp-blog-card-v2__image-box">
-                                    <a href="<?php the_permalink(); ?>">
+                                    <a href="<?php the_permalink(); ?>" aria-label="<?php echo esc_attr(sprintf('Leer más sobre %s', get_the_title())); ?>">
                                         <?php if (has_post_thumbnail()) : ?>
                                             <?php the_post_thumbnail('large'); ?>
                                         <?php else : ?>
@@ -688,7 +688,7 @@ get_template_part('template-parts/header', 'metapack');
                     if ($dots_blog > 1) {
                         for ($i = 0; $i < $dots_blog; $i++) {
                             $act = ($i === 0) ? 'mp-pagination-dot--active' : '';
-                            echo '<button class="mp-pagination-dot ' . $act . '" data-index="' . $i . '"></button>';
+                            echo '<button class="mp-pagination-dot ' . $act . '" data-index="' . $i . '" aria-label="' . sprintf(esc_attr__('Ir a las entradas de la diapositiva %d', 'metapack'), $i + 1) . '"></button>';
                         }
                     }
                 }

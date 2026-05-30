@@ -114,7 +114,7 @@ if (have_posts()) :
                     ?>
                         <article class="mp-blog-card-v2 mp-blog-card-v2--vertical">
                             <div class="mp-blog-card-v2__image-box">
-                                <a href="<?php the_permalink(); ?>">
+                                <a href="<?php the_permalink(); ?>" aria-label="<?php echo esc_attr(sprintf('Leer más sobre %s', get_the_title())); ?>">
                                     <?php if (has_post_thumbnail()) : ?>
                                         <?php the_post_thumbnail('large'); ?>
                                     <?php else : ?>

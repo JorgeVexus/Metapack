@@ -10,20 +10,20 @@
 // REGISTRAR ESTILOS Y SCRIPTS DE METAPACK
 // =================================================
 function metapack_enqueue_assets() {
-    // Estilos principales de Metapack (fuentes locales cargadas directamente en el CSS)
+    // Estilos principales de Metapack (fuentes locales cargadas directamente en el CSS minificado)
     wp_enqueue_style(
         'metapack-styles',
-        get_stylesheet_directory_uri() . '/assets/css/metapack-styles.css',
+        get_stylesheet_directory_uri() . '/assets/css/metapack-styles.min.css',
         array(),
-        '1.0.2'
+        '1.0.3'
     );
     
-    // Script de Metapack
+    // Script de Metapack minificado
     wp_enqueue_script(
         'metapack-script',
-        get_stylesheet_directory_uri() . '/assets/js/metapack-script.js',
+        get_stylesheet_directory_uri() . '/assets/js/metapack-script.min.js',
         array(),
-        '1.0.4',
+        '1.0.5',
         true // Cargar en el footer
     );
 }
@@ -1369,3 +1369,61 @@ function metapack_custom_seo_title_tag($title_parts) {
     return $title_parts;
 }
 add_filter('document_title_parts', 'metapack_custom_seo_title_tag');
+
+// =================================================
+// OPTIMIZACIONES DE RENDIMIENTO Y ACCESIBILIDAD (MOBILE/WCAG)
+// =================================================
+
+// 1. Agregar atributo 'defer' a script principal para no bloquear el renderizado
+function metapack_defer_scripts($tag, $handle, $src) {
+    if ('metapack-script' === $handle) {
+        return '<script src="' . esc_url($src) . '" defer></script>' . "\n";
+    }
+    return $tag;
+}
+add_filter('script_loader_tag', 'metapack_defer_scripts', 10, 3);
+
+// 2. Desactivar la carga de fuentes remotas de Google (Elementor y otros)
+add_filter('elementor/frontend/print_google_fonts', '__return_false');
+
+function metapack_dequeue_external_google_fonts() {
+    // Dequeuing common font handles if loaded by plugins or core
+    wp_dequeue_style('open-sans');
+    wp_dequeue_style('montserrat');
+}
+add_action('wp_enqueue_scripts', 'metapack_dequeue_external_google_fonts', 999);
+
+// 3. Accesibilidad para formularios (Contact Form 7)
+// Envuelve inputs de selección y carga de archivos en <label> para Axe/Lighthouse
+function metapack_accessibility_cf7_form_elements($html) {
+    if (is_admin()) return $html;
+
+    $labels = array(
+        'calibre' => 'Calibre del producto',
+        'presentacion' => 'Presentación del producto',
+        'unidad' => 'Unidad de medida',
+        'uso' => 'Uso propuesto',
+        'estado' => 'Estado / Región de envío',
+        'archivo' => 'Subir archivo (Ficha técnica o especificaciones)'
+    );
+    
+    foreach ($labels as $name => $label_text) {
+        if ($name === 'archivo') {
+            $pattern = '/(<input[^>]*name="' . preg_quote($name, '/') . '"[^>]*>)/i';
+        } else {
+            $pattern = '/(<select[^>]*name="' . preg_quote($name, '/') . '"[^>]*>.*?<\/select>)/is';
+        }
+        
+        $html = preg_replace_callback($pattern, function($matches) use ($label_text) {
+            $element = $matches[0];
+            return '<label class="mp-cf7-label"><span class="screen-reader-text">' . esc_html($label_text) . '</span>' . $element . '</label>';
+        }, $html);
+    }
+    
+    // Corregir jerarquía de encabezados cambiando h4.mp-form-section__title por h3
+    $html = preg_replace('/<h4([^>]*)class="mp-form-section__title"([^>]*)>(.*?)<\/h4>/is', '<h3$1class="mp-form-section__title"$2>$3</h3>', $html);
+    
+    return $html;
+}
+add_filter('wpcf7_form_elements', 'metapack_accessibility_cf7_form_elements');
+
