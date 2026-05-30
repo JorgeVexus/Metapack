@@ -10,19 +10,11 @@
 // REGISTRAR ESTILOS Y SCRIPTS DE METAPACK
 // =================================================
 function metapack_enqueue_assets() {
-    // Google Fonts
-    wp_enqueue_style(
-        'metapack-fonts',
-        'https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Open+Sans:wght@400;600;700;800&display=swap',
-        array(),
-        null
-    );
-    
-    // Estilos principales de Metapack
+    // Estilos principales de Metapack (fuentes locales cargadas directamente en el CSS)
     wp_enqueue_style(
         'metapack-styles',
         get_stylesheet_directory_uri() . '/assets/css/metapack-styles.css',
-        array('metapack-fonts'),
+        array(),
         '1.0.2'
     );
     

@@ -191,11 +191,18 @@ get_template_part('template-parts/header', 'metapack');
                 <!-- Imagen Principal con Lightbox -->
                 <div class="mp-galeria-principal" id="galeria-principal">
                     <?php if (has_post_thumbnail()) : ?>
-                        <img src="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'large'); ?>" 
-                             alt="<?php the_title(); ?>" 
-                             class="mp-galeria-principal__img"
-                             id="imagen-principal"
-                             data-full="<?php echo get_the_post_thumbnail_url(get_the_ID(), 'full'); ?>">
+                        <?php 
+                        echo wp_get_attachment_image(
+                            get_post_thumbnail_id(), 
+                            'large', 
+                            false, 
+                            array(
+                                'class' => 'mp-galeria-principal__img',
+                                'id' => 'imagen-principal',
+                                'data-full' => get_the_post_thumbnail_url(get_the_ID(), 'full')
+                            )
+                        );
+                        ?>
                         <button class="mp-galeria-zoom" id="btn-zoom" aria-label="Ver imagen en grande">
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                                 <circle cx="11" cy="11" r="8"></circle>
@@ -222,9 +229,18 @@ get_template_part('template-parts/header', 'metapack');
                                 data-src="<?php echo esc_url($imagen['large']); ?>"
                                 data-full="<?php echo esc_url($imagen['full']); ?>"
                                 data-index="<?php echo $idx; ?>">
-                            <img src="<?php echo esc_url($imagen['thumb']); ?>" 
-                                 alt="<?php the_title(); ?>"
-                                 class="mp-galeria-thumb__img">
+                            <?php 
+                            if (!empty($imagen['id'])) {
+                                echo wp_get_attachment_image($imagen['id'], 'thumbnail', false, array('class' => 'mp-galeria-thumb__img'));
+                            } else {
+                                ?>
+                                <img src="<?php echo esc_url($imagen['thumb']); ?>" 
+                                     alt="<?php the_title(); ?>"
+                                     class="mp-galeria-thumb__img"
+                                     width="150" height="150">
+                                <?php
+                            }
+                            ?>
                         </button>
                     <?php $first = false; endforeach; ?>
                 </div>
@@ -489,7 +505,7 @@ if (!empty($all_industrias) && !is_wp_error($all_industrias)) :
             ?>
             <a href="<?php echo home_url('/productos/?industria=' . $industria->slug); ?>" class="mp-sector-card">
                 <div class="mp-sector-card__image">
-                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($industria->name); ?>">
+                    <img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($industria->name); ?>" width="400" height="300" loading="lazy">
                     <div class="mp-sector-card__overlay"></div>
                 </div>
                 <div class="mp-sector-card__content">

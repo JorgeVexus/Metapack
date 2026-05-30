@@ -144,7 +144,7 @@ get_template_part('template-parts/header', 'metapack');
     </div>
     
     <!-- Imagen en posición absoluta -->
-    <img class="mp-historia-v3__abs-img" src="https://www.metapack.com.mx/wp-content/uploads/2026/01/nuestra-historia-metapack-1.png" alt="Nuestra Historia Metapack">
+    <img class="mp-historia-v3__abs-img" src="https://www.metapack.com.mx/wp-content/uploads/2026/01/nuestra-historia-metapack-1.webp" alt="Nuestra Historia Metapack" width="1200" height="1048" loading="lazy">
 </section>
 
 
@@ -217,10 +217,10 @@ get_template_part('template-parts/header', 'metapack');
 <section class="mp-equipo-new">
     <div class="mp-equipo-new__canvas">
         <div class="mp-equipo-new__img-top mp-reveal-left">
-            <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/nuestroequipo1-min.webp" alt="Equipo Metapack 1">
+            <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/nuestroequipo1-min.webp" alt="Equipo Metapack 1" width="944" height="611" loading="lazy">
         </div>
         <div class="mp-equipo-new__img-bottom mp-reveal-right">
-            <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/nuestroequipo2-min.webp" alt="Equipo Metapack 2">
+            <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/nuestroequipo2-min.webp" alt="Equipo Metapack 2" width="933" height="648" loading="lazy">
         </div>
         
         <div class="mp-equipo-new__card mp-reveal-scale">

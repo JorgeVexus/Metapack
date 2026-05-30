@@ -20,7 +20,7 @@ if ($custom_logo_id) {
             <!-- Columna 1: Marca -->
             <div class="mp-footer-v2__col mp-footer-v2__col--brand">
                 <a href="<?php echo home_url('/'); ?>" class="mp-footer-v2__logo-link">
-                    <img src="<?php echo esc_url($logo_url); ?>" alt="Metapack Logo" class="mp-footer-v2__logo">
+                    <img src="<?php echo esc_url($logo_url); ?>" alt="Metapack Logo" class="mp-footer-v2__logo" width="180" height="45" loading="lazy">
                 </a>
                 <p class="mp-footer-v2__slogan">Líderes en fabricación y maquila de empaques para alimentos en México. Calidad, higiene y tecnología a su servicio.</p>
             </div>

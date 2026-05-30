@@ -320,7 +320,7 @@ sort($calibres_unicos);
 <!-- Script de filtrado -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const productos = document.querySelectorAll('.mp-product-card');
+    const productos = document.querySelectorAll('.mp-product-card-v2');
     const filtroCategoria = document.getElementById('filtro-categoria');
     const filtroIndustria = document.getElementById('filtro-industria');
     const filtroCalibre = document.getElementById('filtro-calibre');

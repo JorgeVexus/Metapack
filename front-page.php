@@ -115,7 +115,7 @@ get_template_part('template-parts/header', 'metapack');
             <!-- Card 1 -->
             <div class="mp-catalogo-card mp-reveal-up" style="transition-delay: 0.1s;">
                 <div class="mp-catalogo-card__image mp-catalogo-card__image--contain">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/lproduct-2.png" alt="Rollos de Aluminio">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/lproduct-2.webp" alt="Rollos de Aluminio" width="357" height="168" loading="lazy">
                 </div>
                 <div class="mp-catalogo-card__content">
                     <h3 class="mp-catalogo-card__title">ROLLOS DE ALUMINIO</h3>
@@ -137,7 +137,7 @@ get_template_part('template-parts/header', 'metapack');
             <!-- Card 2 -->
             <div class="mp-catalogo-card mp-reveal-up" style="transition-delay: 0.2s;">
                 <div class="mp-catalogo-card__image mp-catalogo-card__image--cover">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Image-Container.png" alt="Maquila">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Image-Container.webp" alt="Maquila" width="420" height="177" loading="lazy">
                 </div>
                 <div class="mp-catalogo-card__content">
                     <h3 class="mp-catalogo-card__title">MAQUILA Y PERSONALIZACIÓN</h3>
@@ -159,7 +159,7 @@ get_template_part('template-parts/header', 'metapack');
             <!-- Card 3 -->
             <div class="mp-catalogo-card mp-reveal-up" style="transition-delay: 0.3s;">
                 <div class="mp-catalogo-card__image mp-catalogo-card__image--cover">
-                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/complementos-de-empaque.png" alt="Complementos">
+                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/complementos-de-empaque.webp" alt="Complementos" width="420" height="177" loading="lazy">
                 </div>
                 <div class="mp-catalogo-card__content">
                     <h3 class="mp-catalogo-card__title">COMPLEMENTOS DE EMPAQUE</h3>
@@ -251,11 +251,11 @@ get_template_part('template-parts/header', 'metapack');
                         $stars = get_post_meta(get_the_ID(), '_testimonial_stars', true);
                         if (!$stars) $stars = 5;
                         $image = get_the_post_thumbnail_url(get_the_ID(), 'medium');
-                        if (!$image) $image = 'https://www.metapack.com.mx/wp-content/uploads/2026/01/lproduct-2.png';
+                        if (!$image) $image = 'https://www.metapack.com.mx/wp-content/uploads/2026/01/lproduct-2.webp';
                 ?>
                     <div class="mp-testimonial-card">
                         <div class="mp-testimonial-card__image-container">
-                            <img src="<?php echo esc_url($image); ?>" alt="<?php the_title_attribute(); ?>">
+                            <img src="<?php echo esc_url($image); ?>" alt="<?php the_title_attribute(); ?>" width="142" height="172" style="object-fit: cover;" loading="lazy">
                         </div>
                         <div class="mp-testimonial-card__content">
                             <div class="mp-testimonial-card__name-row">
@@ -285,7 +285,7 @@ get_template_part('template-parts/header', 'metapack');
                 ?>
                     <div class="mp-testimonial-card">
                         <div class="mp-testimonial-card__image-container">
-                            <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/lproduct-2.png" alt="César Amaya">
+                            <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/lproduct-2.webp" alt="César Amaya" width="142" height="172" style="object-fit: cover;" loading="lazy">
                         </div>
                         <div class="mp-testimonial-card__content">
                             <div class="mp-testimonial-card__name-row">
