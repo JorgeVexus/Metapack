@@ -125,20 +125,20 @@ get_template_part('template-parts/header', 'metapack');
 
         <div class="mp-historia-v3__stats">
             <div class="mp-historia-v3__stat mp-reveal-up mp-delay-1">
-                <div class="mp-historia-v3__stat-number">+40</div>
-                <div class="mp-historia-v3__stat-label">Años de experiencia</div>
+                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_1_number', '+20')); ?></div>
+                <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_1_label', 'Años de experiencia')); ?></div>
             </div>
             <div class="mp-historia-v2__stat mp-historia-v3__stat">
-                <div class="mp-historia-v3__stat-number">100%</div>
-                <div class="mp-historia-v3__stat-label">Capital humano</div>
+                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_2_number', '100%')); ?></div>
+                <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_2_label', 'Capital humano')); ?></div>
             </div>
             <div class="mp-historia-v2__stat mp-historia-v3__stat">
-                <div class="mp-historia-v3__stat-number">ISO</div>
-                <div class="mp-historia-v3__stat-label">Procesos estandarizados</div>
+                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_3_number', 'ISO')); ?></div>
+                <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_3_label', 'Procesos estandarizados')); ?></div>
             </div>
             <div class="mp-historia-v2__stat mp-historia-v3__stat">
-                <div class="mp-historia-v3__stat-number">24H</div>
-                <div class="mp-historia-v3__stat-label">Capacidad operativa</div>
+                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_4_number', '24H')); ?></div>
+                <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_4_label', 'Capacidad operativa')); ?></div>
             </div>
         </div>
     </div>

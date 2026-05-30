@@ -134,7 +134,8 @@ $form_textarea_value = $args['form_message'] ?? 'Me interesa cotizar: ' . get_th
                     </div>
                     <?php 
                     if (shortcode_exists('contact-form-7')) {
-                        echo do_shortcode('[contact-form-7 id="4cb8e5f" title="Formulario de contacto 1"]');
+                        $cf7_id = get_theme_mod('contact_cf7_id', '4cb8e5f');
+                        echo do_shortcode('[contact-form-7 id="' . esc_attr($cf7_id) . '" title="Formulario de contacto"]');
                     } else {
                         ?>
                         <form class="mp-form-grid" method="post" action="">

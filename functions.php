@@ -229,8 +229,8 @@ register_activation_hook(__FILE__, 'metapack_rewrite_flush');
 function metapack_contact_form_shortcode($atts) {
     // Si tienes Contact Form 7, usa su shortcode
     if (shortcode_exists('contact-form-7')) {
-        // Reemplaza "123" con el ID real de tu formulario CF7
-        return do_shortcode('[contact-form-7 id="123" title="Formulario de Contacto"]');
+        $cf7_id = get_theme_mod('contact_cf7_id', '4cb8e5f');
+        return do_shortcode('[contact-form-7 id="' . esc_attr($cf7_id) . '" title="Formulario de Contacto"]');
     }
     
     // Formulario HTML básico como fallback
@@ -407,6 +407,18 @@ function metapack_customizer_settings($wp_customize) {
     $wp_customize->add_control('contact_whatsapp', array(
         'label'       => __('Número de WhatsApp', 'metapack'),
         'description' => __('Sin espacios ni guiones, ej: 5215512345678', 'metapack'),
+        'section'     => 'metapack_contact',
+        'type'        => 'text',
+    ));
+    
+    // ID de Formulario CF7
+    $wp_customize->add_setting('contact_cf7_id', array(
+        'default'           => '4cb8e5f',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('contact_cf7_id', array(
+        'label'       => __('ID del Formulario de Contacto (CF7)', 'metapack'),
+        'description' => __('El ID del formulario creado en Contact Form 7, ej: 4cb8e5f', 'metapack'),
         'section'     => 'metapack_contact',
         'type'        => 'text',
     ));
@@ -1088,3 +1100,272 @@ function metapack_populate_states_dropdown($tag, $replace) {
     }
     return $tag;
 }
+
+// =================================================
+// ESTRUCTURA: REGISTRAR CPT CASOS DE ÉXITO
+// =================================================
+function metapack_register_casos_exito_cpt() {
+    $labels = array(
+        'name'               => 'Casos de Éxito',
+        'singular_name'      => 'Caso de Éxito',
+        'menu_name'          => 'Casos de Éxito',
+        'name_admin_bar'     => 'Caso de Éxito',
+        'add_new'            => 'Añadir Nuevo',
+        'add_new_item'       => 'Añadir Nuevo Caso de Éxito',
+        'new_item'           => 'Nuevo Caso de Éxito',
+        'edit_item'          => 'Editar Caso de Éxito',
+        'view_item'          => 'Ver Caso de Éxito',
+        'all_items'          => 'Todos los Casos',
+        'search_items'       => 'Buscar Casos de Éxito',
+        'parent_item_colon'  => 'Casos Padre:',
+        'not_found'          => 'No se encontraron casos.',
+        'not_found_in_trash' => 'No se encontraron casos en la papelera.'
+    );
+
+    $args = array(
+        'labels'             => $labels,
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => array('slug' => 'casos-exito'),
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => 5,
+        'show_in_rest'       => true,
+        'menu_icon'          => 'dashicons-awards',
+        'supports'           => array('title', 'editor', 'thumbnail', 'excerpt'),
+    );
+
+    register_post_type('caso_exito', $args);
+}
+add_action('init', 'metapack_register_casos_exito_cpt');
+
+
+// =================================================
+// MOTOR SEO B2B NATIVO (SIN PLUGINS)
+// =================================================
+
+// 1. Agregar Metabox SEO
+function metapack_seo_metabox() {
+    $post_types = array('post', 'page', 'producto', 'caso_exito');
+    foreach ($post_types as $post_type) {
+        add_meta_box(
+            'metapack_seo_settings',
+            'Configuración SEO (B2B)',
+            'metapack_seo_metabox_callback',
+            $post_type,
+            'normal',
+            'high'
+        );
+    }
+}
+add_action('add_meta_boxes', 'metapack_seo_metabox');
+
+// 2. Callback de Metabox SEO
+function metapack_seo_metabox_callback($post) {
+    wp_nonce_field('metapack_seo_save', 'metapack_seo_nonce');
+    $seo_title = get_post_meta($post->ID, '_metapack_seo_title', true);
+    $seo_desc = get_post_meta($post->ID, '_metapack_seo_desc', true);
+    $seo_keywords = get_post_meta($post->ID, '_metapack_seo_keywords', true);
+    $seo_og_image = get_post_meta($post->ID, '_metapack_seo_og_image', true);
+    ?>
+    <p>
+        <label for="metapack_seo_title"><strong>Título SEO:</strong></label><br>
+        <input type="text" id="metapack_seo_title" name="metapack_seo_title" value="<?php echo esc_attr($seo_title); ?>" style="width:100%; height: 35px; margin-top: 5px;" placeholder="Título optimizado (Recomendado: 50-60 caracteres)">
+        <span style="font-size: 11px; color: #666;">Dejar vacío para usar el título de la página por defecto.</span>
+    </p>
+    <p>
+        <label for="metapack_seo_desc"><strong>Meta Descripción B2B:</strong></label><br>
+        <textarea id="metapack_seo_desc" name="metapack_seo_desc" rows="3" style="width:100%; margin-top: 5px;" placeholder="Descripción persuasiva para Google (Recomendado: 120-160 caracteres)"><?php echo esc_textarea($seo_desc); ?></textarea>
+        <span style="font-size: 11px; color: #666;">Dejar vacío para usar un extracto automático.</span>
+    </p>
+    <p>
+        <label for="metapack_seo_keywords"><strong>Palabras Clave (Focus Keywords):</strong></label><br>
+        <input type="text" id="metapack_seo_keywords" name="metapack_seo_keywords" value="<?php echo esc_attr($seo_keywords); ?>" style="width:100%; height: 35px; margin-top: 5px;" placeholder="Ej: rollo aluminio industrial, empaque B2B">
+    </p>
+    <p>
+        <label for="metapack_seo_og_image"><strong>Imagen Open Graph (Compartir en Redes):</strong></label><br>
+        <input type="text" id="metapack_seo_og_image" name="metapack_seo_og_image" value="<?php echo esc_url($seo_og_image); ?>" style="width:80%; height: 35px; margin-top: 5px;" placeholder="https://...">
+        <input type="button" id="metapack_seo_og_image_btn" class="button" value="Subir / Seleccionar" style="height: 35px;">
+        <script>
+            jQuery(document).ready(function($){
+                $('#metapack_seo_og_image_btn').click(function(e) {
+                    e.preventDefault();
+                    var image = wp.media({ 
+                        title: 'Subir Imagen SEO',
+                        multiple: false
+                    }).open()
+                    .on('select', function(e){
+                        var uploaded_image = image.state().get('selection').first();
+                        var image_url = uploaded_image.toJSON().url;
+                        $('#metapack_seo_og_image').val(image_url);
+                    });
+                });
+            });
+        </script>
+    </p>
+    <?php
+}
+
+// 3. Guardar Metadatos de SEO
+function metapack_seo_save_meta($post_id) {
+    if (!isset($_POST['metapack_seo_nonce'])) return;
+    if (!wp_verify_nonce($_POST['metapack_seo_nonce'], 'metapack_seo_save')) return;
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (!current_user_can('edit_post', $post_id)) return;
+
+    if (isset($_POST['metapack_seo_title'])) {
+        update_post_meta($post_id, '_metapack_seo_title', sanitize_text_field($_POST['metapack_seo_title']));
+    }
+    if (isset($_POST['metapack_seo_desc'])) {
+        update_post_meta($post_id, '_metapack_seo_desc', sanitize_textarea_field($_POST['metapack_seo_desc']));
+    }
+    if (isset($_POST['metapack_seo_keywords'])) {
+        update_post_meta($post_id, '_metapack_seo_keywords', sanitize_text_field($_POST['metapack_seo_keywords']));
+    }
+    if (isset($_POST['metapack_seo_og_image'])) {
+        update_post_meta($post_id, '_metapack_seo_og_image', esc_url_raw($_POST['metapack_seo_og_image']));
+    }
+}
+add_action('save_post', 'metapack_seo_save_meta');
+
+// 4. Inyectar Metatags de SEO y Open Graph en el Header
+function metapack_seo_tags() {
+    if (is_admin()) return;
+
+    $title = '';
+    $desc = '';
+    $keywords = '';
+    $og_image = '';
+    $url = '';
+
+    if (is_singular()) {
+        $post_id = get_the_ID();
+        $title = get_post_meta($post_id, '_metapack_seo_title', true);
+        $desc = get_post_meta($post_id, '_metapack_seo_desc', true);
+        $keywords = get_post_meta($post_id, '_metapack_seo_keywords', true);
+        $og_image = get_post_meta($post_id, '_metapack_seo_og_image', true);
+        
+        // Fallbacks
+        if (empty($title)) {
+            $title = get_the_title() . ' | Metapack';
+        }
+        if (empty($desc)) {
+            $desc = wp_strip_all_tags(get_the_excerpt());
+            if (empty($desc)) {
+                $desc = wp_trim_words(wp_strip_all_tags(get_the_content()), 25);
+            }
+        }
+        if (empty($og_image)) {
+            $og_image = get_the_post_thumbnail_url($post_id, 'large');
+        }
+        $url = get_permalink($post_id);
+    } elseif (is_front_page()) {
+        $title = 'Proveedor de Papel Aluminio Industrial en México | Metapack';
+        $desc = 'Fabricamos y distribuimos rollos de aluminio industrial en toda México. Calibres 11 a 25 micras. Certificación FDA. Cotización en 24 horas.';
+        $keywords = 'papel aluminio industrial México, rollos de aluminio industrial, Metapack';
+        $url = home_url('/');
+    } elseif (is_post_type_archive('producto') || is_page('productos')) {
+        $title = 'Catálogo de Rollos de Aluminio para Alimentos y Food Service | Metapack';
+        $desc = 'Rollos de aluminio industrial, película stretch y papel encerado. 24 productos disponibles en distintos calibres y presentaciones. Envíos a todo México.';
+        $keywords = 'rollo de aluminio industrial, catálogo de productos aluminio, Metapack';
+        $url = home_url('/productos/');
+    } elseif (is_page('maquila')) {
+        $title = 'Maquila de Empaque en Aluminio y Marca Propia en México | Metapack';
+        $desc = 'Servicio de maquila para empaque en aluminio: rebobinado, slitting, embossing y private label. Soluciones a la medida para tu operación industrial.';
+        $keywords = 'maquila de empaque aluminio México, rebobinado slitting, marca propia';
+        $url = home_url('/maquila/');
+    } elseif (is_page('quienes-somos')) {
+        $title = 'Fabricante de Empaque Flexible en Guadalajara, Jalisco | Metapack';
+        $desc = 'Más de ' . get_theme_mod('stat_1_number', '20') . ' años fabricando y distribuyendo empaques en aluminio para la industria alimenticia en México. Certificación FDA. Conoce nuestra historia.';
+        $keywords = 'fabricante de empaque aluminio Guadalajara, historia Metapack';
+        $url = home_url('/quienes-somos/');
+    } elseif (is_home() || is_archive() || is_search()) {
+        $title = 'Blog sobre Empaque Industrial y Soluciones en Aluminio | Metapack';
+        $desc = 'Artículos técnicos, guías y consejos prácticos sobre papel aluminio, maquila de empaque y soluciones industriales para food service y manufactura.';
+        $url = home_url('/blog/');
+    }
+
+    // Default global logo fallback
+    if (empty($og_image)) {
+        $custom_logo_id = get_theme_mod('custom_logo');
+        if ($custom_logo_id) {
+            $og_image = wp_get_attachment_image_url($custom_logo_id, 'full');
+        } else {
+            $og_image = 'https://www.metapack.com.mx/wp-content/uploads/2026/01/logo_viejo-1.png';
+        }
+    }
+    if (empty($url)) {
+        global $wp;
+        $url = home_url(add_query_arg(array(), $wp->request ?? ''));
+    }
+
+    // Sanitize outputs
+    $desc = esc_attr(wp_strip_all_tags($desc));
+    $keywords = esc_attr($keywords);
+    $og_image = esc_url($og_image);
+    $url = esc_url($url);
+
+    // Meta tags
+    if (!empty($desc)) {
+        echo '<meta name="description" content="' . $desc . '" />' . "\n";
+    }
+    if (!empty($keywords)) {
+        echo '<meta name="keywords" content="' . $keywords . '" />' . "\n";
+    }
+    
+    // Open Graph
+    echo '<meta property="og:title" content="' . esc_attr($title) . '" />' . "\n";
+    if (!empty($desc)) {
+        echo '<meta property="og:description" content="' . $desc . '" />' . "\n";
+    }
+    echo '<meta property="og:type" content="' . (is_single() ? 'article' : 'website') . '" />' . "\n";
+    echo '<meta property="og:url" content="' . $url . '" />' . "\n";
+    echo '<meta property="og:image" content="' . $og_image . '" />' . "\n";
+    
+    // Twitter Cards
+    echo '<meta name="twitter:card" content="summary_large_image" />' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr($title) . '" />' . "\n";
+    if (!empty($desc)) {
+        echo '<meta name="twitter:description" content="' . $desc . '" />' . "\n";
+    }
+    echo '<meta name="twitter:image" content="' . $og_image . '" />' . "\n";
+}
+add_action('wp_head', 'metapack_seo_tags', 1);
+
+// 5. Filtrar el Título Nativo de WordPress para Ajuste de SEO
+function metapack_custom_seo_title_tag($title_parts) {
+    if (is_singular()) {
+        $custom_title = get_post_meta(get_the_ID(), '_metapack_seo_title', true);
+        if (!empty($custom_title)) {
+            $title_parts['title'] = $custom_title;
+            unset($title_parts['site']);
+            unset($title_parts['tagline']);
+        }
+    } elseif (is_front_page()) {
+        $title_parts['title'] = 'Proveedor de Papel Aluminio Industrial en México';
+        $title_parts['site'] = 'Metapack';
+        unset($title_parts['tagline']);
+    } elseif (is_post_type_archive('producto') || is_page('productos')) {
+        $title_parts['title'] = 'Catálogo de Rollos de Aluminio para Alimentos y Food Service';
+        $title_parts['site'] = 'Metapack';
+        unset($title_parts['tagline']);
+    } elseif (is_page('maquila')) {
+        $title_parts['title'] = 'Maquila de Empaque en Aluminio y Marca Propia en México';
+        $title_parts['site'] = 'Metapack';
+        unset($title_parts['tagline']);
+    } elseif (is_page('quienes-somos')) {
+        $title_parts['title'] = 'Fabricante de Empaque Flexible en Guadalajara, Jalisco';
+        $title_parts['site'] = 'Metapack';
+        unset($title_parts['tagline']);
+    } elseif (is_home() || is_archive() || is_search()) {
+        $title_parts['title'] = 'Blog sobre Empaque Industrial y Soluciones en Aluminio';
+        $title_parts['site'] = 'Metapack';
+        unset($title_parts['tagline']);
+    }
+    return $title_parts;
+}
+add_filter('document_title_parts', 'metapack_custom_seo_title_tag');
