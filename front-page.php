@@ -193,30 +193,30 @@ get_template_part('template-parts/header', 'metapack');
             <div class="mp-why-us__header-left">
                 <span class="mp-section-tag">SOBRE NOSOTROS</span>
                 <h2 class="mp-why-us__title"><?php echo esc_html(get_theme_mod('whyus_title', '¿POR QUÉ ELEGIRNOS?')); ?></h2>
-                <p class="mp-why-us__subtitle"><?php echo esc_html(get_theme_mod('whyus_subtitle', 'Combinamos capacidad industrial con atención al detalle para entregar empaques que cumplen con las normativas más exigentes.')); ?></p>
+                <p class="mp-why-us__subtitle"><?php echo esc_html(get_theme_mod('whyus_subtitle', 'Somos una de las empresas líderes del sector, con presencia constante en el top de la industria. Desde 1986, hemos mantenido un enfoque continuo en la innovación y en el desarrollo de productos de alta calidad, respaldados por procesos sólidos y una operación confiable.')); ?></p>
             </div>
             <a href="#mp-contacto" class="mp-btn mp-btn--primary mp-btn--shadow">SABER MÁS</a>
         </div>
 
         <div class="mp-stats-ghost">
             <div class="mp-stat-item mp-reveal-up" style="transition-delay: 0.1s;">
-                <div class="mp-stat-item__number"><?php echo esc_html(get_theme_mod('stat_1_number', '+20')); ?></div>
+                <div class="mp-stat-item__number"><?php echo esc_html(get_theme_mod('stat_1_number', '+40')); ?></div>
                 <div class="mp-stat-item__label"><?php echo esc_html(get_theme_mod('stat_1_label', 'Años de experiencia')); ?></div>
             </div>
 
             <div class="mp-stat-item mp-reveal-up" style="transition-delay: 0.2s;">
-                <div class="mp-stat-item__number"><?php echo esc_html(get_theme_mod('stat_2_number', '100%')); ?></div>
-                <div class="mp-stat-item__label"><?php echo esc_html(get_theme_mod('stat_2_label', 'Capital humano')); ?></div>
+                <div class="mp-stat-item__number"><?php echo esc_html(get_theme_mod('stat_2_number', '1176')); ?></div>
+                <div class="mp-stat-item__label"><?php echo esc_html(get_theme_mod('stat_2_label', 'Posiciones de almacenaje')); ?></div>
             </div>
 
             <div class="mp-stat-item mp-reveal-up" style="transition-delay: 0.3s;">
-                <div class="mp-stat-item__number"><?php echo esc_html(get_theme_mod('stat_3_number', 'ISO')); ?></div>
-                <div class="mp-stat-item__label"><?php echo esc_html(get_theme_mod('stat_3_label', 'Procesos estandarizados')); ?></div>
+                <div class="mp-stat-item__number"><?php echo esc_html(get_theme_mod('stat_3_number', '351M²')); ?></div>
+                <div class="mp-stat-item__label"><?php echo esc_html(get_theme_mod('stat_3_label', 'CEDIS')); ?></div>
             </div>
 
             <div class="mp-stat-item mp-reveal-up" style="transition-delay: 0.4s;">
-                <div class="mp-stat-item__number"><?php echo esc_html(get_theme_mod('stat_4_number', '24H')); ?></div>
-                <div class="mp-stat-item__label"><?php echo esc_html(get_theme_mod('stat_4_label', 'Capacidad operativa')); ?></div>
+                <div class="mp-stat-item__number"><?php echo esc_html(get_theme_mod('stat_4_number', '+8')); ?></div>
+                <div class="mp-stat-item__label"><?php echo esc_html(get_theme_mod('stat_4_label', 'Unidades propias')); ?></div>
             </div>
         </div>
     </div>
@@ -499,8 +499,8 @@ get_template_part('template-parts/header', 'metapack');
     <div class="mp-container">
         <!-- Header Centrado -->
         <div class="mp-products__header-v2 mp-reveal-up">
-            <h2 class="mp-products__title-v2">NUESTROS PRODUCTOS DESTACADOS</h2>
-            <p class="mp-products__subtitle-v2">Disponibles en distintas medidas y calibres</p>
+            <h2 class="mp-products__title-v2"><?php echo esc_html(get_theme_mod('featured_products_title', 'NUESTROS PRODUCTOS DESTACADOS')); ?></h2>
+            <p class="mp-products__subtitle-v2"><?php echo esc_html(get_theme_mod('featured_products_subtitle', 'Disponibles en distintas medidas y calibres')); ?></p>
             <div class="mp-products__action-v2">
                 <a href="<?php echo get_post_type_archive_link('producto'); ?>" class="mp-btn mp-btn--primary mp-btn--shadow">VER TODOS LOS PRODUCTOS</a>
             </div>
@@ -511,12 +511,21 @@ get_template_part('template-parts/header', 'metapack');
             <div class="mp-products__viewport">
                 <div class="mp-products__track" id="mp-productsTrack">
                     <?php
+                    $featured_ids = get_theme_mod('featured_products_ids', '');
                     $p_args = array(
                         'post_type' => 'producto',
                         'posts_per_page' => 6,
-                        'orderby' => 'date',
-                        'order' => 'DESC'
                     );
+                    
+                    if (!empty($featured_ids)) {
+                        $ids_array = array_map('intval', array_map('trim', explode(',', $featured_ids)));
+                        $p_args['post__in'] = $ids_array;
+                        $p_args['orderby'] = 'post__in';
+                    } else {
+                        $p_args['orderby'] = 'date';
+                        $p_args['order'] = 'DESC';
+                    }
+                    
                     $products_query = new WP_Query($p_args);
 
                     if ($products_query->have_posts()) :
@@ -581,10 +590,10 @@ get_template_part('template-parts/header', 'metapack');
             </div>
 
             <!-- Paginación dinámica -->
-            <div class="mp-slider-pagination" id="mp-productsPagination">
+            <div class="mp-products-pagination" id="mp-productsPagination">
                 <?php
                 if ($products_query->have_posts()) {
-                    $total_prods = $products_query->found_posts;
+                    $total_prods = $products_query->post_count; // FIX: usar post_count en lugar de found_posts
                     $dots_prods = ceil($total_prods / 3);
                     if ($dots_prods > 1) {
                         for ($j = 0; $j < $dots_prods; $j++) {

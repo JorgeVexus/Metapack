@@ -1,4 +1,4 @@
-﻿/**
+/**
  * METAPACK - Scripts Globales (v1.0.3)
  */
 
@@ -88,15 +88,39 @@
             revealElements.forEach(el => el.classList.add('active'));
         }
 
-        // 4. HEADER SHADOW
+        // 4. HEADER SMART SCROLL (Hide on scroll down, show on scroll up)
         const header = document.getElementById('mp-header');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 30) {
-                header.classList.add('mp-header--scrolled');
-            } else {
-                header.classList.remove('mp-header--scrolled');
-            }
-        });
+        if (header) {
+            console.log('Metapack: Smart scroll header initialized.');
+            let lastScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+
+            window.addEventListener('scroll', (e) => {
+                const target = e.target === document ? document.documentElement : e.target;
+                const currentScrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || (target && typeof target.scrollTop === 'number' ? target.scrollTop : 0) || 0;
+                console.log('Metapack Scroll: scrollY = ' + currentScrollY + ', lastScrollY = ' + lastScrollY + ', eventTarget =', e.target);
+
+                // Scrolled style (white background)
+                if (currentScrollY > 30) {
+                    header.classList.add('mp-header--scrolled');
+                } else {
+                    header.classList.remove('mp-header--scrolled');
+                }
+
+                // Hide/Show logic
+                const isMenuOpen = navMenu && navMenu.classList.contains('mp-nav--is-open');
+                if (currentScrollY > lastScrollY && currentScrollY > 150 && !isMenuOpen) {
+                    // Scrolling down & past header height & menu is not open -> Hide
+                    header.classList.add('mp-header--hidden');
+                } else {
+                    // Scrolling up -> Show
+                    header.classList.remove('mp-header--hidden');
+                }
+
+                lastScrollY = currentScrollY;
+            }, true); // Use capture phase to catch scroll events on any scrollable container
+        } else {
+            console.log('Metapack: Header element (#mp-header) not found.');
+        }
 
         // 5. CUSTOM FILE UPLOAD
         const fileInputs = document.querySelectorAll('.mp-file-input');
@@ -301,6 +325,146 @@
                 });
             }, { threshold: 0.25 });
             videoObserver.observe(heroVideo);
+        }
+
+        // 10. PRODUCTS CAROUSEL (Featured Products Slider)
+        const prodViewport = document.querySelector('.mp-products__viewport');
+        const prodTrack = document.getElementById('mp-productsTrack');
+        const prodPagination = document.getElementById('mp-productsPagination');
+
+        if (prodViewport && prodTrack && prodPagination) {
+            const dots = prodPagination.querySelectorAll('.mp-pagination-dot');
+            const slides = prodTrack.querySelectorAll('.mp-product-slide');
+
+            if (slides.length > 0 && dots.length > 0) {
+                let currentIndex = 0;
+
+                const getPageWidth = () => {
+                    const slide = slides[0];
+                    const slideStyle = window.getComputedStyle(slide);
+                    const marginLeft = parseFloat(slideStyle.marginLeft) || 0;
+                    const marginRight = parseFloat(slideStyle.marginRight) || 0;
+                    const slideWidth = slide.offsetWidth + marginLeft + marginRight;
+                    return 3 * slideWidth;
+                };
+
+                function updateCarousel(isScrollEvent = false) {
+                    if (!isScrollEvent) {
+                        const pageWidth = getPageWidth();
+                        prodViewport.scrollTo({
+                            left: currentIndex * pageWidth,
+                            behavior: 'smooth'
+                        });
+                    }
+
+                    // Update active dot class
+                    dots.forEach((dot, index) => {
+                        if (index === currentIndex) {
+                            dot.classList.add('mp-pagination-dot--active');
+                        } else {
+                            dot.classList.remove('mp-pagination-dot--active');
+                        }
+                    });
+                }
+
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', function () {
+                        currentIndex = index;
+                        updateCarousel(false);
+                    });
+                });
+
+                // Listen to scroll events on viewport to update dots during swipe
+                let scrollTimeout;
+                prodViewport.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        const pageWidth = getPageWidth();
+                        const scrollLeft = prodViewport.scrollLeft;
+                        const newIndex = Math.round(scrollLeft / pageWidth);
+                        if (newIndex !== currentIndex && newIndex < dots.length) {
+                            currentIndex = newIndex;
+                            updateCarousel(true);
+                        }
+                    }, 100);
+                }, { passive: true });
+
+                // Reset position on window resize to prevent alignment issues
+                window.addEventListener('resize', () => {
+                    currentIndex = 0;
+                    updateCarousel(false);
+                });
+            }
+        }
+
+        // 11. BLOG CAROUSEL (Blog Slider)
+        const blogViewport = document.querySelector('.mp-blog__viewport');
+        const blogTrack = document.getElementById('mp-blogTrack');
+        const blogPagination = document.getElementById('mp-blogPagination');
+
+        if (blogViewport && blogTrack && blogPagination) {
+            const dots = blogPagination.querySelectorAll('.mp-pagination-dot');
+            const slides = blogTrack.querySelectorAll('.mp-blog-slide');
+
+            if (slides.length > 0 && dots.length > 0) {
+                let currentIndex = 0;
+
+                const getPageWidth = () => {
+                    const slide = slides[0];
+                    const slideStyle = window.getComputedStyle(slide);
+                    const marginLeft = parseFloat(slideStyle.marginLeft) || 0;
+                    const marginRight = parseFloat(slideStyle.marginRight) || 0;
+                    const slideWidth = slide.offsetWidth + marginLeft + marginRight;
+                    return 2 * slideWidth;
+                };
+
+                function updateCarousel(isScrollEvent = false) {
+                    if (!isScrollEvent) {
+                        const pageWidth = getPageWidth();
+                        blogViewport.scrollTo({
+                            left: currentIndex * pageWidth,
+                            behavior: 'smooth'
+                        });
+                    }
+
+                    // Update active dot class
+                    dots.forEach((dot, index) => {
+                        if (index === currentIndex) {
+                            dot.classList.add('mp-pagination-dot--active');
+                        } else {
+                            dot.classList.remove('mp-pagination-dot--active');
+                        }
+                    });
+                }
+
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', function () {
+                        currentIndex = index;
+                        updateCarousel(false);
+                    });
+                });
+
+                // Listen to scroll events on viewport to update dots during swipe
+                let scrollTimeout;
+                blogViewport.addEventListener('scroll', () => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        const pageWidth = getPageWidth();
+                        const scrollLeft = blogViewport.scrollLeft;
+                        const newIndex = Math.round(scrollLeft / pageWidth);
+                        if (newIndex !== currentIndex && newIndex < dots.length) {
+                            currentIndex = newIndex;
+                            updateCarousel(true);
+                        }
+                    }, 100);
+                }, { passive: true });
+
+                // Reset position on window resize to prevent alignment issues
+                window.addEventListener('resize', () => {
+                    currentIndex = 0;
+                    updateCarousel(false);
+                });
+            }
         }
 
         console.log('--- METAPACK DEBUG READY ---');

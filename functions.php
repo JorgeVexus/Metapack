@@ -15,7 +15,7 @@ function metapack_enqueue_assets() {
         'metapack-styles',
         get_stylesheet_directory_uri() . '/assets/css/metapack-styles.min.css',
         array(),
-        '1.0.3'
+        '1.2.0'
     );
     
     // Script de Metapack minificado
@@ -23,7 +23,7 @@ function metapack_enqueue_assets() {
         'metapack-script',
         get_stylesheet_directory_uri() . '/assets/js/metapack-script.min.js',
         array(),
-        '1.0.5',
+        '1.2.0',
         true // Cargar en el footer
     );
 }
@@ -581,7 +581,7 @@ function metapack_customizer_extra_settings($wp_customize) {
     ));
     
     $wp_customize->add_setting('whyus_subtitle', array(
-        'default' => 'Combinamos capacidad industrial con atención al detalle para entregar empaques que cumplen con las normativas más exigentes.',
+        'default' => 'Somos una de las empresas líderes del sector, con presencia constante en el top de la industria. Desde 1986, hemos mantenido un enfoque continuo en la innovación y en el desarrollo de productos de alta calidad, respaldados por procesos sólidos y una operación confiable.',
         'sanitize_callback' => 'sanitize_textarea_field',
     ));
     $wp_customize->add_control('whyus_subtitle', array(
@@ -591,24 +591,24 @@ function metapack_customizer_extra_settings($wp_customize) {
     ));
     
     // Estadísticas
-    $wp_customize->add_setting('stat_1_number', array('default' => '+20', 'sanitize_callback' => 'sanitize_text_field'));
+    $wp_customize->add_setting('stat_1_number', array('default' => '+40', 'sanitize_callback' => 'sanitize_text_field'));
     $wp_customize->add_control('stat_1_number', array('label' => 'Estadística 1 - Número', 'section' => 'metapack_whyus', 'type' => 'text'));
     $wp_customize->add_setting('stat_1_label', array('default' => 'Años de experiencia', 'sanitize_callback' => 'sanitize_text_field'));
     $wp_customize->add_control('stat_1_label', array('label' => 'Estadística 1 - Etiqueta', 'section' => 'metapack_whyus', 'type' => 'text'));
     
-    $wp_customize->add_setting('stat_2_number', array('default' => '100%', 'sanitize_callback' => 'sanitize_text_field'));
+    $wp_customize->add_setting('stat_2_number', array('default' => '1176', 'sanitize_callback' => 'sanitize_text_field'));
     $wp_customize->add_control('stat_2_number', array('label' => 'Estadística 2 - Número', 'section' => 'metapack_whyus', 'type' => 'text'));
-    $wp_customize->add_setting('stat_2_label', array('default' => 'Capital humano', 'sanitize_callback' => 'sanitize_text_field'));
+    $wp_customize->add_setting('stat_2_label', array('default' => 'Posiciones de almacenaje', 'sanitize_callback' => 'sanitize_text_field'));
     $wp_customize->add_control('stat_2_label', array('label' => 'Estadística 2 - Etiqueta', 'section' => 'metapack_whyus', 'type' => 'text'));
     
-    $wp_customize->add_setting('stat_3_number', array('default' => 'ISO', 'sanitize_callback' => 'sanitize_text_field'));
+    $wp_customize->add_setting('stat_3_number', array('default' => '351M²', 'sanitize_callback' => 'sanitize_text_field'));
     $wp_customize->add_control('stat_3_number', array('label' => 'Estadística 3 - Número', 'section' => 'metapack_whyus', 'type' => 'text'));
-    $wp_customize->add_setting('stat_3_label', array('default' => 'Procesos estandarizados', 'sanitize_callback' => 'sanitize_text_field'));
+    $wp_customize->add_setting('stat_3_label', array('default' => 'CEDIS', 'sanitize_callback' => 'sanitize_text_field'));
     $wp_customize->add_control('stat_3_label', array('label' => 'Estadística 3 - Etiqueta', 'section' => 'metapack_whyus', 'type' => 'text'));
     
-    $wp_customize->add_setting('stat_4_number', array('default' => '24H', 'sanitize_callback' => 'sanitize_text_field'));
+    $wp_customize->add_setting('stat_4_number', array('default' => '+8', 'sanitize_callback' => 'sanitize_text_field'));
     $wp_customize->add_control('stat_4_number', array('label' => 'Estadística 4 - Número', 'section' => 'metapack_whyus', 'type' => 'text'));
-    $wp_customize->add_setting('stat_4_label', array('default' => 'Capacidad operativa', 'sanitize_callback' => 'sanitize_text_field'));
+    $wp_customize->add_setting('stat_4_label', array('default' => 'Unidades propias', 'sanitize_callback' => 'sanitize_text_field'));
     $wp_customize->add_control('stat_4_label', array('label' => 'Estadística 4 - Etiqueta', 'section' => 'metapack_whyus', 'type' => 'text'));
     
     // ========== SECCIÓN: CTA ==========
@@ -734,6 +734,49 @@ function metapack_maquila_customizer($wp_customize) {
     )));
 }
 add_action('customize_register', 'metapack_maquila_customizer');
+
+// ========== SECCIÓN: PRODUCTOS DESTACADOS ==========
+function metapack_featured_products_customizer($wp_customize) {
+    $wp_customize->add_section('metapack_featured_products', array(
+        'title'    => __('Productos Destacados', 'metapack'),
+        'priority' => 34,
+    ));
+    
+    // Título de la sección
+    $wp_customize->add_setting('featured_products_title', array(
+        'default' => 'NUESTROS PRODUCTOS DESTACADOS',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('featured_products_title', array(
+        'label'   => __('Título de la Sección', 'metapack'),
+        'section' => 'metapack_featured_products',
+        'type'    => 'text',
+    ));
+    
+    // Subtítulo
+    $wp_customize->add_setting('featured_products_subtitle', array(
+        'default' => 'Disponibles en distintas medidas y calibres',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('featured_products_subtitle', array(
+        'label'   => __('Subtítulo', 'metapack'),
+        'section' => 'metapack_featured_products',
+        'type'    => 'text',
+    ));
+    
+    // IDs de productos seleccionados
+    $wp_customize->add_setting('featured_products_ids', array(
+        'default' => '',
+        'sanitize_callback' => 'sanitize_text_field',
+    ));
+    $wp_customize->add_control('featured_products_ids', array(
+        'label'   => __('IDs de Productos Destacados', 'metapack'),
+        'description' => __('Ingresa los IDs de los productos separados por comas (ej. 14, 25, 32). Deja vacío para mostrar los últimos 6 productos cargados.', 'metapack'),
+        'section' => 'metapack_featured_products',
+        'type'    => 'text',
+    ));
+}
+add_action('customize_register', 'metapack_featured_products_customizer');
 
 // =================================================
 // HELPER PARA TIEMPO DE LECTURA

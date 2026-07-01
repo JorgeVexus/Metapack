@@ -111,34 +111,29 @@ get_template_part('template-parts/header', 'metapack');
         
         <div class="mp-historia-v3__content mp-reveal-up">
             <p class="mp-historia-v3__text">
-                A lo largo de nuestra trayectoria, hemos consolidado una operación robusta enfocada en 
-                la eficiencia y la adaptabilidad. Lo que comenzó como un proyecto de distribución ha 
-                evolucionado hacia una planta con procesos optimizados que nos permite entender y 
-                atender las necesidades específicas de cada cliente.
+                A lo largo de nuestra trayectoria, hemos consolidado una operación eficiente y adaptable. Lo que inició como un proyecto de distribución evolucionó hacia una planta con procesos optimizados, capaz de atender necesidades específicas y distintos volúmenes de producción.
             </p>
             <p class="mp-historia-v3__text">
-                Nuestra capacidad instalada está diseñada para escalar: desde la atención detallada que 
-                requiere un proyecto de marca propia, hasta el volumen demandante de la industria de 
-                alimentos, garantizando siempre el cumplimiento en tiempo y forma.
+                Desde 1986, protegemos lo que cubrimos. Nuestra operación se basa en la confianza, la inocuidad y el compromiso, con un crecimiento orgánico impulsado por la recomendación de nuestros clientes y un reconocimiento de marca que ha trascendido generaciones.
             </p>
         </div>
 
         <div class="mp-historia-v3__stats">
             <div class="mp-historia-v3__stat mp-reveal-up mp-delay-1">
-                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_1_number', '+20')); ?></div>
+                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_1_number', '+40')); ?></div>
                 <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_1_label', 'Años de experiencia')); ?></div>
             </div>
             <div class="mp-historia-v2__stat mp-historia-v3__stat">
-                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_2_number', '100%')); ?></div>
-                <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_2_label', 'Capital humano')); ?></div>
+                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_2_number', '1176')); ?></div>
+                <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_2_label', 'Posiciones de almacenaje')); ?></div>
             </div>
             <div class="mp-historia-v2__stat mp-historia-v3__stat">
-                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_3_number', 'ISO')); ?></div>
-                <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_3_label', 'Procesos estandarizados')); ?></div>
+                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_3_number', '351M²')); ?></div>
+                <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_3_label', 'CEDIS')); ?></div>
             </div>
             <div class="mp-historia-v2__stat mp-historia-v3__stat">
-                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_4_number', '24H')); ?></div>
-                <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_4_label', 'Capacidad operativa')); ?></div>
+                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_4_number', '+8')); ?></div>
+                <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_4_label', 'Unidades propias')); ?></div>
             </div>
         </div>
     </div>
