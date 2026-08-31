@@ -10,12 +10,18 @@
 // REGISTRAR ESTILOS Y SCRIPTS DE METAPACK
 // =================================================
 function metapack_enqueue_assets() {
+    $css_path = get_template_directory() . '/assets/css/metapack-styles.min.css';
+    $css_ver  = file_exists($css_path) ? filemtime($css_path) : '1.3.2';
+    
+    $js_path  = get_template_directory() . '/assets/js/metapack-script.min.js';
+    $js_ver   = file_exists($js_path) ? filemtime($js_path) : '1.3.2';
+
     // Estilos principales de Metapack (fuentes locales cargadas directamente en el CSS minificado)
     wp_enqueue_style(
         'metapack-styles',
         get_stylesheet_directory_uri() . '/assets/css/metapack-styles.min.css',
         array(),
-        '1.2.0'
+        $css_ver
     );
     
     // Script de Metapack minificado
@@ -23,7 +29,7 @@ function metapack_enqueue_assets() {
         'metapack-script',
         get_stylesheet_directory_uri() . '/assets/js/metapack-script.min.js',
         array(),
-        '1.2.0',
+        $js_ver,
         true // Cargar en el footer
     );
 }
@@ -316,6 +322,17 @@ function metapack_customizer_settings($wp_customize) {
         'type'    => 'url',
     ));
     
+    // Poster del Video (Opcional)
+    $wp_customize->add_setting('hero_poster', array(
+        'default'           => '',
+        'sanitize_callback' => 'esc_url_raw',
+    ));
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'hero_poster', array(
+        'label'       => __('Imagen Poster del Video (Opcional)', 'metapack'),
+        'description' => __('Fotograma que se muestra mientras carga el video', 'metapack'),
+        'section'     => 'metapack_hero',
+    )));
+    
     // ========== SECCIÓN: CONTACTO ==========
     $wp_customize->add_section('metapack_contact', array(
         'title'    => __('Información de Contacto', 'metapack'),
@@ -596,9 +613,9 @@ function metapack_customizer_extra_settings($wp_customize) {
     $wp_customize->add_setting('stat_1_label', array('default' => 'Años de experiencia', 'sanitize_callback' => 'sanitize_text_field'));
     $wp_customize->add_control('stat_1_label', array('label' => 'Estadística 1 - Etiqueta', 'section' => 'metapack_whyus', 'type' => 'text'));
     
-    $wp_customize->add_setting('stat_2_number', array('default' => '1176', 'sanitize_callback' => 'sanitize_text_field'));
+    $wp_customize->add_setting('stat_2_number', array('default' => '+500K', 'sanitize_callback' => 'sanitize_text_field'));
     $wp_customize->add_control('stat_2_number', array('label' => 'Estadística 2 - Número', 'section' => 'metapack_whyus', 'type' => 'text'));
-    $wp_customize->add_setting('stat_2_label', array('default' => 'Posiciones de almacenaje', 'sanitize_callback' => 'sanitize_text_field'));
+    $wp_customize->add_setting('stat_2_label', array('default' => 'Producción mensual', 'sanitize_callback' => 'sanitize_text_field'));
     $wp_customize->add_control('stat_2_label', array('label' => 'Estadística 2 - Etiqueta', 'section' => 'metapack_whyus', 'type' => 'text'));
     
     $wp_customize->add_setting('stat_3_number', array('default' => '351M²', 'sanitize_callback' => 'sanitize_text_field'));
@@ -1185,6 +1202,69 @@ function metapack_register_casos_exito_cpt() {
     register_post_type('caso_exito', $args);
 }
 add_action('init', 'metapack_register_casos_exito_cpt');
+
+/**
+ * Metabox para detalles de Caso de Éxito / Maquila
+ */
+function metapack_caso_exito_metabox() {
+    add_meta_box(
+        'metapack_caso_details',
+        'Detalles del Caso / Proyecto (Maquila)',
+        'metapack_caso_exito_metabox_callback',
+        'caso_exito',
+        'normal',
+        'high'
+    );
+}
+add_action('add_meta_boxes', 'metapack_caso_exito_metabox');
+
+function metapack_caso_exito_metabox_callback($post) {
+    wp_nonce_field('metapack_caso_save', 'metapack_caso_nonce');
+    $cliente = get_post_meta($post->ID, '_caso_cliente', true);
+    $industria = get_post_meta($post->ID, '_caso_industria', true);
+    $servicios = get_post_meta($post->ID, '_caso_servicios', true);
+    $enlace = get_post_meta($post->ID, '_caso_enlace', true);
+    ?>
+    <p>
+        <label for="caso_cliente"><strong>Cliente / Empresa (Referencia):</strong></label><br>
+        <input type="text" id="caso_cliente" name="caso_cliente" value="<?php echo esc_attr($cliente); ?>" style="width:100%; height: 35px; margin-top: 5px;" placeholder="Ej: Industria Alimenticia / Empresa Cliente">
+        <span style="font-size: 11px; color: #666;">Nombre o referencia del cliente/proyecto.</span>
+    </p>
+    <p>
+        <label for="caso_industria"><strong>Industria / Sector:</strong></label><br>
+        <input type="text" id="caso_industria" name="caso_industria" value="<?php echo esc_attr($industria); ?>" style="width:100%; height: 35px; margin-top: 5px;" placeholder="Ej: INDUSTRIA ALIMENTICIA">
+    </p>
+    <p>
+        <label for="caso_servicios"><strong>Servicios Aplicados (un servicio por línea):</strong></label><br>
+        <textarea id="caso_servicios" name="caso_servicios" rows="3" style="width:100%; margin-top: 5px;" placeholder="Maquila&#10;Empaque&#10;Adaptación de formato"><?php echo esc_textarea($servicios); ?></textarea>
+    </p>
+    <p>
+        <label for="caso_enlace"><strong>Enlace de Acción / Botón (Opcional):</strong></label><br>
+        <input type="text" id="caso_enlace" name="caso_enlace" value="<?php echo esc_url($enlace); ?>" style="width:100%; height: 35px; margin-top: 5px;" placeholder="https://... o #mp-contacto">
+    </p>
+    <?php
+}
+
+function metapack_caso_exito_save_meta($post_id) {
+    if (!isset($_POST['metapack_caso_nonce'])) return;
+    if (!wp_verify_nonce($_POST['metapack_caso_nonce'], 'metapack_caso_save')) return;
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) return;
+    if (!current_user_can('edit_post', $post_id)) return;
+
+    if (isset($_POST['caso_cliente'])) {
+        update_post_meta($post_id, '_caso_cliente', sanitize_text_field($_POST['caso_cliente']));
+    }
+    if (isset($_POST['caso_industria'])) {
+        update_post_meta($post_id, '_caso_industria', sanitize_text_field($_POST['caso_industria']));
+    }
+    if (isset($_POST['caso_servicios'])) {
+        update_post_meta($post_id, '_caso_servicios', sanitize_textarea_field($_POST['caso_servicios']));
+    }
+    if (isset($_POST['caso_enlace'])) {
+        update_post_meta($post_id, '_caso_enlace', esc_url_raw($_POST['caso_enlace']));
+    }
+}
+add_action('save_post_caso_exito', 'metapack_caso_exito_save_meta');
 
 
 // =================================================

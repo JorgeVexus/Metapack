@@ -186,110 +186,139 @@ $carousel_images = array(
 
             <div class="mp-maquila__viewport">
                 <div class="mp-maquila__track" id="mp-maquilaTrack">
-                    <!-- Slide 1 -->
-                    <div class="mp-maquila-slide">
-                        <div class="mp-maquila-card">
-                            <div class="mp-maquila-card__image">
-                                <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image.webp"
-                                    alt="Empaque industrial" width="541" height="354" loading="lazy">
-                            </div>
-                            <div class="mp-maquila-card__content">
-                                <h4 class="mp-maquila-card__card-title">Empaque industrial para alimentos preparados
-                                </h4>
-                                <div class="mp-maquila-card__tags">
-                                    <div class="mp-maquila-card__tag">
-                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                                            <path d="M15 15H3V6L9 3L15 6V15Z" stroke="currentColor" stroke-width="1.5" />
-                                            <path d="M6 15V10H9V15" stroke="currentColor" stroke-width="1.5" />
-                                        </svg>
-                                        ALIMENTOS SANTA ELENA
-                                    </div>
-                                    <div class="mp-maquila-card__tag">INDUSTRIA ALIMENTICIA</div>
-                                </div>
-                                <p class="mp-maquila-card__text">Desarrollo de solución en aluminio para procesos de
-                                    empaque en línea de producción. Diseño de presentación adaptada a operación
-                                    industrial y requerimientos del cliente.</p>
-                                <div class="mp-maquila-card__services">
-                                    <h5 class="mp-maquila-card__services-title">Servicios aplicados</h5>
-                                    <ul class="mp-maquila-card__services-list">
-                                        <li><span class="mp-bullet"></span> Maquila</li>
-                                        <li><span class="mp-bullet"></span> Empaque</li>
-                                        <li><span class="mp-bullet"></span> Adaptación de formato</li>
-                                    </ul>
-                                </div>
-                                <button class="mp-btn mp-btn--primary mp-btn--full">Ver aplicación</button>
-                            </div>
-                        </div>
-                    </div>
+                    <?php
+                    $casos_maquila_query = new WP_Query(array(
+                        'post_type'      => 'caso_exito',
+                        'posts_per_page' => 6,
+                        'post_status'    => 'publish',
+                    ));
 
-                    <!-- Slide 2 -->
-                    <div class="mp-maquila-slide">
-                        <div class="mp-maquila-card">
-                            <div class="mp-maquila-card__image">
-                                <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-1.webp"
-                                    alt="Cadena de restaurantes" width="541" height="354" loading="lazy">
-                            </div>
-                            <div class="mp-maquila-card__content">
-                                <h4 class="mp-maquila-card__card-title">Solución de empaque para cadena de restaurantes
-                                </h4>
-                                <div class="mp-maquila-card__tags">
-                                    <div class="mp-maquila-card__tag">
-                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                                            <path d="M15 15H3V6L9 3L15 6V15Z" stroke="white" stroke-width="1.5" />
-                                            <path d="M6 15V10H9V15" stroke="white" stroke-width="1.5" />
-                                        </svg>
-                                        GRUPO SABORES URBANOS
+                    if ($casos_maquila_query->have_posts()) :
+                        while ($casos_maquila_query->have_posts()) : $casos_maquila_query->the_post();
+                            $caso_cliente   = get_post_meta(get_the_ID(), '_caso_cliente', true);
+                            $caso_industria = get_post_meta(get_the_ID(), '_caso_industria', true);
+                            $caso_servicios = get_post_meta(get_the_ID(), '_caso_servicios', true);
+                            $caso_enlace    = get_post_meta(get_the_ID(), '_caso_enlace', true);
+                            if (!$caso_enlace) {
+                                $caso_enlace = '#mp-contacto';
+                            }
+                            $services_array = !empty($caso_servicios) ? array_filter(array_map('trim', explode("\n", str_replace(',', "\n", $caso_servicios)))) : array();
+                            ?>
+                            <div class="mp-maquila-slide">
+                                <div class="mp-maquila-card">
+                                    <div class="mp-maquila-card__image">
+                                        <?php if (has_post_thumbnail()) : ?>
+                                            <?php the_post_thumbnail('large', array('alt' => get_the_title(), 'loading' => 'lazy')); ?>
+                                        <?php else : ?>
+                                            <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image.webp" alt="<?php the_title_attribute(); ?>" width="541" height="354" loading="lazy">
+                                        <?php endif; ?>
                                     </div>
-                                    <div class="mp-maquila-card__tag">RESTAURANTES</div>
+                                    <div class="mp-maquila-card__content">
+                                        <h4 class="mp-maquila-card__card-title"><?php the_title(); ?></h4>
+                                        <div class="mp-maquila-card__tags">
+                                            <?php if ($caso_cliente) : ?>
+                                                <div class="mp-maquila-card__tag">
+                                                    <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                        <path d="M15 15H3V6L9 3L15 6V15Z" stroke="white" stroke-width="1.5" />
+                                                        <path d="M6 15V10H9V15" stroke="white" stroke-width="1.5" />
+                                                    </svg>
+                                                    <?php echo esc_html($caso_cliente); ?>
+                                                </div>
+                                            <?php endif; ?>
+                                            <?php if ($caso_industria) : ?>
+                                                <div class="mp-maquila-card__tag"><?php echo esc_html($caso_industria); ?></div>
+                                            <?php endif; ?>
+                                        </div>
+                                        <p class="mp-maquila-card__text"><?php echo get_the_excerpt() ? esc_html(get_the_excerpt()) : wp_trim_words(get_the_content(), 25); ?></p>
+                                        <?php if (!empty($services_array)) : ?>
+                                            <div class="mp-maquila-card__services">
+                                                <h5 class="mp-maquila-card__services-title">Servicios aplicados</h5>
+                                                <ul class="mp-maquila-card__services-list">
+                                                    <?php foreach ($services_array as $service) : ?>
+                                                        <li><span class="mp-bullet"></span> <?php echo esc_html($service); ?></li>
+                                                    <?php endforeach; ?>
+                                                </ul>
+                                            </div>
+                                        <?php endif; ?>
+                                        <a href="<?php echo esc_url($caso_enlace); ?>" class="mp-btn mp-btn--primary mp-btn--full">Ver aplicación</a>
+                                    </div>
                                 </div>
-                                <p class="mp-maquila-card__text">Desarrollo de empaques individuales en aluminio para
-                                    servicio de alimentos y operación de cocina a gran volumen.</p>
-                                <div class="mp-maquila-card__services">
-                                    <h5 class="mp-maquila-card__services-title">Servicios aplicados</h5>
-                                    <ul class="mp-maquila-card__services-list">
-                                        <li><span class="mp-bullet"></span> Maquila</li>
-                                        <li><span class="mp-bullet"></span> Diseño de empaque</li>
-                                        <li><span class="mp-bullet"></span> Producción personalizada</li>
-                                    </ul>
+                            </div>
+                            <?php
+                        endwhile;
+                        wp_reset_postdata();
+                    else :
+                        // Fallback de proyectos demostrativos sin nombres no administrados
+                        ?>
+                        <!-- Slide 1 -->
+                        <div class="mp-maquila-slide">
+                            <div class="mp-maquila-card">
+                                <div class="mp-maquila-card__image">
+                                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image.webp"
+                                        alt="Empaque industrial" width="541" height="354" loading="lazy">
                                 </div>
-                                <button class="mp-btn mp-btn--primary mp-btn--full">Ver aplicación</button>
+                                <div class="mp-maquila-card__content">
+                                    <h4 class="mp-maquila-card__card-title">Empaque industrial para alimentos preparados</h4>
+                                    <div class="mp-maquila-card__tags">
+                                        <div class="mp-maquila-card__tag">
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15 15H3V6L9 3L15 6V15Z" stroke="white" stroke-width="1.5" />
+                                                <path d="M6 15V10H9V15" stroke="white" stroke-width="1.5" />
+                                            </svg>
+                                            PROYECTO INDUSTRIAL
+                                        </div>
+                                        <div class="mp-maquila-card__tag">INDUSTRIA ALIMENTICIA</div>
+                                    </div>
+                                    <p class="mp-maquila-card__text">Desarrollo de solución en aluminio para procesos de
+                                        empaque en línea de producción. Diseño de presentación adaptada a operación
+                                        industrial y requerimientos del cliente.</p>
+                                    <div class="mp-maquila-card__services">
+                                        <h5 class="mp-maquila-card__services-title">Servicios aplicados</h5>
+                                        <ul class="mp-maquila-card__services-list">
+                                            <li><span class="mp-bullet"></span> Maquila</li>
+                                            <li><span class="mp-bullet"></span> Empaque</li>
+                                            <li><span class="mp-bullet"></span> Adaptación de formato</li>
+                                        </ul>
+                                    </div>
+                                    <a href="#mp-contacto" class="mp-btn mp-btn--primary mp-btn--full">Solicitar cotización</a>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <!-- Slide 3 -->
-                    <div class="mp-maquila-slide">
-                        <div class="mp-maquila-card">
-                            <div class="mp-maquila-card__image">
-                                <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-2.webp"
-                                    alt="Punto de venta" width="541" height="354" loading="lazy">
-                            </div>
-                            <div class="mp-maquila-card__content">
-                                <h4 class="mp-maquila-card__card-title">Soluciones para punto de venta</h4>
-                                <div class="mp-maquila-card__tags">
-                                    <div class="mp-maquila-card__tag">
-                                        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
-                                            <path d="M15 15H3V6L9 3L15 6V15Z" stroke="white" stroke-width="1.5" />
-                                            <path d="M6 15V10H9V15" stroke="white" stroke-width="1.5" />
-                                        </svg>
-                                        DISTRIBUIDORA CENTRAL MX
+                        <!-- Slide 2 -->
+                        <div class="mp-maquila-slide">
+                            <div class="mp-maquila-card">
+                                <div class="mp-maquila-card__image">
+                                    <img src="https://www.metapack.com.mx/wp-content/uploads/2026/01/Product-image-1.webp"
+                                        alt="Cadena de restaurantes" width="541" height="354" loading="lazy">
+                                </div>
+                                <div class="mp-maquila-card__content">
+                                    <h4 class="mp-maquila-card__card-title">Solución de empaque para cadenas de servicio</h4>
+                                    <div class="mp-maquila-card__tags">
+                                        <div class="mp-maquila-card__tag">
+                                            <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+                                                <path d="M15 15H3V6L9 3L15 6V15Z" stroke="white" stroke-width="1.5" />
+                                                <path d="M6 15V10H9V15" stroke="white" stroke-width="1.5" />
+                                            </svg>
+                                            FOOD SERVICE
+                                        </div>
+                                        <div class="mp-maquila-card__tag">RESTAURANTES</div>
                                     </div>
-                                    <div class="mp-maquila-card__tag">COMERCIO Y DISTRIBUCIÓN</div>
+                                    <p class="mp-maquila-card__text">Desarrollo de empaques individuales en aluminio para
+                                        servicio de alimentos y operación de cocina a gran volumen.</p>
+                                    <div class="mp-maquila-card__services">
+                                        <h5 class="mp-maquila-card__services-title">Servicios aplicados</h5>
+                                        <ul class="mp-maquila-card__services-list">
+                                            <li><span class="mp-bullet"></span> Maquila</li>
+                                            <li><span class="mp-bullet"></span> Diseño de empaque</li>
+                                            <li><span class="mp-bullet"></span> Producción personalizada</li>
+                                        </ul>
+                                    </div>
+                                    <a href="#mp-contacto" class="mp-btn mp-btn--primary mp-btn--full">Solicitar cotización</a>
                                 </div>
-                                <p class="mp-maquila-card__text">Empaques secundarios diseñados para clasificación,
-                                    resguardo y entrega de productos.</p>
-                                <div class="mp-maquila-card__services">
-                                    <h5 class="mp-maquila-card__services-title">Servicios aplicados</h5>
-                                    <ul class="mp-maquila-card__services-list">
-                                        <li><span class="mp-bullet"></span> Maquila</li>
-                                        <li><span class="mp-bullet"></span> Diseño de empaque</li>
-                                        <li><span class="mp-bullet"></span> Logística</li>
-                                    </ul>
-                                </div>
-                                <button class="mp-btn mp-btn--primary mp-btn--full">Ver aplicación</button>
                             </div>
                         </div>
-                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
 

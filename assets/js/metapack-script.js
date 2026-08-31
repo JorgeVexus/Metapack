@@ -146,51 +146,76 @@
             });
         });
 
-        // 6. TESTIMONIALS INFINITE SLIDER
+        // 6. SLIDER DE TESTIMONIOS (Responsive, Touch & Infinite)
         const track = document.getElementById('mp-testimonialsTrack');
+        const pagination = document.getElementById('mp-testimonialsPagination');
         if (track) {
-            const originalCards = track.querySelectorAll('.mp-testimonial-card');
+            const slider = track.parentElement; // .mp-testimonials__slider
+            const originalCards = Array.from(track.querySelectorAll('.mp-testimonial-card'));
             const cardCount = originalCards.length;
 
-            if (cardCount > 3) {
-                // Clone all cards for infinite effect
-                // We clone enough to cover the viewport width + buffer
-                originalCards.forEach(card => {
-                    const clone = card.cloneNode(true);
-                    clone.setAttribute('aria-hidden', 'true');
-                    track.appendChild(clone);
-                });
-
+            if (cardCount > 1) {
                 let currentIndex = 0;
                 let isPaused = false;
                 let sliderInterval;
 
-                // Function to get current card width (responsive)
-                const getCardWidth = () => {
-                    const card = track.querySelector('.mp-testimonial-card');
+                const dots = pagination ? Array.from(pagination.querySelectorAll('.mp-pagination-dot')) : [];
+
+                const getCardStep = () => {
+                    const firstCard = originalCards[0];
+                    if (!firstCard) return 0;
                     const style = window.getComputedStyle(track);
-                    const gap = parseFloat(style.gap) || 30; // 30px from CSS
-                    return card.offsetWidth + gap;
+                    const gap = parseFloat(style.columnGap || style.gap) || 0;
+                    return firstCard.getBoundingClientRect().width + gap;
+                };
+
+                const setCurrentIndex = (nextIndex) => {
+                    currentIndex = Math.max(0, Math.min(cardCount - 1, nextIndex));
+                };
+
+                const updateDots = () => {
+                    if (dots.length === 0) return;
+                    const activeIndex = currentIndex % cardCount;
+                    dots.forEach((dot, idx) => {
+                        if (idx === activeIndex) {
+                            dot.classList.add('mp-pagination-dot--active');
+                        } else {
+                            dot.classList.remove('mp-pagination-dot--active');
+                        }
+                    });
+                };
+
+                const updateTestimonialTrack = (animate = true) => {
+                    const cardStep = getCardStep();
+                    if (!cardStep) return;
+                    track.style.transition = animate ? 'transform 0.5s ease-in-out' : 'none';
+                    track.style.transform = `translate3d(-${currentIndex * cardStep}px, 0, 0)`;
+                    updateDots();
                 };
 
                 const moveSlider = () => {
                     if (isPaused) return;
-
-                    currentIndex++;
-                    const cardWidth = getCardWidth();
-
-                    track.style.transition = 'transform 0.5s ease-in-out';
-                    track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
-
-                    // Reset when reaching the end of original set
-                    if (currentIndex >= cardCount) {
-                        setTimeout(() => {
-                            track.style.transition = 'none';
-                            currentIndex = 0;
-                            track.style.transform = `translateX(0)`;
-                        }, 500); // 500 matches transition duration
-                    }
+                    setCurrentIndex(currentIndex === cardCount - 1 ? 0 : currentIndex + 1);
+                    updateTestimonialTrack(true);
                 };
+
+                // Dot navigation clicks
+                dots.forEach((dot, index) => {
+                    dot.addEventListener('click', () => {
+                        setCurrentIndex(index);
+                        updateTestimonialTrack(true);
+                        clearInterval(sliderInterval);
+                        sliderInterval = setInterval(moveSlider, 3500);
+                    });
+                });
+
+                // Init layout
+                updateTestimonialTrack(false);
+
+                // Recalcular el paso sin alterar el índice al rotar o redimensionar.
+                window.addEventListener('resize', () => {
+                    updateTestimonialTrack(false);
+                });
 
                 // Start Auto-play
                 sliderInterval = setInterval(moveSlider, 3500);
@@ -199,7 +224,7 @@
                 track.addEventListener('mouseenter', () => isPaused = true);
                 track.addEventListener('mouseleave', () => isPaused = false);
 
-                // Touch handling for mobile
+                // Touch handling for mobile swipe
                 let touchStartX = 0;
                 let touchEndX = 0;
 
@@ -211,54 +236,83 @@
                 track.addEventListener('touchend', e => {
                     touchEndX = e.changedTouches[0].screenX;
                     isPaused = false;
-                    // Simple swipe check
-                    /*
-                    if (touchStartX - touchEndX > 50) {
-                        // Swiped Left (Next)
-                        moveSlider();
-                        // Reset interval to avoid double jump
+                    const diff = touchStartX - touchEndX;
+                    if (Math.abs(diff) > 40) {
+                        if (diff > 0) {
+                            setCurrentIndex(currentIndex === cardCount - 1 ? 0 : currentIndex + 1);
+                        } else {
+                            setCurrentIndex(currentIndex === 0 ? cardCount - 1 : currentIndex - 1);
+                        }
+                        updateTestimonialTrack(true);
                         clearInterval(sliderInterval);
                         sliderInterval = setInterval(moveSlider, 3500);
                     }
-                    */
                 }, { passive: true });
             }
         }
 
-        // 7. MAQUILA CAROUSEL (Re-implemented from legacy)
+        // 7. MAQUILA CAROUSEL (Re-implemented with touch & responsive fixes)
         const maquilaTrack = document.getElementById('mp-maquilaTrack');
         const maquilaPrev = document.getElementById('mp-maquilaPrev');
         const maquilaNext = document.getElementById('mp-maquilaNext');
         let maquilaIndex = 0;
 
-        if (maquilaTrack && maquilaPrev && maquilaNext) {
+        if (maquilaTrack) {
             const slides = maquilaTrack.querySelectorAll('.mp-maquila-slide');
             const slideCount = slides.length;
 
             function updateMaquilaSlide() {
                 if (slides.length === 0) return;
-                const slideWidth = slides[0].offsetWidth; // Full width of slide
+                const viewport = maquilaTrack.parentElement;
+                const slideWidth = viewport ? viewport.clientWidth : slides[0].offsetWidth;
                 maquilaTrack.style.transition = 'transform 0.5s ease-in-out';
                 maquilaTrack.style.transform = `translateX(-${maquilaIndex * slideWidth}px)`;
             }
 
-            maquilaNext.addEventListener('click', function () {
-                if (maquilaIndex < slideCount - 1) {
-                    maquilaIndex++;
-                } else {
-                    maquilaIndex = 0; // Loop back
-                }
-                updateMaquilaSlide();
-            });
+            if (maquilaNext) {
+                maquilaNext.addEventListener('click', function () {
+                    if (maquilaIndex < slideCount - 1) {
+                        maquilaIndex++;
+                    } else {
+                        maquilaIndex = 0; // Loop back
+                    }
+                    updateMaquilaSlide();
+                });
+            }
 
-            maquilaPrev.addEventListener('click', function () {
-                if (maquilaIndex > 0) {
-                    maquilaIndex--;
-                } else {
-                    maquilaIndex = slideCount - 1; // Loop to end
+            if (maquilaPrev) {
+                maquilaPrev.addEventListener('click', function () {
+                    if (maquilaIndex > 0) {
+                        maquilaIndex--;
+                    } else {
+                        maquilaIndex = slideCount - 1; // Loop to end
+                    }
+                    updateMaquilaSlide();
+                });
+            }
+
+            // Touch swipe support for Maquila carousel
+            let mTouchStartX = 0;
+            let mTouchEndX = 0;
+
+            maquilaTrack.addEventListener('touchstart', e => {
+                mTouchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            maquilaTrack.addEventListener('touchend', e => {
+                mTouchEndX = e.changedTouches[0].screenX;
+                const diff = mTouchStartX - mTouchEndX;
+                if (Math.abs(diff) > 40) {
+                    if (diff > 0) {
+                        if (maquilaIndex < slideCount - 1) maquilaIndex++;
+                        else maquilaIndex = 0;
+                    } else {
+                        if (maquilaIndex > 0) maquilaIndex--;
+                        else maquilaIndex = slideCount - 1;
+                    }
+                    updateMaquilaSlide();
                 }
-                updateMaquilaSlide();
-            });
+            }, { passive: true });
 
             // Handle window resize
             window.addEventListener('resize', updateMaquilaSlide);
@@ -266,7 +320,9 @@
 
         // 8. COUNTER ANIMATION FOR STATS (Re-implemented from legacy)
         if ('IntersectionObserver' in window) {
-            const statNumbers = document.querySelectorAll('.mp-stat-item__number'); // Updated class name from front-page.php
+            // .mp-stat-item__number = front-page KPIs
+            // .mp-stat-animate       = quienes somos historia stats
+            const statNumbers = document.querySelectorAll('.mp-stat-item__number, .mp-stat-animate');
 
             const counterObserver = new IntersectionObserver(function (entries) {
                 entries.forEach(function (entry) {

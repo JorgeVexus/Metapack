@@ -1,4 +1,4 @@
-/* ========== GLOBAL RESET ========== */
+﻿/* ========== GLOBAL RESET ========== */
 * {
     margin: 0;
     padding: 0;
@@ -350,6 +350,11 @@ INSTRUCCIONES:
     list-style: none !important;
     margin: 0 !important;
     padding: 0 !important;
+}
+
+/* CTA del menú móvil: oculto en desktop */
+.mp-nav__mobile-cta {
+    display: none;
 }
 
 .mp-nav__link {
@@ -3260,40 +3265,99 @@ body {
     .mp-maquila__carousel-container {
         max-width: 100% !important;
         position: relative;
+        overflow: hidden !important;
+        box-sizing: border-box !important;
     }
 
     .mp-maquila__viewport {
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        -webkit-overflow-scrolling: touch;
-        scroll-snap-type: x mandatory;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-
-    .mp-maquila__viewport::-webkit-scrollbar {
-        display: none;
+        overflow: hidden !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .mp-maquila-slide {
         flex: 0 0 100% !important;
-        scroll-snap-align: start;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        padding: 0 !important;
     }
 
     .mp-maquila-card {
         flex-direction: column !important;
+        width: 100% !important;
         max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+        border-radius: 12px !important;
     }
 
-    .mp-maquila-card__image,
+    .mp-maquila-card__image {
+        width: 100% !important;
+        max-width: 100% !important;
+        height: 220px !important;
+        box-sizing: border-box !important;
+    }
+
     .mp-maquila-card__content {
         width: 100% !important;
         max-width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+        padding: 20px 16px !important;
+        overflow: hidden !important;
+    }
+
+    .mp-maquila-card__card-title {
+        font-size: 18px !important;
+        line-height: 1.35 !important;
+        word-break: break-word !important;
+        margin-bottom: 14px !important;
+    }
+
+    .mp-maquila-card__tags {
+        display: flex !important;
+        flex-wrap: wrap !important;
+        gap: 8px !important;
+        max-width: 100% !important;
+        margin-bottom: 16px !important;
+    }
+
+    .mp-maquila-card__tag {
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        font-size: 11px !important;
+        padding: 4px 8px !important;
+        white-space: normal !important;
+        word-break: break-word !important;
+    }
+
+    .mp-maquila-card__tag svg {
+        flex-shrink: 0 !important;
+    }
+
+    .mp-maquila-card__text {
+        font-size: 14px !important;
+        line-height: 1.45 !important;
+        word-break: break-word !important;
+        margin-bottom: 20px !important;
+    }
+
+    .mp-maquila-card__services-title {
+        font-size: 15px !important;
+        margin-bottom: 8px !important;
+    }
+
+    .mp-maquila-card__services-list li {
+        font-size: 14px !important;
+        word-break: break-word !important;
     }
 
     .mp-maquila__title {
-        font-size: 28px !important;
-        line-height: 36px !important;
+        font-size: 26px !important;
+        line-height: 1.35 !important;
+        letter-spacing: 0 !important;
     }
 
     /* Move arrows BELOW the carousel on mobile */
@@ -5090,31 +5154,35 @@ body {
 }
 
 /* Card de maquila en galerÃ­a */
-.mp-maquila-card {
+.mp-producto-detalle .mp-maquila-card,
+.mp-maquila-card.mp-maquila-card--product {
     margin-top: 24px;
     padding: 20px;
-    background: var(--mp-white);
-    border: 1px solid var(--mp-border);
+    background: #FFFFFF !important;
+    border: 1px solid var(--mp-border) !important;
     border-radius: 10px;
+    min-height: auto !important;
+    flex-direction: column !important;
+    display: block !important;
 }
 
-.mp-maquila-card__title {
+.mp-producto-detalle .mp-maquila-card__title {
     font-family: var(--mp-font-title);
     font-size: 16px;
     font-weight: 700;
-    color: var(--mp-dark);
+    color: var(--mp-dark) !important;
     margin: 0 0 8px;
 }
 
-.mp-maquila-card__text {
+.mp-producto-detalle .mp-maquila-card__text {
     font-family: var(--mp-font-body);
     font-size: 13px;
-    color: var(--mp-gray);
+    color: var(--mp-gray) !important;
     line-height: 1.5;
     margin: 0 0 16px;
 }
 
-.mp-maquila-card__buttons {
+.mp-producto-detalle .mp-maquila-card__buttons {
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -8531,6 +8599,7 @@ body {
     margin-bottom: 15px !important;
     text-transform: uppercase !important;
     letter-spacing: -1px !important;
+    line-height: 1.25 !important;
 }
 
 .mp-testimonials__subtitle {
@@ -8547,7 +8616,6 @@ body {
     position: relative !important;
     padding: 40px 0 !important;
     overflow: visible !important;
-    /* CRITICAL: para que el quote se vea fuera */
 }
 
 .mp-testimonials__track {
@@ -8564,7 +8632,6 @@ body {
     gap: 16px !important;
     width: 483px !important;
     min-width: 483px !important;
-    /* Evita que colapse en flex */
     min-height: 226px !important;
     background: #FFFFFF !important;
     border: 0.5px solid rgba(130, 131, 131, 0.4) !important;
@@ -8573,7 +8640,6 @@ body {
     position: relative !important;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.08) !important;
     overflow: visible !important;
-    /* CRITICAL: necesario para el pop-out */
 }
 
 .mp-testimonial-card:hover {
@@ -8581,20 +8647,25 @@ body {
     box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.12) !important;
 }
 
-/* Bloque Izquierdo: Imagen */
+/* Bloque Izquierdo: Imagen / Logo */
 .mp-testimonial-card__image-container {
     width: 142px !important;
     height: 172px !important;
     border-radius: 8px !important;
     overflow: hidden !important;
     flex-shrink: 0 !important;
-    background: #f0f0f0 !important;
+    background: #ffffff !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 8px !important;
+    box-sizing: border-box !important;
 }
 
 .mp-testimonial-card__image-container img {
     width: 100% !important;
     height: 100% !important;
-    object-fit: cover !important;
+    object-fit: contain !important;
 }
 
 /* Bloque Derecho: Contenido */
@@ -8606,8 +8677,6 @@ body {
 }
 
 .mp-testimonial-card__name-row {
-    display: flex !important;
-    align-items: center !important;
     gap: 12px !important;
     margin-bottom: 4px !important;
 }
@@ -8667,14 +8736,50 @@ body {
 
 /* Responsive Móvil */
 @media (max-width: 768px) {
+    .mp-testimonials {
+        padding: 50px 0 20px !important;
+    }
+
+    .mp-testimonials__header {
+        margin-bottom: 25px !important;
+    }
+
+    .mp-testimonials__title {
+        font-size: 26px !important;
+        line-height: 1.35 !important;
+        letter-spacing: 0 !important;
+        margin-bottom: 12px !important;
+    }
+
+    .mp-testimonials__subtitle {
+        font-size: 15px !important;
+        line-height: 1.45 !important;
+    }
+
+    .mp-testimonials__slider {
+        padding: 20px 0 !important;
+        overflow: hidden !important;
+    }
+
+    .mp-testimonials__track {
+        gap: 0 !important;
+        overflow-x: visible !important;
+        scroll-snap-type: none !important;
+        touch-action: pan-y !important;
+    }
+
     .mp-testimonial-card {
+        flex: 0 0 100% !important;
         width: 100% !important;
-        min-width: 0 !important;
+        min-width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
         flex-direction: column !important;
         height: auto !important;
         min-height: 0 !important;
-        padding: 40px 20px 20px !important;
+        padding: 30px 16px 20px !important;
         text-align: center !important;
+        margin: 0 !important;
     }
 
     .mp-testimonial-card__image-container {
@@ -8689,6 +8794,11 @@ body {
         top: -15px !important;
         right: 20px !important;
         width: 35px !important;
+    }
+
+    .mp-slider-pagination {
+        margin-top: 25px !important;
+        padding-bottom: 0 !important;
     }
 }
 
@@ -9950,6 +10060,7 @@ body {
     gap: 73px !important;
     align-items: center !important;
     flex-wrap: wrap !important;
+    justify-content: center !important;
 }
 
 .mp-historia-v3__stat {
@@ -10022,6 +10133,19 @@ body {
 
     .mp-historia-v3__content {
         max-width: 100% !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .mp-historia-v3__stats {
+        gap: 20px !important;
+    }
+
+    .mp-historia-v3__stat-number {
+        font-size: 56px !important;
+        line-height: 1 !important;
+        margin-top: 15px !important;
+        margin-bottom: 10px !important;
     }
 }
 
@@ -10928,6 +11052,24 @@ body {
     .mp-toggle--is-active span:nth-child(3) {
         transform: rotate(-45deg) translate(7px, -7px) !important;
     }
+
+    /* Botón Cotizar en menú móvil */
+    .mp-nav__mobile-cta {
+        display: block !important;
+        width: 100% !important;
+        margin-top: 16px !important;
+        padding-top: 16px !important;
+        border-top: 1px solid var(--mp-border) !important;
+    }
+
+    .mp-btn--mobile-cta {
+        display: flex !important;
+        width: 100% !important;
+        justify-content: center !important;
+        font-size: 16px !important;
+        padding: 14px 24px !important;
+        text-align: center !important;
+    }
 }
 
 /* FAQ ACORDEÓN */
@@ -11305,50 +11447,76 @@ body {
 /* Responsiveness for Equipo Section */
 @media (max-width: 992px) {
     .mp-equipo-new__canvas {
-        flex-direction: column;
-        min-height: auto;
-        padding: 0 20px;
+        flex-direction: column !important;
+        min-height: auto !important;
+        padding: 0 20px !important;
+        position: relative !important;
+        align-items: stretch !important;
     }
 
     .mp-equipo-new__img-top,
     .mp-equipo-new__img-bottom {
-        position: relative;
-        width: 100%;
-        margin-bottom: 20px;
-        height: 300px;
-        top: auto;
-        left: auto;
-        right: auto;
-        bottom: auto;
+        position: relative !important;
+        width: 100% !important;
+        height: 260px !important;
+        top: auto !important;
+        left: auto !important;
+        right: auto !important;
+        bottom: auto !important;
+        border-radius: 8px !important;
+        overflow: hidden !important;
+        flex-shrink: 0 !important;
     }
 
     .mp-equipo-new__img-top img,
     .mp-equipo-new__img-bottom img {
-        height: 100%;
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
+        display: block !important;
     }
 
     .mp-equipo-new__card {
-        position: relative;
-        transform: none;
-        top: auto;
-        left: auto;
-        margin-top: -50px;
-        width: 90%;
-        max-width: 90%;
+        position: relative !important;
+        transform: none !important;
+        top: auto !important;
+        left: auto !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 0 !important;
+        border-radius: 0 !important;
+        box-sizing: border-box !important;
     }
 }
 
 @media (max-width: 768px) {
     .mp-equipo-new {
-        padding: 60px 0;
+        padding: 40px 0 !important;
+    }
+
+    .mp-equipo-new__canvas {
+        padding: 0 !important;
+        gap: 0 !important;
+    }
+
+    .mp-equipo-new__img-top,
+    .mp-equipo-new__img-bottom {
+        height: 220px !important;
+        border-radius: 0 !important;
     }
 
     .mp-equipo-new__title {
-        font-size: 32px;
+        font-size: 28px !important;
+        margin-bottom: 16px !important;
+    }
+
+    .mp-equipo-new__text {
+        font-size: 15px !important;
+        line-height: 1.6 !important;
     }
 
     .mp-equipo-new__card {
-        padding: 40px 30px;
+        padding: 36px 24px !important;
     }
 }
 

@@ -50,6 +50,9 @@ if ($custom_logo_id) {
                     <li><a href="<?php echo get_permalink(get_option('page_for_posts')); ?>" class="mp-nav__link <?php echo (is_home() || is_archive() || is_single()) && !is_post_type_archive('producto') && !is_singular('producto') ? 'mp-nav__link--active' : ''; ?>">Blog</a></li>
                 </ul>
             <?php endif; ?>
+            <div class="mp-nav__mobile-cta">
+                <a href="<?php echo home_url('/cotizar/'); ?>" class="mp-btn mp-btn--primary mp-btn--nav mp-btn--mobile-cta">Cotizar ahora</a>
+            </div>
         </nav>
         <a href="<?php echo home_url('/cotizar/'); ?>" class="mp-btn mp-btn--primary mp-btn--nav">Cotizar ahora</a>
         <button class="mp-nav__toggle" id="mp-navToggle" aria-label="Abrir menú">

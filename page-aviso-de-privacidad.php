@@ -255,7 +255,7 @@ body .mp-privacy-date {
                 <h1 class="mp-quienes-hero-v2__title">Aviso de Privacidad</h1>
                 <div class="mp-quienes-hero-v2__subtitle-wrap">
                     <p class="mp-quienes-hero-v2__subtitle">
-                        Formulaciones Plásticas de Aluminio de Occidente, S.A. de C.V. (MetaPack)
+                        COMERCIALIZADORA DE ALUMINIO DE OCCIDENTE, S.A. DE C.V. (MetaPack)
                     </p>
                 </div>
             </div>
@@ -278,7 +278,7 @@ body .mp-privacy-date {
                     <span>I.</span> Identidad y Domicilio del Responsable
                 </h2>
                 <p class="mp-privacy-section__text">
-                    <strong>Formulaciones Plásticas de Aluminio de Occidente, S.A. de C.V.</strong>, también conocida comercialmente como <strong>MetaPack</strong>, es responsable del tratamiento de sus datos personales en términos de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (en adelante, "la Ley") y su Reglamento.
+                    <strong>COMERCIALIZADORA DE ALUMINIO DE OCCIDENTE, S.A. DE C.V.</strong>, también conocida comercialmente como <strong>MetaPack</strong>, es responsable del tratamiento de sus datos personales en términos de la Ley Federal de Protección de Datos Personales en Posesión de los Particulares (en adelante, "la Ley") y su Reglamento.
                 </p>
                 <p class="mp-privacy-section__text">
                     Para efectos del presente aviso, señalamos las siguientes direcciones físicas y canales de comunicación:

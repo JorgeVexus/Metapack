@@ -120,19 +120,19 @@ get_template_part('template-parts/header', 'metapack');
 
         <div class="mp-historia-v3__stats">
             <div class="mp-historia-v3__stat mp-reveal-up mp-delay-1">
-                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_1_number', '+40')); ?></div>
+                <div class="mp-historia-v3__stat-number mp-stat-animate"><?php echo esc_html(get_theme_mod('stat_1_number', '+40')); ?></div>
                 <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_1_label', 'Años de experiencia')); ?></div>
             </div>
-            <div class="mp-historia-v2__stat mp-historia-v3__stat">
-                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_2_number', '1176')); ?></div>
+            <div class="mp-historia-v3__stat mp-reveal-up mp-delay-2">
+                <div class="mp-historia-v3__stat-number mp-stat-animate"><?php echo esc_html(get_theme_mod('stat_2_number', '1176')); ?></div>
                 <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_2_label', 'Posiciones de almacenaje')); ?></div>
             </div>
-            <div class="mp-historia-v2__stat mp-historia-v3__stat">
-                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_3_number', '351M²')); ?></div>
+            <div class="mp-historia-v3__stat mp-reveal-up mp-delay-3">
+                <div class="mp-historia-v3__stat-number mp-stat-animate"><?php echo esc_html(get_theme_mod('stat_3_number', '351M²')); ?></div>
                 <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_3_label', 'CEDIS')); ?></div>
             </div>
-            <div class="mp-historia-v2__stat mp-historia-v3__stat">
-                <div class="mp-historia-v3__stat-number"><?php echo esc_html(get_theme_mod('stat_4_number', '+8')); ?></div>
+            <div class="mp-historia-v3__stat mp-reveal-up mp-delay-4">
+                <div class="mp-historia-v3__stat-number mp-stat-animate"><?php echo esc_html(get_theme_mod('stat_4_number', '+8')); ?></div>
                 <div class="mp-historia-v3__stat-label"><?php echo esc_html(get_theme_mod('stat_4_label', 'Unidades propias')); ?></div>
             </div>
         </div>
